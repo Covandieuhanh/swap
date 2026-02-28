@@ -1,0 +1,9 @@
+.git
+.github
+.env
+.env.local
+.env.production
+node_modules
+backups
+server.log
+.DS_Store

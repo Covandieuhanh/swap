@@ -1,0 +1,16 @@
+[Unit]
+Description=VoucherSwap continuous backup worker
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/voucherswap
+EnvironmentFile=/opt/voucherswap/.env
+ExecStart=/usr/bin/npm run backup:daemon
+Restart=always
+RestartSec=5
+User=voucherswap
+Group=voucherswap
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>VoucherSwap – One Page</title>
+  <!-- Dùng CSS/JS gốc để khớp giao diện -->
+  <link rel="stylesheet" href="https://voucherswap.net/client-side/voucherswap/vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="https://voucherswap.net/client-side/voucherswap/fonts/fontawesome/fontawesome.min.css">
+  <link rel="stylesheet" href="https://voucherswap.net/client-side/voucherswap/css/main.css">
+  <style>
+    :root {
+      --green: #1b6e1b;
+      --green-d: #145214;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --bg: #f5f6f7;
+      --card: #ffffff;
+      --line: #e5e7eb;
+    }
+    * { box-sizing: border-box; }
+    body { background: var(--bg); font-family: 'Roboto', sans-serif; color: var(--ink); }
+    a { color: inherit; }
+    .topbar { background:#1f2a37; color:#e5e7eb; font-size:14px; }
+    .topbar .container { display:flex; align-items:center; justify-content:space-between; padding:10px 0; }
+    .toplink { color:#e5e7eb; font-weight:700; margin-left:18px; text-decoration:none; }
+    .toplink:hover { color:#fff; }
+
+    .bar-main { background: var(--card); border-bottom:1px solid var(--line); box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+    .bar-main .container { display:flex; align-items:center; gap:14px; padding:14px 0; }
+    .logo { height:46px; }
+    .search { flex:1; position:relative; }
+    .search input { width:100%; background:#f1f5f9; border:1px solid var(--line); border-radius:12px; padding:10px 14px 10px 38px; font-size:15px; }
+    .search i { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#9ca3af; }
+
+    .nav-main { background:var(--card); border-bottom:1px solid var(--line); }
+    .nav-main .container { display:flex; gap:18px; padding:10px 0; }
+    .nav-link-vs { font-weight:700; color:#374151; text-decoration:none; padding:8px 0; border-bottom:3px solid transparent; cursor:pointer; }
+    .nav-link-vs.active { color:var(--green); border-color:var(--green); }
+
+    .wrap { max-width:1220px; margin:0 auto; padding:18px 12px 32px; }
+    .card-flat { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:0 6px 18px rgba(0,0,0,0.04); }
+    .muted { color:var(--muted); }
+
+    .hero { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; align-items:center; }
+    .hero h2 { font-weight:800; color:var(--green); }
+    .cta-btn { background:var(--green); color:#fff; border:none; padding:12px 18px; border-radius:10px; font-weight:700; }
+    .cta-btn:hover { background:var(--green-d); }
+
+    .grid-wallet { display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-top:12px; }
+    .wallet-card { background:#f4f4f4; border:1px solid #ededed; border-radius:12px; padding:14px 16px; box-shadow:0 2px 6px rgba(0,0,0,0.04); }
+    .wallet-card h6 { margin:0 0 6px; font-weight:700; color:#374151; }
+    .wallet-card .amt { font-size:18px; font-weight:800; color:#111827; }
+    .wallet-card .cur { color:#6b7280; margin-left:4px; }
+    .wallet-actions { margin-top:10px; display:flex; flex-wrap:wrap; gap:8px; }
+    .btn-wallet { border:none; background:var(--green); color:#fff; padding:8px 12px; border-radius:8px; font-weight:700; font-size:13px; display:inline-flex; align-items:center; gap:6px; box-shadow:0 4px 8px rgba(27,110,27,0.24); }
+    .btn-wallet:hover { background:var(--green-d); }
+    .btn-wallet i { font-size:13px; }
+
+    .alert.error { display:none; }
+
+    /* Auth overlay */
+    #authOverlay { position:fixed; inset:0; background:rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; padding:16px; z-index:999; }
+    #authCard { width:100%; max-width:960px; background:#fff; border-radius:14px; box-shadow:0 18px 60px rgba(0,0,0,0.25); padding:18px 22px 24px; }
+    .auth-title { text-align:center; margin-bottom:6px; color:var(--green); font-weight:800; font-size:26px; }
+    .auth-sub { text-align:center; margin-bottom:14px; color:var(--ink); font-weight:600; }
+    .auth-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; align-items:start; }
+    .social-btn { display:block; width:100%; border:none; color:#fff; font-weight:700; padding:12px; border-radius:8px; text-align:left; }
+    .social-fb { background:#2b5597; }
+    .social-tw { background:#00a9f3; }
+    .social-gg { background:#e11931; }
+    .social-ig { background:#f06f32; }
+    .auth-or { text-align:center; font-weight:700; color:var(--muted); margin:6px 0; }
+    .auth-footer { text-align:center; margin-top:10px; font-weight:700; }
+    .auth-footer a { color:var(--green); }
+    .close-auth { position:absolute; top:14px; right:18px; font-size:18px; cursor:pointer; color:#9ca3af; }
+    .form-control-lg { padding:12px 14px; font-size:15px; }
+    .advanced-toggle { font-size:13px; font-weight:700; color:var(--green); cursor:pointer; margin-top:6px; display:inline-block; }
+    .advanced-box { display:none; padding:10px 12px; border:1px dashed var(--line); border-radius:10px; margin-top:6px; }
+    .advanced-box label { font-size:12px; font-weight:700; color:var(--muted); margin-bottom:4px; }
+    .advanced-box input { font-size:13px; padding:8px 10px; }
+
+    @media (max-width: 900px) {
+      .bar-main .container { flex-direction:column; align-items:flex-start; }
+      .nav-main .container { overflow-x:auto; }
+      .auth-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Thanh trên cùng -->
+  <div class="topbar">
+    <div class="container">
+      <div class="d-flex align-items-center gap-2">
+        <span>Chào mừng bạn đến với liên kết voucher!</span>
+      </div>
+      <div class="d-flex align-items-center">
+        <a class="toplink" href="#contact" id="linkContactTop">Liên hệ</a>
+        <span class="toplink" id="topEmail">Chưa đăng nhập</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Thanh logo + tìm kiếm -->
+  <div class="bar-main">
+    <div class="container">
+      <img class="logo" src="https://voucherswap.net/images/voucherswaplogo1.png" alt="VoucherSwap logo">
+      <div class="search">
+        <input type="text" placeholder="Tìm Kiếm..." aria-label="Tìm kiếm">
+      </div>
+      <div class="d-flex align-items-center gap-3" style="margin-left:auto;">
+        <span class="muted" id="userBadge">Khách</span>
+        <button class="btn btn-success" style="font-weight:700;border-radius:8px;" data-requires-auth id="btnPost">ĐĂNG TIN</button>
+        <button class="btn btn-outline-success" id="btnOpenAuth">Đăng nhập / Đăng ký</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Điều hướng chính -->
+  <div class="nav-main">
+    <div class="container">
+      <a class="nav-link-vs active" data-section="home">Trang chủ</a>
+      <a class="nav-link-vs" data-section="partner" data-requires-auth>Đối tác</a>
+      <a class="nav-link-vs" data-section="product" data-requires-auth>Sản phẩm</a>
+      <a class="nav-link-vs" data-section="project" data-requires-auth>Dự án</a>
+      <a class="nav-link-vs" data-section="contact">Liên hệ</a>
+      <a class="nav-link-vs" data-section="app" data-requires-auth>Ứng dụng</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- Trang chủ -->
+    <section id="home" class="card-flat" style="margin-bottom:12px;">
+      <div class="hero">
+        <div>
+          <h2>Voucher Swap</h2>
+          <p class="muted">Nền tảng liên kết voucher. Đăng nhập để xem ví, chuyển – rút – đầu tư, hoặc duyệt sản phẩm, dự án.</p>
+          <div class="d-flex gap-2">
+            <button class="cta-btn" id="ctaAuth">Đăng nhập / Đăng ký</button>
+            <button class="btn btn-outline-secondary" data-section="contact">Liên hệ</button>
+          </div>
+        </div>
+        <div class="card-flat" style="border-style:dashed;">
+          <div class="muted">Trạng thái</div>
+          <div id="statusLine" style="font-weight:800; color:var(--green);">Chưa đăng nhập</div>
+          <div class="muted" style="margin-top:6px;">Tất cả chức năng (Đối tác, Sản phẩm, Dự án, Ứng dụng, Ví) yêu cầu đăng nhập.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Liên hệ -->
+    <section id="contact" class="card-flat" style="margin-bottom:12px;">
+      <h5>Liên hệ</h5>
+      <p class="muted">Email: support@voucherswap.net • Hotline: 1900 1234 • Địa chỉ: TP.HCM</p>
+      <p class="muted">Nếu bạn chưa có tài khoản, vui lòng đăng ký để xem ví và các sản phẩm.</p>
+    </section>
+
+    <!-- Ví (chỉ khi đăng nhập) -->
+    <section id="walletSection" class="card-flat" style="display:none;">
+      <div class="d-flex align-items-start justify-content-between mb-2">
+        <div>
+          <div class="muted" style="font-weight:700;">Ví / Tất Cả</div>
+          <div style="color:#16a34a; font-size:32px; font-weight:800; line-height:1.1;" id="totalBalance">0.00 Vntd</div>
+        </div>
+        <div class="text-right">
+          <div class="muted" style="font-weight:700;">Tài khoản</div>
+          <div id="userEmail" style="font-weight:700;">---</div>
+        </div>
+      </div>
+      <div class="alert alert-danger error" id="walletError"></div>
+      <div class="grid-wallet">
+        <div class="wallet-card">
+          <h6>Ví Giao Dịch</h6>
+          <div><span class="amt" id="consumptionAmt">0.00</span><span class="cur">Vntd</span></div>
+          <div class="wallet-actions">
+            <button class="btn-wallet" data-requires-auth>Nhận</button>
+            <button class="btn-wallet" data-requires-auth>Chuyển</button>
+            <button class="btn-wallet" data-requires-auth>Lịch Sử</button>
+          </div>
+        </div>
+        <div class="wallet-card">
+          <h6>Ví Liên Kết</h6>
+          <div><span class="amt" id="affiliateAmt">0.00</span><span class="cur">Vntd</span></div>
+          <div class="wallet-actions">
+            <button class="btn-wallet" data-requires-auth>X3</button>
+            <button class="btn-wallet" data-requires-auth>Đổi</button>
+            <button class="btn-wallet" data-requires-auth>Rút</button>
+            <button class="btn-wallet" data-requires-auth>Lịch Sử</button>
+          </div>
+        </div>
+        <div class="wallet-card">
+          <h6>Ví Tích Điểm</h6>
+          <div><span class="amt" id="accumulateAmt">0.00</span><span class="cur">Vntd</span></div>
+          <div class="wallet-actions">
+            <button class="btn-wallet" data-requires-auth>Rút 0.2%</button>
+            <button class="btn-wallet" data-requires-auth>Lịch Sử</button>
+          </div>
+        </div>
+        <div class="wallet-card">
+          <h6>Ví Tiết Kiệm</h6>
+          <div><span class="amt" id="savingAmt">0.00</span><span class="cur">Vntd</span></div>
+          <div class="wallet-actions">
+            <button class="btn-wallet" data-requires-auth>Rút 0.2%</button>
+            <button class="btn-wallet" data-requires-auth>Lịch Sử</button>
+          </div>
+        </div>
+        <div class="wallet-card">
+          <h6>Ví Kinh Doanh</h6>
+          <div><span class="amt" id="businessAmt">0.00</span><span class="cur">Vntd</span></div>
+          <div class="wallet-actions">
+            <button class="btn-wallet" data-requires-auth>Lịch Sử</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lockedNotice" class="card-flat" style="display:none;">
+      <h5>Yêu cầu đăng nhập</h5>
+      <p class="muted">Bạn cần đăng nhập để xem ví và các chức năng khác.</p>
+      <button class="btn btn-success" id="unlockBtn">Đăng nhập ngay</button>
+    </section>
+  </div>
+
+  <!-- Overlay đăng nhập/đăng ký -->
+  <div id="authOverlay">
+    <div id="authCard" class="position-relative">
+      <span class="close-auth" id="closeAuth">X</span>
+      <div class="auth-title" id="authTitle">Đăng Nhập</div>
+      <div class="auth-sub">Sử Dụng Thông Tin Đăng Nhập Của Bạn Để Truy Cập</div>
+      <div id="authError" class="alert alert-danger error"></div>
+      <div class="auth-grid">
+        <div>
+          <div class="form-group mb-2">
+            <input id="email" type="email" class="form-control form-control-lg" placeholder="Email">
+          </div>
+          <div class="form-group mb-2" id="groupFullName" style="display:none;">
+            <input id="fullName" type="text" class="form-control form-control-lg" placeholder="Họ & Tên">
+          </div>
+          <div class="form-group mb-2">
+            <input id="password" type="password" class="form-control form-control-lg" placeholder="Mật khẩu">
+          </div>
+          <div class="form-group mb-2" id="groupConfirm" style="display:none;">
+            <input id="confirmPassword" type="password" class="form-control form-control-lg" placeholder="Xác nhận mật khẩu">
+          </div>
+          <div class="form-group mb-2" id="groupRef" style="display:none;">
+            <input id="referenceEmail" type="email" class="form-control form-control-lg" placeholder="Email giới thiệu (tuỳ chọn)">
+          </div>
+          <div class="form-group mb-2" id="groupPhone" style="display:none;">
+            <input id="phone" type="text" class="form-control form-control-lg" placeholder="Số điện thoại">
+          </div>
+          <span class="advanced-toggle" id="advToggle">Tùy chỉnh API/Identity (nâng cao)</span>
+          <div class="advanced-box" id="advBox">
+            <div class="form-group mb-1">
+              <label for="apiBase">API Base</label>
+              <input id="apiBase" type="text" class="form-control" placeholder="http://localhost:8080/local-api">
+            </div>
+            <div class="form-group mb-1">
+              <label for="identityBase">Identity Base</label>
+              <input id="identityBase" type="text" class="form-control" placeholder="http://localhost:8080/local-identity">
+            </div>
+          </div>
+          <button id="btnSubmitAuth" class="btn btn-success btn-block btn-lg" style="width:100%; font-weight:700;">ĐĂNG NHẬP</button>
+          <div class="text-center mt-2"><a href="#" class="muted">Quên Mật Khẩu? <span style="color:var(--green);">Đặt Lại</span></a></div>
+        </div>
+        <div>
+          <div class="auth-or">hoặc</div>
+          <button class="social-btn social-fb">Đăng Nhập Với Facebook</button>
+          <button class="social-btn social-tw">Đăng Nhập Với Twitter</button>
+          <button class="social-btn social-gg">Đăng Nhập Với Google</button>
+          <button class="social-btn social-ig">Đăng Nhập Với Instagram</button>
+        </div>
+      </div>
+      <div class="auth-footer" id="authFooterSwitch">Bạn Chưa Có Tài Khoản? <a href="#" id="switchToRegister">Đăng Ký</a></div>
+    </div>
+  </div>
+
+  <script src="https://voucherswap.net/client-side/voucherswap/vendor/bootstrap/jquery-1.12.4.min.js"></script>
+  <script src="https://voucherswap.net/client-side/voucherswap/vendor/bootstrap/popper.min.js"></script>
+  <script src="https://voucherswap.net/client-side/voucherswap/vendor/bootstrap/bootstrap.min.js"></script>
+  <script>
+    const cfgKey = "vs-onepage-config";
+    const localOrigin = (window.location.origin && window.location.origin !== "null") ? window.location.origin : "http://localhost:8080";
+    const defaults = { apiBase: `${localOrigin}/local-api`, identityBase: `${localOrigin}/local-identity` };
+    const loadCfg = () => { try { return JSON.parse(localStorage.getItem(cfgKey) || "{}"); } catch { return {}; } };
+    const saveCfg = (c) => localStorage.setItem(cfgKey, JSON.stringify(c));
+    const setToken = (t) => { const c = loadCfg(); c.token = t; saveCfg(c); };
+    const getToken = () => loadCfg().token || "";
+    const getApiBase = () => (loadCfg().apiBase || defaults.apiBase).replace(/\/+$/, "");
+    const getIdentityBase = () => (loadCfg().identityBase || defaults.identityBase).replace(/\/+$/, "");
+    const fmt = (n) => Number(n || 0).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    const syncStatus = (email) => {
+      const e = email || loadCfg().lastEmail || "";
+      $("#userBadge").text(e || "Khách");
+      $("#topEmail").text(e || "Chưa đăng nhập");
+      $("#statusLine").text(e ? `Đã đăng nhập: ${e}` : "Chưa đăng nhập");
+      $("#apiBase").val(loadCfg().apiBase || defaults.apiBase);
+      $("#identityBase").val(loadCfg().identityBase || defaults.identityBase);
+    };
+
+    async function callToken(email, pwd) {
+      const url = `${getIdentityBase()}/connect/token`;
+      const form = new URLSearchParams();
+      form.set("Client_Id", "MyClientId");
+      form.set("Client_Secret", "");
+      form.set("Scope", "MyClientId_api");
+      form.set("UserName", email);
+      form.set("Password", pwd);
+      form.set("grant_type", "password");
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: form.toString()
+      });
+      if (!res.ok) throw new Error(`Đăng nhập thất bại (${res.status})`);
+      const j = await res.json();
+      if (!j.access_token) throw new Error("Không nhận được access_token");
+      setToken(j.access_token);
+      return j.access_token;
+    }
+
+    async function callRegister(email, pwd, fullName, phone, referenceEmail) {
+      const url = `${getApiBase()}/users/Register`;
+      const body = { user: { email, userName: email, phoneNumber: phone || "", fullName: fullName || email, referenceEmail: referenceEmail || email }, password: pwd };
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) throw new Error(`Đăng ký thất bại (${res.status})`);
+      const j = await res.json();
+      if (!(j.isSuccess || j.success !== false)) throw new Error(j.message || "Đăng ký thất bại");
+      return j;
+    }
+
+    async function getUserInfo() {
+      const token = getToken();
+      if (!token) throw new Error("Chưa có token, hãy đăng nhập");
+      const res = await fetch(`${getApiBase()}/users/GetUserInfo`, { headers: { Authorization: `Bearer ${token}` } });
+      if (!res.ok) throw new Error(`Không lấy được số dư (${res.status})`);
+      const j = await res.json();
+      return j.result || j;
+    }
+
+    function renderWallet(u) {
+      const cons = u.consumptionBalance ?? u.ConsumptionBalance ?? 0;
+      const aff = u.affiliateBalance ?? u.AffiliateBalance ?? 0;
+      const acc = u.accumulateBalance ?? u.AccumulateBalance ?? 0;
+      const sav = u.savingBalance ?? u.SavingBalance ?? 0;
+      const biz = u.businessBalance ?? u.BusinessBalance ?? 0;
+      const email = u.email || u.Email || loadCfg().lastEmail || "";
+      $("#consumptionAmt").text(fmt(cons));
+      $("#affiliateAmt").text(fmt(aff));
+      $("#accumulateAmt").text(fmt(acc));
+      $("#savingAmt").text(fmt(sav));
+      $("#businessAmt").text(fmt(biz));
+      $("#totalBalance").text(`${fmt(cons + aff + acc + sav + biz)} Vntd`);
+      $("#userEmail").text(email);
+      syncStatus(email);
+      $("#walletSection").show();
+      $("#lockedNotice").hide();
+    }
+
+    function showError(box, msg) { if (msg) { $(box).text(msg).show(); } else { $(box).hide(); } }
+
+    async function loadWallet() {
+      showError("#walletError", "");
+      try {
+        const u = await getUserInfo();
+        renderWallet(u);
+      } catch (e) {
+        showError("#walletError", e.message);
+        $("#walletSection").hide();
+        $("#lockedNotice").show();
+      }
+    }
+
+    function showAuth(mode) {
+      const isLogin = mode !== "register";
+      $("#authTitle").text(isLogin ? "Đăng Nhập" : "Đăng Ký");
+      $("#btnSubmitAuth").text(isLogin ? "ĐĂNG NHẬP" : "ĐĂNG KÝ");
+      $("#groupFullName, #groupConfirm, #groupRef, #groupPhone").toggle(!isLogin);
+      $("#authFooterSwitch").html(isLogin ? 'Bạn Chưa Có Tài Khoản? <a href="#" id="switchToRegister">Đăng Ký</a>' : 'Bạn Đã Có Tài Khoản? <a href="#" id="switchToLogin">Đăng Nhập</a>');
+      $("#btnSubmitAuth").data("mode", isLogin ? "login" : "register");
+      $("#authOverlay").fadeIn(120);
+      attachSwitchLinks();
+      // hiện giá trị URL đã lưu
+      $("#apiBase").val(loadCfg().apiBase || defaults.apiBase);
+      $("#identityBase").val(loadCfg().identityBase || defaults.identityBase);
+    }
+
+    function closeAuth() { $("#authOverlay").fadeOut(120); }
+
+    function attachSwitchLinks(){
+      $("#switchToRegister").on("click", (e)=>{ e.preventDefault(); showAuth("register"); });
+      $("#switchToLogin").on("click", (e)=>{ e.preventDefault(); showAuth("login"); });
+    }
+
+    function ensureAuth() {
+      if (getToken()) return true;
+      showAuth("login");
+      $("#lockedNotice").show();
+      return false;
+    }
+
+    // Event bindings
+    $("#btnOpenAuth, #ctaAuth, #unlockBtn").on("click", ()=>showAuth("login"));
+    $("#advToggle").on("click", ()=>{$("#advBox").slideToggle(120);});
+    $("#closeAuth").on("click", closeAuth);
+
+    $(document).on("click", "[data-requires-auth]", function(e){
+      if (!ensureAuth()) { e.preventDefault(); e.stopPropagation(); }
+    });
+
+    $(document).on("click", "[data-section]", function(){
+      const sec = $(this).data("section");
+      if($(this).attr("data-requires-auth")!==undefined && !ensureAuth()) return;
+      $(".nav-link-vs").removeClass("active");
+      $(this).addClass("active");
+      if(sec === "contact") $('html,body').animate({scrollTop: $('#contact').offset().top-20}, 200);
+      if(sec === "home") $('html,body').animate({scrollTop: $('#home').offset().top-20}, 200);
+      if(sec === "partner" || sec === "product" || sec === "project" || sec === "app") {
+        $('html,body').animate({scrollTop: $('#walletSection').offset().top-10}, 200);
+      }
+    });
+
+    $("#btnSubmitAuth").on("click", async ()=>{
+      showError("#authError", "");
+      const mode = $("#btnSubmitAuth").data("mode") || "login";
+      const email = $("#email").val().trim();
+      const pwd = $("#password").val().trim();
+      const apiBase = $("#apiBase").val().trim();
+      const identityBase = $("#identityBase").val().trim();
+      const cfg = loadCfg();
+      cfg.lastEmail = email;
+      cfg.apiBase = apiBase || defaults.apiBase;
+      cfg.identityBase = identityBase || defaults.identityBase;
+      saveCfg(cfg);
+      if(!email || !pwd) { showError("#authError", "Nhập email và mật khẩu"); return; }
+      if(mode === "register") {
+        const confirm = $("#confirmPassword").val().trim();
+        if(confirm && confirm !== pwd) { showError("#authError", "Mật khẩu xác nhận không khớp"); return; }
+      }
+      try {
+        if(mode === "register") {
+          await callRegister(email, pwd, $("#fullName").val().trim(), $("#phone").val().trim(), $("#referenceEmail").val().trim());
+        }
+        await callToken(email, pwd);
+        await loadWallet();
+        closeAuth();
+      } catch (e) { showError("#authError", e.message); }
+    });
+
+    // Khởi động
+    (async () => {
+      syncStatus();
+      $("#authOverlay").hide(); // đảm bảo không hiện overlay khi mới mở
+      $("#walletSection").hide();
+      $("#lockedNotice").hide();
+      if (getToken()) {
+        await loadWallet();
+      }
+    })();
+  </script>
+</body>
+</html>

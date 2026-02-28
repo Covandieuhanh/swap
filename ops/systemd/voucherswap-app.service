@@ -1,0 +1,16 @@
+[Unit]
+Description=VoucherSwap app
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/voucherswap
+EnvironmentFile=/opt/voucherswap/.env
+ExecStart=/usr/bin/npm start
+Restart=always
+RestartSec=5
+User=voucherswap
+Group=voucherswap
+
+[Install]
+WantedBy=multi-user.target

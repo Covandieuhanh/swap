@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>VoucherSwap - Ví</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://voucherswap.net/client-side/voucherswap/fonts/flaticon/flaticon.css">
+  <link rel="stylesheet" href="https://voucherswap.net/client-side/voucherswap/fonts/icofont/icofont.min.css">
+  <link rel="stylesheet" href="https://voucherswap.net/client-side/voucherswap/fonts/fontawesome/fontawesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS -->
+  <link rel="stylesheet" href="https://voucherswap.net/client-side/voucherswap/vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="https://voucherswap.net/client-side/voucherswap/vendor/niceselect/nice-select.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="https://voucherswap.net/client-side/voucherswap/css/main.css">
+  <link rel="stylesheet" href="https://voucherswap.net/client-side/voucherswap/css/wallet.css">
+  <style>
+    body { background: #f5f5f5; font-family: 'Roboto', sans-serif; }
+    .wallet-page { padding: 24px 0 40px; }
+    .wallet-summary {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+    .wallet-summary h6 { margin: 0; color: #6b7280; font-weight: 600; }
+    .wallet-summary .total { font-size: 28px; font-weight: 800; color: #0f5132; margin: 6px 0 0; }
+    .wallet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .wallet-card {
+      background: #f8f8f8;
+      border: 1px solid #ebebeb;
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .wallet-card h6 { margin: 0 0 6px; font-weight: 700; color: #374151; }
+    .wallet-card .amount { font-size: 18px; font-weight: 800; color: #111827; }
+    .wallet-card .currency { color: #6b7280; margin-left: 4px; }
+    .wallet-actions { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .btn-wallet {
+      border: none;
+      background: #1c742f;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 8px rgba(28,116,47,0.25);
+    }
+    .btn-wallet i { font-size: 13px; }
+    .alert { display:none; }
+  </style>
+</head>
+<body>
+  <!-- Header (reuse simplified top bar) -->
+  <div class="header-top" style="background:#243444;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="header-top-welcome" style="color:#fff;">Chào mừng bạn đến với liên kết voucher!</div>
+        </div>
+        <div class="col-md-6 text-right" style="color:#fff;font-weight:600;">Covandieuhanh@Gmail.Com</div>
+      </div>
+    </div>
+  </div>
+  <header class="header-part" style="box-shadow: none; border-bottom:1px solid #e5e7eb;">
+    <div class="container">
+      <div class="header-content" style="padding:12px 0;">
+        <a href="#" class="header-logo">
+          <img src="https://voucherswap.net/images/voucherswaplogo1.png" alt="logo" style="height:42px;">
+        </a>
+        <form class="header-form" style="flex:1;margin:0 16px;">
+          <input type="text" placeholder="Tìm Kiếm..." style="background:#f4f5f7;border-radius:12px;">
+          <button>Tìm</button>
+        </form>
+        <a href="#" class="header-widget" style="margin-right:12px;">
+          <img src="https://voucherswap.net/client-side/voucherswap/images/user.png" alt="user">
+          <span>Covandieuhanh@Gmail.Com</span>
+        </a>
+        <a href="#" class="btn btn-success" style="border-radius:8px;font-weight:700;padding:10px 14px;">ĐĂNG TIN</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navbar-part" style="border-bottom:1px solid #e5e7eb;">
+    <div class="container">
+      <div class="navbar-content">
+        <ul class="navbar-list" style="flex-wrap:wrap;gap:6px;font-weight:700;">
+          <li class="navbar-item"><a class="navbar-link" href="#">Trang chủ</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="#">Đối tác</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="#">Sản phẩm</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="#">Dự án</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="#">Liên hệ</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="#">Ứng dụng</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wallet-page">
+    <div class="container">
+      <div style="margin-bottom:10px;font-weight:700;color:#4b5563;">Ví / Tất Cả</div>
+      <div id="errorBox" class="alert alert-danger"></div>
+      <div class="wallet-summary">
+        <h6>Tổng Số Dư</h6>
+        <div class="total" id="totalBalance">0.00 Vntd</div>
+      </div>
+
+      <div class="wallet-grid">
+        <div class="wallet-card">
+          <h6>Ví Giao Dịch</h6>
+          <div><span class="amount" id="consumptionAmt">0.00</span><span class="currency">Vntd</span></div>
+          <div class="wallet-actions">
+            <button class="btn-wallet">Nhận</button>
+            <button class="btn-wallet">Chuyển</button>
+            <button class="btn-wallet">Lịch Sử</button>
+          </div>
+        </div>
+
+        <div class="wallet-card">
+          <h6>Ví Liên Kết</h6>
+          <div><span class="amount" id="affiliateAmt">0.00</span><span class="currency">Vntd</span></div>
+          <div class="wallet-actions">
+            <button class="btn-wallet">X3</button>
+            <button class="btn-wallet">Đổi</button>
+            <button class="btn-wallet">Rút</button>
+            <button class="btn-wallet">Lịch Sử</button>
+          </div>
+        </div>
+
+        <div class="wallet-card">
+          <h6>Ví Tích Điểm</h6>
+          <div><span class="amount" id="accumulateAmt">0.00</span><span class="currency">Vntd</span></div>
+          <div class="wallet-actions">
+            <button class="btn-wallet">Rút 0.2%</button>
+            <button class="btn-wallet">Lịch Sử</button>
+          </div>
+        </div>
+
+        <div class="wallet-card">
+          <h6>Ví Tiết Kiệm</h6>
+          <div><span class="amount" id="savingAmt">0.00</span><span class="currency">Vntd</span></div>
+          <div class="wallet-actions">
+            <button class="btn-wallet">Rút 0.2%</button>
+            <button class="btn-wallet">Lịch Sử</button>
+          </div>
+        </div>
+
+        <div class="wallet-card">
+          <h6>Ví Kinh Doanh</h6>
+          <div><span class="amount" id="businessAmt">0.00</span><span class="currency">Vntd</span></div>
+          <div class="wallet-actions">
+            <button class="btn-wallet">Lịch Sử</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://voucherswap.net/client-side/voucherswap/vendor/bootstrap/jquery-1.12.4.min.js"></script>
+  <script src="https://voucherswap.net/client-side/voucherswap/vendor/bootstrap/popper.min.js"></script>
+  <script src="https://voucherswap.net/client-side/voucherswap/vendor/bootstrap/bootstrap.min.js"></script>
+  <script src="https://voucherswap.net/client-side/voucherswap/vendor/niceselect/nice-select.min.js"></script>
+  <script src="./common.js"></script>
+  <script>
+    const errBox = document.getElementById('errorBox');
+    function setError(msg) {
+      errBox.textContent = msg;
+      errBox.style.display = msg ? 'block' : 'none';
+    }
+    function renderBalances(u) {
+      const cons = u.consumptionBalance || u.ConsumptionBalance || 0;
+      const aff = u.affiliateBalance || u.AffiliateBalance || 0;
+      const acc = u.accumulateBalance || u.AccumulateBalance || 0;
+      const sav = u.savingBalance || u.SavingBalance || 0;
+      const biz = u.businessBalance || u.BusinessBalance || 0;
+      document.getElementById('consumptionAmt').textContent = formatNumber(cons);
+      document.getElementById('affiliateAmt').textContent = formatNumber(aff);
+      document.getElementById('accumulateAmt').textContent = formatNumber(acc);
+      document.getElementById('savingAmt').textContent = formatNumber(sav);
+      document.getElementById('businessAmt').textContent = formatNumber(biz);
+      const total = cons + aff + acc + sav + biz;
+      document.getElementById('totalBalance').textContent = `${formatNumber(total)} Vntd`;
+    }
+    async function loadWallet() {
+      try {
+        const user = await fetchUserInfo();
+        renderBalances(user);
+      } catch (e) {
+        setError(e.message + ". Kiểm tra token hoặc API.");
+        // fallback demo numbers
+        renderBalances({
+          ConsumptionBalance: 4535286.35,
+          AffiliateBalance: 21072.19,
+          AccumulateBalance: 0,
+          SavingBalance: 144469489.27,
+          BusinessBalance: 115200000
+        });
+      }
+    }
+    loadWallet();
+  </script>
+</body>
+</html>
