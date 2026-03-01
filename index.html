@@ -202,8 +202,8 @@
     .alert.error { display:none; }
 
     /* Auth overlay */
-    #authOverlay { position:fixed; inset:0; background:rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; padding:16px; z-index:999; }
-    #authCard { width:100%; max-width:960px; background:#fff; border-radius:14px; box-shadow:0 18px 60px rgba(0,0,0,0.25); padding:18px 22px 24px; }
+    #authPage { display:none; max-width:960px; margin:0 auto; }
+    #authCard { width:100%; background:var(--card); border-radius:14px; box-shadow:var(--shadow); padding:18px 22px 24px; position:relative; }
     .auth-title { text-align:center; margin-bottom:6px; color:var(--green); font-weight:800; font-size:26px; }
     .auth-sub { text-align:center; margin-bottom:14px; color:var(--ink); font-weight:600; }
     .auth-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; align-items:start; }
@@ -320,6 +320,7 @@
       <a class="nav-link-vs" data-section="projectPage" data-requires-auth>Dự án</a>
       <a class="nav-link-vs" data-section="adminSection" data-requires-auth data-requires-admin>Hệ thống</a>
       <a class="nav-link-vs" data-section="walletSection" data-requires-auth>Ví Voucher</a>
+      <a class="nav-link-vs nav-auth-link" data-section="authPage">Đăng nhập</a>
       <a class="nav-link-vs" data-section="contact">Liên hệ</a>
       <a class="nav-link-vs" data-section="app">Ứng dụng</a>
     </div>
@@ -1163,61 +1164,63 @@
     </section>
   </div>
 
-  <!-- Overlay đăng nhập/đăng ký -->
-  <div id="authOverlay">
-    <div id="authCard" class="position-relative">
-      <span class="close-auth" id="closeAuth">X</span>
-      <div class="auth-title" id="authTitle">Đăng Nhập</div>
-      <div class="auth-sub">Sử Dụng Thông Tin Đăng Nhập Của Bạn Để Truy Cập</div>
-      <div id="authInfo" class="alert alert-info error"></div>
-      <div id="authError" class="alert alert-danger error"></div>
-      <div class="auth-grid">
-        <div>
-          <div class="form-group mb-2">
-            <input id="email" type="email" class="form-control form-control-lg" placeholder="Email">
-          </div>
-          <div class="form-group mb-2" id="groupFullName" style="display:none;">
-            <input id="fullName" type="text" class="form-control form-control-lg" placeholder="Họ & Tên">
-          </div>
-          <div class="form-group mb-2">
-            <input id="password" type="password" class="form-control form-control-lg" placeholder="Mật khẩu">
-          </div>
-          <div class="form-group mb-2" id="groupVerifyCode" style="display:none;">
-            <input id="verifyCode" type="text" inputmode="numeric" class="form-control form-control-lg" placeholder="Mã xác thực 6 số">
-          </div>
-          <div class="form-group mb-2" id="groupConfirm" style="display:none;">
-            <input id="confirmPassword" type="password" class="form-control form-control-lg" placeholder="Xác nhận mật khẩu">
-          </div>
-          <div class="form-group mb-2" id="groupRef" style="display:none;">
-            <input id="referenceEmail" type="email" class="form-control form-control-lg" placeholder="Email giới thiệu (tuỳ chọn)">
-          </div>
-          <div class="form-group mb-2" id="groupPhone" style="display:none;">
-            <input id="phone" type="text" class="form-control form-control-lg" placeholder="Số điện thoại">
-          </div>
-          <span class="advanced-toggle" id="advToggle">Tùy chỉnh API/Identity (nâng cao)</span>
-          <div class="advanced-box" id="advBox">
-            <div class="form-group mb-1">
-              <label for="apiBase">API Base</label>
-              <input id="apiBase" type="text" class="form-control" placeholder="http://localhost:8080/local-api">
+  <!-- Trang đăng nhập/đăng ký riêng -->
+  <div class="wrap">
+    <section id="authPage" class="card-flat page-section" style="display:none;">
+      <div id="authCard">
+        <span class="close-auth" id="closeAuth">X</span>
+        <div class="auth-title" id="authTitle">Đăng Nhập</div>
+        <div class="auth-sub">Sử Dụng Thông Tin Đăng Nhập Của Bạn Để Truy Cập</div>
+        <div id="authInfo" class="alert alert-info error"></div>
+        <div id="authError" class="alert alert-danger error"></div>
+        <div class="auth-grid">
+          <div>
+            <div class="form-group mb-2">
+              <input id="email" type="email" class="form-control form-control-lg" placeholder="Email">
             </div>
-            <div class="form-group mb-1">
-              <label for="identityBase">Identity Base</label>
-              <input id="identityBase" type="text" class="form-control" placeholder="http://localhost:8080/local-identity">
+            <div class="form-group mb-2" id="groupFullName" style="display:none;">
+              <input id="fullName" type="text" class="form-control form-control-lg" placeholder="Họ & Tên">
             </div>
+            <div class="form-group mb-2">
+              <input id="password" type="password" class="form-control form-control-lg" placeholder="Mật khẩu">
+            </div>
+            <div class="form-group mb-2" id="groupVerifyCode" style="display:none;">
+              <input id="verifyCode" type="text" inputmode="numeric" class="form-control form-control-lg" placeholder="Mã xác thực 6 số">
+            </div>
+            <div class="form-group mb-2" id="groupConfirm" style="display:none;">
+              <input id="confirmPassword" type="password" class="form-control form-control-lg" placeholder="Xác nhận mật khẩu">
+            </div>
+            <div class="form-group mb-2" id="groupRef" style="display:none;">
+              <input id="referenceEmail" type="email" class="form-control form-control-lg" placeholder="Email giới thiệu (tuỳ chọn)">
+            </div>
+            <div class="form-group mb-2" id="groupPhone" style="display:none;">
+              <input id="phone" type="text" class="form-control form-control-lg" placeholder="Số điện thoại">
+            </div>
+            <span class="advanced-toggle" id="advToggle">Tùy chỉnh API/Identity (nâng cao)</span>
+            <div class="advanced-box" id="advBox">
+              <div class="form-group mb-1">
+                <label for="apiBase">API Base</label>
+                <input id="apiBase" type="text" class="form-control" placeholder="http://localhost:8080/local-api">
+              </div>
+              <div class="form-group mb-1">
+                <label for="identityBase">Identity Base</label>
+                <input id="identityBase" type="text" class="form-control" placeholder="http://localhost:8080/local-identity">
+              </div>
+            </div>
+            <button id="btnSubmitAuth" class="btn btn-success btn-block btn-lg" style="width:100%; font-weight:700;">ĐĂNG NHẬP</button>
+            <div class="text-center mt-2"><a href="#" class="muted">Quên Mật Khẩu? <span style="color:var(--green);">Đặt Lại</span></a></div>
           </div>
-          <button id="btnSubmitAuth" class="btn btn-success btn-block btn-lg" style="width:100%; font-weight:700;">ĐĂNG NHẬP</button>
-          <div class="text-center mt-2"><a href="#" class="muted">Quên Mật Khẩu? <span style="color:var(--green);">Đặt Lại</span></a></div>
+          <div>
+            <div class="auth-or">hoặc</div>
+            <button class="social-btn social-fb">Đăng Nhập Với Facebook</button>
+            <button class="social-btn social-tw">Đăng Nhập Với Twitter</button>
+            <button class="social-btn social-gg">Đăng Nhập Với Google</button>
+            <button class="social-btn social-ig">Đăng Nhập Với Instagram</button>
+          </div>
         </div>
-        <div>
-          <div class="auth-or">hoặc</div>
-          <button class="social-btn social-fb">Đăng Nhập Với Facebook</button>
-          <button class="social-btn social-tw">Đăng Nhập Với Twitter</button>
-          <button class="social-btn social-gg">Đăng Nhập Với Google</button>
-          <button class="social-btn social-ig">Đăng Nhập Với Instagram</button>
-        </div>
+        <div class="auth-footer" id="authFooterSwitch">Bạn Chưa Có Tài Khoản? <a href="#" id="switchToRegister">Đăng Ký</a></div>
       </div>
-      <div class="auth-footer" id="authFooterSwitch">Bạn Chưa Có Tài Khoản? <a href="#" id="switchToRegister">Đăng Ký</a></div>
-    </div>
+    </section>
   </div>
 
   <div id="receiveOverlay" class="wallet-modal-overlay">
@@ -1456,12 +1459,18 @@
       $("#btnOpenAuth").toggle(showAuthButtons);
       $("#ctaAuth").toggle(showAuthButtons);
       $("#btnLogout").toggle(!showAuthButtons);
+      $(".nav-auth-link").toggle(showAuthButtons);
       // Luôn hiển thị các tab; chặn truy cập bằng ensureAuth thay vì ẩn
       syncStatus(email, isAuthenticated);
       if (!isAuthenticated) {
         $(".nav-link-vs").show();
         setActiveNav("home");
         showSection("home");
+      } else {
+        if ($(".nav-link-vs.active").data("section") === "authPage") {
+          setActiveNav("home");
+          showSection("home");
+        }
       }
       if (isAuthenticated && isAdminLike()) {
         setActiveNav("adminSection");
@@ -1469,7 +1478,7 @@
       }
     }
 
-    const pageSections = ["home", "partner", "product", "projectPage", "walletSection", "adminSection", "contact", "app", "lockedNotice"];
+    const pageSections = ["home", "partner", "product", "projectPage", "walletSection", "adminSection", "contact", "app", "authPage", "lockedNotice"];
 
     function setActiveNav(sectionId) {
       $(".nav-link-vs").removeClass("active");
@@ -3001,14 +3010,18 @@
             : 'Chưa nhận được mã? <a href="#" id="resendVerifyCode">Gửi lại mã</a> • <a href="#" id="switchToLogin">Quay lại đăng nhập</a>'
       );
       $("#btnSubmitAuth").data("mode", normalizedMode);
-      $("#authOverlay").fadeIn(120);
+      setActiveNav("authPage");
+      showSection("authPage");
       attachSwitchLinks();
       // hiện giá trị URL đã lưu
       $("#apiBase").val(loadCfg().apiBase || defaults.apiBase);
       $("#identityBase").val(loadCfg().identityBase || defaults.identityBase);
     }
 
-    function closeAuth() { $("#authOverlay").fadeOut(120); }
+    function closeAuth() {
+      showSection("home");
+      setActiveNav("home");
+    }
 
     function attachSwitchLinks(){
       $("#switchToRegister").on("click", (e)=>{ e.preventDefault(); showAuth("register"); });
@@ -3879,7 +3892,6 @@
     (async () => {
       applyDefaultEndpoints(preferLocalEndpoints);
       resetGuestState();
-      $("#authOverlay").hide(); // đảm bảo không hiện overlay khi mới mở
       $("#receiveOverlay").hide();
       $("#transferOverlay").hide();
       $("#historyOverlay").hide();
