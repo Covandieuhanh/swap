@@ -5,9 +5,19 @@ Serve the restored `vs_business` database through a Node app that keeps the orig
 ## Quick start
 ```bash
 cp .env.example .env
+# (optional) change PORT in .env if 8080 is busy, e.g. PORT=8081
 npm install
+npm run db:init   # create empty DB + seed admin user (admin@example.com / Admin123!)
 npm run verify
 npm start
+```
+- Cần một SQL Server đang chạy theo các biến `DB_HOST/DB_PORT`. Có thể dùng `docker-compose.mssql.yml` để bật nhanh SQL local.
+
+## Run a local SQL Server quickly (Docker)
+```bash
+docker compose -f docker-compose.mssql.yml up -d
+# then
+npm run db:init
 ```
 
 ## GitHub as source of truth

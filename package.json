@@ -11,6 +11,7 @@
     "check:syntax": "node --check server.js && node --check ecosystem.config.js && node --check scripts/load-env.js && node --check scripts/health.js && node --check scripts/smoke.js && node --check scripts/backup-core.js && node --check scripts/backup.js && node --check scripts/backup-log.js && node --check scripts/backup-local.js && node --check scripts/backup-runner.js",
     "health": "node scripts/health.js",
     "smoke": "node scripts/smoke.js",
+    "db:init": "node scripts/db-init.js",
     "backup": "node scripts/backup.js",
     "backup:log": "node scripts/backup-log.js",
     "backup:local": "node scripts/backup-local.js",

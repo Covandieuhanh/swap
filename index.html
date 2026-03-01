@@ -10,33 +10,58 @@
   <link rel="stylesheet" href="https://voucherswap.net/client-side/voucherswap/css/main.css">
   <style>
     :root {
-      --green: #1b6e1b;
-      --green-d: #145214;
-      --ink: #1f2937;
-      --muted: #6b7280;
-      --bg: #f5f6f7;
+      --accent: #f0b90b;
+      --accent-strong: #d39e00;
+      --green: var(--accent);
+      --green-d: var(--accent-strong);
+      --ink: #0b0e11;
+      --muted: #4b5563;
+      --bg: #f7f8fa;
       --card: #ffffff;
+      --surface-soft: #f4f6f8;
+      --surface-subtle: #eff1f3;
       --line: #e5e7eb;
+      --input: #f5f7fa;
+      --chip: #ffffff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    body.theme-dark {
+      --accent: #f0b90b;
+      --accent-strong: #fcd535;
+      --green: var(--accent);
+      --green-d: #c69000;
+      --ink: #eaecef;
+      --muted: #a1a5ad;
+      --bg: #0b0e11;
+      --card: #181a20;
+      --surface-soft: #13151c;
+      --surface-subtle: #0f1117;
+      --line: #2b3139;
+      --input: #1f232b;
+      --chip: #0f1117;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     }
     * { box-sizing: border-box; }
     body { background: var(--bg); font-family: 'Roboto', sans-serif; color: var(--ink); }
     a { color: inherit; }
-    .topbar { background:#1f2a37; color:#e5e7eb; font-size:14px; }
+    /* Base layout */
+    .topbar { background: var(--bg); color: var(--accent); font-size:14px; }
     .topbar .container { display:flex; align-items:center; justify-content:space-between; padding:10px 0; }
-    .toplink { color:#e5e7eb; font-weight:700; margin-left:18px; text-decoration:none; }
-    .toplink:hover { color:#fff; }
+    .toplink { color: var(--accent); font-weight:700; margin-left:18px; text-decoration:none; }
+    .toplink:hover { color:#ffffff; }
 
     .bar-main { background: var(--card); border-bottom:1px solid var(--line); box-shadow:0 1px 3px rgba(0,0,0,0.05); }
     .bar-main .container { display:flex; align-items:center; gap:14px; padding:14px 0; }
     .logo { height:46px; }
     .search { flex:1; position:relative; }
-    .search input { width:100%; background:#f1f5f9; border:1px solid var(--line); border-radius:12px; padding:10px 14px 10px 38px; font-size:15px; }
-    .search i { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#9ca3af; }
+    .search input { width:100%; background:var(--input); color:var(--ink); border:1px solid var(--line); border-radius:12px; padding:10px 14px 10px 38px; font-size:15px; }
+    .search input::placeholder { color: var(--muted); }
+    .search i { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--muted); }
 
     .nav-main { background:var(--card); border-bottom:1px solid var(--line); }
     .nav-main .container { display:flex; gap:18px; padding:10px 0; }
-    .nav-link-vs { font-weight:700; color:#374151; text-decoration:none; padding:8px 0; border-bottom:3px solid transparent; cursor:pointer; }
-    .nav-link-vs.active { color:var(--green); border-color:var(--green); }
+    .nav-link-vs { font-weight:700; color:var(--muted); text-decoration:none; padding:8px 0; border-bottom:3px solid transparent; cursor:pointer; }
+    .nav-link-vs.active { color:var(--accent); border-color:var(--accent); }
     /* Admin tabs compact */
     #adminTabs { display:flex; flex-wrap:wrap; gap:6px; padding:6px 0 4px 0; }
     .admin-tab { font-weight:700; color:var(--green); border:1px solid #d1d5db; border-radius:10px; background:#f8fafc; padding:8px 12px; min-width:120px; text-transform:none; letter-spacing:0.1px; }
@@ -48,6 +73,113 @@
     .admin-input { height:44px; }
     .admin-btn { min-height:44px; font-weight:700; display:inline-flex; align-items:center; justify-content:center; padding:8px 12px; }
 
+    /* Binance-like theming */
+    .topbar { background:#0b0e11; color:#fcd535; font-size:14px; }
+    .toplink { color:#fcd535; }
+    .toplink:hover { color:#ffffff; }
+    .bar-main, .nav-main { background: var(--card); border-bottom:1px solid var(--line); box-shadow: var(--shadow); }
+    .search input { background: var(--input); border:1px solid var(--line); color: var(--ink); }
+    .search input::placeholder { color: var(--muted); }
+    .nav-link-vs { font-weight:700; color: var(--muted); text-decoration:none; padding:8px 0; border-bottom:3px solid transparent; cursor:pointer; }
+    .nav-link-vs.active { color: var(--accent); border-color: var(--accent); }
+    .card-flat { background: var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow: var(--shadow); }
+    .wallet-card,
+    .package-card,
+    .project-card-vs,
+    .project-history-item,
+    .history-item,
+    .project-summary-card,
+    .history-list .history-item,
+    .project-list-vertical .project-card-vs {
+      background: linear-gradient(135deg, var(--surface-subtle), var(--surface-soft));
+      border:1px solid var(--line);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+    }
+    body.theme-dark .wallet-card,
+    body.theme-dark .package-card,
+    body.theme-dark .project-card-vs,
+    body.theme-dark .project-history-item,
+    body.theme-dark .history-item,
+    body.theme-dark .project-summary-card,
+    body.theme-dark .history-list .history-item,
+    body.theme-dark .project-list-vertical .project-card-vs {
+      background: linear-gradient(135deg, #161b22, #0f1117);
+      box-shadow: none;
+    }
+    .project-chip { background: var(--chip); border:1px solid var(--line); color: var(--ink); }
+    .wallet-card .amt,
+    .project-summary-value,
+    .package-price,
+    .history-amount { color: var(--ink); }
+    .wallet-modal-card,
+    .wallet-address-box,
+    .scanner-panel,
+    .advanced-box {
+      background: var(--surface-subtle);
+      border:1px solid var(--line);
+      color: var(--ink);
+    }
+    .cta-btn,
+    .btn-wallet,
+    .btn-success,
+    .admin-tab.active {
+      background: var(--accent) !important;
+      border-color: var(--accent) !important;
+      color: #0b0e11 !important;
+      box-shadow: 0 10px 22px rgba(240,185,11,0.24);
+    }
+    .btn-success:hover,
+    .cta-btn:hover,
+    .btn-wallet:hover {
+      background: var(--accent-strong) !important;
+      border-color: var(--accent-strong) !important;
+      color: #0b0e11 !important;
+    }
+    .btn-outline-success {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .btn-outline-success:hover {
+      background: var(--accent);
+      color: #0b0e11;
+      border-color: var(--accent);
+    }
+    .btn-outline-secondary.theme-toggle {
+      border-color: var(--line);
+      color: var(--muted);
+      background: transparent;
+    }
+    body.theme-dark .btn-outline-secondary.theme-toggle {
+      color: var(--ink);
+      border-color: var(--line);
+      background: var(--surface-subtle);
+    }
+    .admin-tab { color: var(--accent); border:1px solid var(--line); background: var(--surface-subtle); }
+    .history-type { color: var(--accent); }
+    .hero h2 { color: var(--accent); }
+    .auth-title, .wallet-modal-title { color: var(--accent); }
+    .wallet-card h6 { color: var(--muted); }
+    /* Dark-mode readability */
+    body.theme-dark { color: var(--ink); }
+    body.theme-dark .muted,
+    body.theme-dark .text-muted { color: #d8dde5 !important; }
+    body.theme-dark .table,
+    body.theme-dark .table th,
+    body.theme-dark .table td { color: #f1f5f9 !important; }
+    body.theme-dark .table thead th { background: #0f1117; color: #fcd535 !important; border-color: var(--line); }
+    body.theme-dark .table tbody tr { background: #0b0e11; }
+    body.theme-dark .table tbody tr:hover { background: #131722; color: #f8fafc; }
+    body.theme-dark .form-control,
+    body.theme-dark .form-select,
+    body.theme-dark textarea {
+      background: var(--input);
+      color: var(--ink);
+      border-color: var(--line);
+    }
+    body.theme-dark .form-control::placeholder,
+    body.theme-dark .form-select::placeholder { color: #cbd5e1; }
+
     .wrap { max-width:1220px; margin:0 auto; padding:18px 12px 32px; }
     .card-flat { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:0 6px 18px rgba(0,0,0,0.04); }
     .muted { color:var(--muted); }
@@ -58,10 +190,10 @@
     .cta-btn:hover { background:var(--green-d); }
 
     .grid-wallet { display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-top:12px; }
-    .wallet-card { background:#f4f4f4; border:1px solid #ededed; border-radius:12px; padding:14px 16px; box-shadow:0 2px 6px rgba(0,0,0,0.04); }
-    .wallet-card h6 { margin:0 0 6px; font-weight:700; color:#374151; }
-    .wallet-card .amt { font-size:18px; font-weight:800; color:#111827; }
-    .wallet-card .cur { color:#6b7280; margin-left:4px; }
+    .wallet-card { background:var(--surface-soft); border:1px solid var(--line); border-radius:12px; padding:14px 16px; box-shadow:var(--shadow); }
+    .wallet-card h6 { margin:0 0 6px; font-weight:700; color:var(--muted); }
+    .wallet-card .amt { font-size:18px; font-weight:800; color:var(--ink); }
+    .wallet-card .cur { color:var(--muted); margin-left:4px; }
     .wallet-actions { margin-top:10px; display:flex; flex-wrap:wrap; gap:8px; }
     .btn-wallet { border:none; background:var(--green); color:#fff; padding:8px 12px; border-radius:8px; font-weight:700; font-size:13px; display:inline-flex; align-items:center; gap:6px; box-shadow:0 4px 8px rgba(27,110,27,0.24); }
     .btn-wallet:hover { background:var(--green-d); }
@@ -90,38 +222,38 @@
     .advanced-box label { font-size:12px; font-weight:700; color:var(--muted); margin-bottom:4px; }
     .advanced-box input { font-size:13px; padding:8px 10px; }
     .wallet-modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; padding:16px; z-index:1001; }
-    .wallet-modal-card { width:100%; max-width:560px; background:#fff; border-radius:14px; box-shadow:0 18px 60px rgba(0,0,0,0.25); padding:20px 22px; position:relative; }
+    .wallet-modal-card { width:100%; max-width:560px; background:var(--card); border-radius:14px; box-shadow:var(--shadow); padding:20px 22px; position:relative; }
     .wallet-modal-title { font-size:26px; font-weight:800; color:var(--green); text-align:center; margin-bottom:10px; }
     .wallet-modal-sub { text-align:center; color:var(--muted); margin-bottom:14px; }
     .wallet-close { position:absolute; top:12px; right:16px; font-size:18px; color:#9ca3af; cursor:pointer; }
     .wallet-field-label { font-size:12px; font-weight:700; color:var(--muted); margin-bottom:4px; }
-    .wallet-address-box { background:#f3f4f6; border:1px solid var(--line); border-radius:10px; padding:14px 16px; font-size:24px; font-weight:700; color:#111827; word-break:break-all; }
+    .wallet-address-box { background:var(--surface-subtle); border:1px solid var(--line); border-radius:10px; padding:14px 16px; font-size:24px; font-weight:700; color:var(--ink); word-break:break-all; }
     .wallet-modal-actions { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:14px; }
     .wallet-modal-note { margin-top:10px; color:var(--muted); font-size:13px; text-align:center; }
     .wallet-modal-error, .wallet-modal-success { display:none; }
     .wallet-lookup-note { margin-top:6px; font-size:13px; color:var(--muted); min-height:20px; }
     .receive-qr-wrap { display:flex; justify-content:center; margin:10px 0 14px; }
     .receive-qr-image { width:280px; max-width:100%; border-radius:10px; border:1px solid var(--line); background:#fff; }
-    .scanner-panel { display:none; border:1px dashed var(--line); border-radius:12px; padding:12px; margin-top:12px; background:#f9fafb; }
-    .scanner-video { width:100%; border-radius:10px; background:#111827; max-height:320px; object-fit:cover; }
+    .scanner-panel { display:none; border:1px dashed var(--line); border-radius:12px; padding:12px; margin-top:12px; background:var(--surface-subtle); }
+    .scanner-video { width:100%; border-radius:10px; background:var(--card); max-height:320px; object-fit:cover; }
     .scanner-status { margin-top:8px; font-size:13px; color:var(--muted); text-align:center; min-height:20px; }
     .project-summary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin:14px 0 8px; }
-    .project-summary-card { border:1px solid var(--line); border-radius:12px; padding:14px 16px; background:linear-gradient(180deg,#fafaf9,#f3f4f6); }
-    .project-summary-value { font-size:24px; font-weight:800; color:#111827; line-height:1.2; }
+    .project-summary-card { border:1px solid var(--line); border-radius:12px; padding:14px 16px; background:linear-gradient(180deg,var(--surface-subtle),var(--surface-soft)); }
+    .project-summary-value { font-size:24px; font-weight:800; color:var(--ink); line-height:1.2; }
     .project-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; margin-top:12px; }
     .project-list-vertical { display:flex; flex-direction:column; gap:12px; }
-    .project-card-vs { border:1px solid #dbe4d1; border-radius:14px; padding:16px 18px; background:linear-gradient(135deg,#f8fbf5,#eef6e8); box-shadow:0 8px 18px rgba(27,110,27,0.08); }
-    .project-card-vs h6 { margin:0 0 6px; font-size:18px; font-weight:800; color:var(--green); }
-    .project-card-vs p { margin:0 0 10px; color:#374151; line-height:1.6; white-space:pre-line; }
+    .project-card-vs { border:1px solid var(--line); border-radius:14px; padding:16px 18px; background:linear-gradient(135deg,var(--surface-subtle),var(--surface-soft)); box-shadow:var(--shadow); }
+    .project-card-vs h6 { margin:0 0 6px; font-size:18px; font-weight:800; color:var(--accent); }
+    .project-card-vs p { margin:0 0 10px; color:var(--ink); line-height:1.6; white-space:pre-line; }
     .project-card-vs textarea { width:100%; }
     .project-card-vs .form-label { white-space:normal; word-break:break-word; line-height:1.25; font-size:13px; }
     .project-card-meta { display:flex; flex-wrap:wrap; gap:8px; }
     .project-chip { display:inline-flex; align-items:center; padding:6px 10px; border-radius:999px; background:#fff; border:1px solid #d9e5d1; font-size:12px; font-weight:700; color:#3f4a3f; }
     .package-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:14px; }
-    .package-card { border:1px solid var(--line); border-radius:14px; padding:14px; background:#fff; box-shadow:0 10px 20px rgba(15,23,42,0.05); }
+    .package-card { border:1px solid var(--line); border-radius:14px; padding:14px; background:var(--card); box-shadow:var(--shadow); }
     .package-card-top { display:flex; gap:12px; align-items:center; }
-    .package-icon { width:68px; height:68px; border-radius:14px; object-fit:cover; border:1px solid var(--line); background:#f8fafc; }
-    .package-name { font-size:18px; font-weight:800; color:#111827; margin:0; }
+    .package-icon { width:68px; height:68px; border-radius:14px; object-fit:cover; border:1px solid var(--line); background:var(--surface-soft); }
+    .package-name { font-size:18px; font-weight:800; color:var(--ink); margin:0; }
     .package-price { font-size:20px; font-weight:800; color:var(--green); margin:8px 0 4px; }
     .package-meta { font-size:13px; color:var(--muted); }
     .package-owned { margin-top:8px; font-size:13px; font-weight:700; color:#166534; min-height:20px; }
@@ -131,10 +263,10 @@
     .project-package-figure { display:flex; justify-content:center; margin:10px 0 14px; }
     .project-package-image { width:96px; height:96px; border-radius:18px; object-fit:cover; border:1px solid var(--line); background:#f8fafc; }
     .history-list { display:grid; gap:10px; margin-top:12px; max-height:420px; overflow:auto; }
-    .history-item { border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:#f9fafb; }
+    .history-item { border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:var(--surface-subtle); }
     .history-top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:6px; }
     .history-type { font-weight:800; color:var(--green); }
-    .history-amount { font-weight:800; color:#111827; }
+    .history-amount { font-weight:800; color:var(--ink); }
     .history-meta { font-size:13px; color:var(--muted); line-height:1.5; word-break:break-word; }
     .history-empty { text-align:center; padding:18px 12px; color:var(--muted); border:1px dashed var(--line); border-radius:12px; margin-top:12px; }
     .form-row-tight { display:flex; gap:8px; flex-wrap:wrap; }
@@ -165,11 +297,12 @@
   <!-- Thanh logo + tìm kiếm -->
   <div class="bar-main">
     <div class="container">
-      <img class="logo" src="https://voucherswap.net/images/voucherswaplogo1.png" alt="VoucherSwap logo">
+      <img class="logo" src="assets/aha-logo.jpg" alt="AHA logo">
       <div class="search">
         <input id="searchInput" type="search" name="search" placeholder="Tìm Kiếm..." aria-label="Tìm kiếm" autocomplete="off" autocapitalize="off" spellcheck="false">
       </div>
       <div class="d-flex align-items-center gap-3" style="margin-left:auto;">
+        <button class="btn btn-outline-secondary theme-toggle" id="themeToggle" aria-label="Đổi giao diện sáng/tối">Chế độ tối</button>
         <span class="muted" id="userBadge">Khách</span>
         <button class="btn btn-success" style="font-weight:700;border-radius:8px;" data-requires-auth id="btnPost">ĐĂNG TIN</button>
         <button class="btn btn-outline-success" id="btnOpenAuth">Đăng nhập / Đăng ký</button>
@@ -333,14 +466,14 @@
         <div style="margin-top:16px;">
           <div class="d-flex align-items-center justify-content-between flex-wrap" style="gap:8px;">
             <div>
-              <div style="font-size:18px; font-weight:800; color:#111827;">9 Gói Đầu Tư</div>
+              <div style="font-size:18px; font-weight:800; color:var(--ink);">9 Gói Đầu Tư</div>
               <div class="muted">Dữ liệu lấy trực tiếp từ bảng `InvestPackages` hiện tại.</div>
             </div>
           </div>
           <div id="packageGrid" class="package-grid"></div>
         </div>
         <div style="margin-top:18px;">
-          <div style="font-size:18px; font-weight:800; color:#111827;">Lịch Sử Đầu Tư Của Bạn</div>
+          <div style="font-size:18px; font-weight:800; color:var(--ink);">Lịch Sử Đầu Tư Của Bạn</div>
           <div class="muted">Hiển thị các bản ghi từ `ProjectInvests` của tài khoản đang đăng nhập.</div>
           <div id="projectInvestList" class="project-inline-history"></div>
           <div id="projectInvestEmpty" class="project-history-empty" style="display:none;">Tài khoản này chưa có giao dịch đầu tư nào.</div>
@@ -412,7 +545,7 @@
       <div class="d-flex align-items-start justify-content-between flex-wrap mb-2" style="gap:12px;">
         <div>
           <div class="muted" style="font-weight:700;">Hệ thống</div>
-          <div style="color:#111827; font-size:22px; font-weight:800; line-height:1.1;">Quản trị & Quyền hạn</div>
+          <div style="color:var(--ink); font-size:22px; font-weight:800; line-height:1.1;">Quản trị & Quyền hạn</div>
           <div class="muted" style="margin-top:4px;">Tổng hợp Users, Roles, Permissions, Functions và đối tác (Stores).</div>
         </div>
         <div class="text-right">
@@ -988,17 +1121,17 @@
       <div class="project-summary-grid">
         <div class="project-summary-card">
           <div class="muted" style="font-weight:700;">Email hỗ trợ</div>
-          <div style="font-size:16px; font-weight:800; color:#111827;">support@voucherswap.net</div>
+          <div style="font-size:16px; font-weight:800; color:var(--ink);">support@voucherswap.net</div>
           <div class="muted" style="margin-top:4px;">Thay đổi email tại đây khi lên online.</div>
         </div>
         <div class="project-summary-card">
           <div class="muted" style="font-weight:700;">Hotline</div>
-          <div style="font-size:16px; font-weight:800; color:#111827;">1900 1234</div>
+          <div style="font-size:16px; font-weight:800; color:var(--ink);">1900 1234</div>
           <div class="muted" style="margin-top:4px;">Giờ làm việc: 8:00 - 17:30 (T2 - T6).</div>
         </div>
         <div class="project-summary-card">
           <div class="muted" style="font-weight:700;">Văn phòng</div>
-          <div style="font-size:16px; font-weight:800; color:#111827;">TP. Hồ Chí Minh</div>
+          <div style="font-size:16px; font-weight:800; color:var(--ink);">TP. Hồ Chí Minh</div>
           <div class="muted" style="margin-top:4px;">Điền địa chỉ cụ thể khi triển khai thực tế.</div>
         </div>
       </div>
@@ -1171,7 +1304,7 @@
         <button class="btn btn-success" id="activateProjectPackage" type="button">Kích hoạt gói</button>
       </div>
       <div style="margin-top:14px;">
-        <div style="font-size:16px; font-weight:800; color:#111827;">Lịch sử gần nhất theo gói này</div>
+        <div style="font-size:16px; font-weight:800; color:var(--ink);">Lịch sử gần nhất theo gói này</div>
         <div id="projectPackageHistory" class="project-inline-history"></div>
         <div id="projectPackageHistoryEmpty" class="project-history-empty" style="display:none;">Bạn chưa có giao dịch nào với gói này.</div>
       </div>
@@ -1246,6 +1379,25 @@
       saving: { title: "Lịch Sử Ví Tiết Kiệm", sub: "Hiển thị các giao dịch mới nhất của ví tiết kiệm." },
       business: { title: "Lịch Sử Ví Kinh Doanh", sub: "Hiển thị các giao dịch mới nhất của ví kinh doanh." }
     };
+
+    // Theme toggle (Binance-like yellow/black/white)
+    const themeKey = "vs-theme";
+    function applyTheme(mode = "light") {
+      const isDark = mode === "dark";
+      document.body.classList.toggle("theme-dark", isDark);
+      document.body.classList.toggle("theme-light", !isDark);
+      localStorage.setItem(themeKey, isDark ? "dark" : "light");
+      const btn = document.getElementById("themeToggle");
+      if (btn) {
+        btn.textContent = isDark ? "Chế độ sáng" : "Chế độ tối";
+      }
+    }
+    function initTheme() {
+      const saved = localStorage.getItem(themeKey);
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      applyTheme(saved || (prefersDark ? "dark" : "light"));
+    }
+    initTheme();
 
     function buildQrImageUrl(text) {
       return `https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=${encodeURIComponent(text || "")}`;
@@ -2921,6 +3073,10 @@
       resetGuestState();
       setAuthUI(false, "");
       $("#lockedNotice").show();
+    });
+    $("#themeToggle").on("click", () => {
+      const next = document.body.classList.contains("theme-dark") ? "light" : "dark";
+      applyTheme(next);
     });
     $("#advToggle").on("click", ()=>{$("#advBox").slideToggle(120);});
     $("#closeAuth").on("click", closeAuth);

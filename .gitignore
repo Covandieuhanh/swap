@@ -8,3 +8,5 @@ backups/*.bak
 backups/*.trn
 backups/*.log
 backups/latest.json
+backups/*.tar.gz
+backups/
