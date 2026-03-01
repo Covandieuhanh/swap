@@ -2,7 +2,7 @@
   "name": "voucherswap-local",
   "version": "1.0.0",
   "private": true,
-  "description": "Local server for VoucherSwap old data login and wallet display",
+  "description": "Local server for AHA Swap old data login and wallet display",
   "engines": {
     "node": ">=20"
   },

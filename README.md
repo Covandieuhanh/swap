@@ -1,4 +1,4 @@
-# VoucherSwap Local One-Page
+# AHA Swap Local One-Page
 
 Serve the restored `vs_business` database through a Node app that keeps the original front-end flow working without the old external APIs.
 
