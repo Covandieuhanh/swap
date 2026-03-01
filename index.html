@@ -2466,10 +2466,31 @@
     }
 
     function renderCatalogTables(list) {
+      const friendly = {
+        "dbo.Users": "Tài khoản người dùng",
+        "dbo.Roles": "Danh sách vai trò",
+        "dbo.UserRoles": "Gán vai trò cho user",
+        "dbo.RoleClaims": "Khai báo quyền/claim cho role",
+        "dbo.Permissions": "Phân quyền menu/chức năng",
+        "dbo.Functions": "Menu/chức năng hệ thống",
+        "dbo.Stores": "Đối tác / Cửa hàng",
+        "dbo.Projects": "Dự án / Staking",
+        "dbo.InvestPackages": "Gói đầu tư",
+        "dbo.ProjectInvests": "Lịch sử kích hoạt gói",
+        "dbo.WalletConsumptionTransactions": "Giao dịch Ví Giao Dịch",
+        "dbo.WalletAffiliateTransactions": "Giao dịch Ví Liên Kết",
+        "dbo.WalletAccumulateTransactions": "Giao dịch Ví Tích Điểm",
+        "dbo.WalletSavingTransactions": "Giao dịch Ví Tiết Kiệm",
+        "dbo.WalletBusinessTransactions": "Giao dịch Ví Kinh Doanh",
+        "dbo.WalletAffiliateTransactions_Archive": "Lưu trữ Ví Liên Kết (cũ)",
+        "dbo.NotificationLogs": "Nhật ký thông báo",
+        "dbo.UserHistories": "Lịch sử người dùng"
+      };
+      const label = (name) => friendly[name] || "Bảng dữ liệu";
       const items = list.map((t) => `
         <li class="catalog-item" data-fullname="${escapeHtml(t.FullName)}" style="padding:6px 4px; cursor:pointer;">
           <div style="font-weight:700;">${escapeHtml(t.FullName)}</div>
-          <div class="muted" style="font-size:12px;">${t.RowCount} dòng</div>
+          <div class="muted" style="font-size:12px;">${escapeHtml(label(t.FullName))} • ${(t.RowCount ?? t.RowCountValue ?? 0)} dòng</div>
         </li>
       `);
       $("#catalogTableList").html(items.join(""));
