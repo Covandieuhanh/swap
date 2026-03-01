@@ -37,6 +37,16 @@
     .nav-main .container { display:flex; gap:18px; padding:10px 0; }
     .nav-link-vs { font-weight:700; color:#374151; text-decoration:none; padding:8px 0; border-bottom:3px solid transparent; cursor:pointer; }
     .nav-link-vs.active { color:var(--green); border-color:var(--green); }
+    /* Admin tabs compact */
+    #adminTabs { display:flex; flex-wrap:wrap; gap:6px; padding:6px 0 4px 0; }
+    .admin-tab { font-weight:700; color:var(--green); border:1px solid #d1d5db; border-radius:10px; background:#f8fafc; padding:8px 12px; min-width:120px; text-transform:none; letter-spacing:0.1px; }
+    .admin-tab.active { background:var(--green); color:#fff; border-color:var(--green); box-shadow:0 4px 10px rgba(0,128,64,0.15); }
+    .admin-input { height:44px !important; }
+    .admin-btn { min-height:44px; font-weight:700; display:inline-flex; align-items:center; justify-content:center; padding:8px 12px; }
+    .admin-form-row { gap:6px; margin-bottom:8px; }
+    .admin-table-wrapper { max-height:360px; overflow:auto; }
+    .admin-input { height:44px; }
+    .admin-btn { min-height:44px; font-weight:700; display:inline-flex; align-items:center; justify-content:center; padding:8px 12px; }
 
     .wrap { max-width:1220px; margin:0 auto; padding:18px 12px 32px; }
     .card-flat { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:0 6px 18px rgba(0,0,0,0.04); }
@@ -79,6 +89,57 @@
     .advanced-box { display:none; padding:10px 12px; border:1px dashed var(--line); border-radius:10px; margin-top:6px; }
     .advanced-box label { font-size:12px; font-weight:700; color:var(--muted); margin-bottom:4px; }
     .advanced-box input { font-size:13px; padding:8px 10px; }
+    .wallet-modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; padding:16px; z-index:1001; }
+    .wallet-modal-card { width:100%; max-width:560px; background:#fff; border-radius:14px; box-shadow:0 18px 60px rgba(0,0,0,0.25); padding:20px 22px; position:relative; }
+    .wallet-modal-title { font-size:26px; font-weight:800; color:var(--green); text-align:center; margin-bottom:10px; }
+    .wallet-modal-sub { text-align:center; color:var(--muted); margin-bottom:14px; }
+    .wallet-close { position:absolute; top:12px; right:16px; font-size:18px; color:#9ca3af; cursor:pointer; }
+    .wallet-field-label { font-size:12px; font-weight:700; color:var(--muted); margin-bottom:4px; }
+    .wallet-address-box { background:#f3f4f6; border:1px solid var(--line); border-radius:10px; padding:14px 16px; font-size:24px; font-weight:700; color:#111827; word-break:break-all; }
+    .wallet-modal-actions { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:14px; }
+    .wallet-modal-note { margin-top:10px; color:var(--muted); font-size:13px; text-align:center; }
+    .wallet-modal-error, .wallet-modal-success { display:none; }
+    .wallet-lookup-note { margin-top:6px; font-size:13px; color:var(--muted); min-height:20px; }
+    .receive-qr-wrap { display:flex; justify-content:center; margin:10px 0 14px; }
+    .receive-qr-image { width:280px; max-width:100%; border-radius:10px; border:1px solid var(--line); background:#fff; }
+    .scanner-panel { display:none; border:1px dashed var(--line); border-radius:12px; padding:12px; margin-top:12px; background:#f9fafb; }
+    .scanner-video { width:100%; border-radius:10px; background:#111827; max-height:320px; object-fit:cover; }
+    .scanner-status { margin-top:8px; font-size:13px; color:var(--muted); text-align:center; min-height:20px; }
+    .project-summary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin:14px 0 8px; }
+    .project-summary-card { border:1px solid var(--line); border-radius:12px; padding:14px 16px; background:linear-gradient(180deg,#fafaf9,#f3f4f6); }
+    .project-summary-value { font-size:24px; font-weight:800; color:#111827; line-height:1.2; }
+    .project-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; margin-top:12px; }
+    .project-list-vertical { display:flex; flex-direction:column; gap:12px; }
+    .project-card-vs { border:1px solid #dbe4d1; border-radius:14px; padding:16px 18px; background:linear-gradient(135deg,#f8fbf5,#eef6e8); box-shadow:0 8px 18px rgba(27,110,27,0.08); }
+    .project-card-vs h6 { margin:0 0 6px; font-size:18px; font-weight:800; color:var(--green); }
+    .project-card-vs p { margin:0 0 10px; color:#374151; line-height:1.6; white-space:pre-line; }
+    .project-card-vs textarea { width:100%; }
+    .project-card-vs .form-label { white-space:normal; word-break:break-word; line-height:1.25; font-size:13px; }
+    .project-card-meta { display:flex; flex-wrap:wrap; gap:8px; }
+    .project-chip { display:inline-flex; align-items:center; padding:6px 10px; border-radius:999px; background:#fff; border:1px solid #d9e5d1; font-size:12px; font-weight:700; color:#3f4a3f; }
+    .package-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:14px; }
+    .package-card { border:1px solid var(--line); border-radius:14px; padding:14px; background:#fff; box-shadow:0 10px 20px rgba(15,23,42,0.05); }
+    .package-card-top { display:flex; gap:12px; align-items:center; }
+    .package-icon { width:68px; height:68px; border-radius:14px; object-fit:cover; border:1px solid var(--line); background:#f8fafc; }
+    .package-name { font-size:18px; font-weight:800; color:#111827; margin:0; }
+    .package-price { font-size:20px; font-weight:800; color:var(--green); margin:8px 0 4px; }
+    .package-meta { font-size:13px; color:var(--muted); }
+    .package-owned { margin-top:8px; font-size:13px; font-weight:700; color:#166534; min-height:20px; }
+    .project-inline-history { display:grid; gap:10px; margin-top:12px; }
+    .project-history-item { border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:#fafafa; }
+    .project-history-empty { text-align:center; padding:18px 12px; color:var(--muted); border:1px dashed var(--line); border-radius:12px; margin-top:12px; }
+    .project-package-figure { display:flex; justify-content:center; margin:10px 0 14px; }
+    .project-package-image { width:96px; height:96px; border-radius:18px; object-fit:cover; border:1px solid var(--line); background:#f8fafc; }
+    .history-list { display:grid; gap:10px; margin-top:12px; max-height:420px; overflow:auto; }
+    .history-item { border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:#f9fafb; }
+    .history-top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:6px; }
+    .history-type { font-weight:800; color:var(--green); }
+    .history-amount { font-weight:800; color:#111827; }
+    .history-meta { font-size:13px; color:var(--muted); line-height:1.5; word-break:break-word; }
+    .history-empty { text-align:center; padding:18px 12px; color:var(--muted); border:1px dashed var(--line); border-radius:12px; margin-top:12px; }
+    .form-row-tight { display:flex; gap:8px; flex-wrap:wrap; }
+    .form-col { flex:1 1 200px; min-width:180px; }
+    .btn-stack { display:flex; flex-direction:column; gap:6px; }
 
     @media (max-width: 900px) {
       .bar-main .container { flex-direction:column; align-items:flex-start; }
@@ -106,12 +167,13 @@
     <div class="container">
       <img class="logo" src="https://voucherswap.net/images/voucherswaplogo1.png" alt="VoucherSwap logo">
       <div class="search">
-        <input type="text" placeholder="Tìm Kiếm..." aria-label="Tìm kiếm">
+        <input id="searchInput" type="search" name="search" placeholder="Tìm Kiếm..." aria-label="Tìm kiếm" autocomplete="off" autocapitalize="off" spellcheck="false">
       </div>
       <div class="d-flex align-items-center gap-3" style="margin-left:auto;">
         <span class="muted" id="userBadge">Khách</span>
         <button class="btn btn-success" style="font-weight:700;border-radius:8px;" data-requires-auth id="btnPost">ĐĂNG TIN</button>
         <button class="btn btn-outline-success" id="btnOpenAuth">Đăng nhập / Đăng ký</button>
+        <button class="btn btn-outline-secondary" id="btnLogout" style="display:none;">Đăng xuất</button>
       </div>
     </div>
   </div>
@@ -120,17 +182,19 @@
   <div class="nav-main">
     <div class="container">
       <a class="nav-link-vs active" data-section="home">Trang chủ</a>
-      <a class="nav-link-vs" data-section="partner" data-requires-auth>Đối tác</a>
-      <a class="nav-link-vs" data-section="product" data-requires-auth>Sản phẩm</a>
-      <a class="nav-link-vs" data-section="project" data-requires-auth>Dự án</a>
+      <a class="nav-link-vs" data-section="partner">Đối tác</a>
+      <a class="nav-link-vs" data-section="product">Sản phẩm</a>
+      <a class="nav-link-vs" data-section="projectPage" data-requires-auth>Dự án</a>
+      <a class="nav-link-vs" data-section="adminSection" data-requires-auth data-requires-admin>Hệ thống</a>
+      <a class="nav-link-vs" data-section="walletSection" data-requires-auth>Ví Voucher</a>
       <a class="nav-link-vs" data-section="contact">Liên hệ</a>
-      <a class="nav-link-vs" data-section="app" data-requires-auth>Ứng dụng</a>
+      <a class="nav-link-vs" data-section="app">Ứng dụng</a>
     </div>
   </div>
 
   <div class="wrap">
-    <!-- Trang chủ -->
-    <section id="home" class="card-flat" style="margin-bottom:12px;">
+    <!-- Trang chủ / Sự kiện -->
+    <section id="home" class="card-flat page-section" style="margin-bottom:12px;">
       <div class="hero">
         <div>
           <h2>Voucher Swap</h2>
@@ -146,17 +210,146 @@
           <div class="muted" style="margin-top:6px;">Tất cả chức năng (Đối tác, Sản phẩm, Dự án, Ứng dụng, Ví) yêu cầu đăng nhập.</div>
         </div>
       </div>
+      <div class="mt-3">
+        <h5 style="font-weight:800; margin-bottom:8px;">Chương trình & Sự kiện</h5>
+        <div class="project-list">
+          <div class="project-card-vs">
+            <h6>Ưu đãi cuối tuần</h6>
+            <p>Hoàn 5% điểm voucher tại các đối tác F&B trong ngày thứ 7 và Chủ nhật.</p>
+            <div class="project-card-meta">
+              <span class="project-chip">Thời gian: 01/03 - 31/03</span>
+              <span class="project-chip">Kênh: đối tác F&B</span>
+            </div>
+          </div>
+          <div class="project-card-vs">
+            <h6>Sự kiện Staking Week</h6>
+            <p>Nhận thêm thưởng khi kích hoạt gói Emerald/Sapphire/Diamond trong tuần lễ staking.</p>
+            <div class="project-card-meta">
+              <span class="project-chip">Áp dụng: gói 7,8,9</span>
+              <span class="project-chip">Dự án: Staking Voucher</span>
+            </div>
+          </div>
+          <div class="project-card-vs">
+            <h6>Flash Sale Điện Thoại</h6>
+            <p>Giảm 10% điểm voucher cho top sản phẩm điện thoại đặt sớm trong ngày.</p>
+            <div class="project-card-meta">
+              <span class="project-chip">Sản phẩm: Điện thoại</span>
+              <span class="project-chip">Slot giới hạn</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Liên hệ -->
-    <section id="contact" class="card-flat" style="margin-bottom:12px;">
-      <h5>Liên hệ</h5>
-      <p class="muted">Email: support@voucherswap.net • Hotline: 1900 1234 • Địa chỉ: TP.HCM</p>
-      <p class="muted">Nếu bạn chưa có tài khoản, vui lòng đăng ký để xem ví và các sản phẩm.</p>
+    <!-- Đối tác -->
+    <section id="partner" class="card-flat page-section" style="margin-bottom:12px; display:none;">
+      <h5>Đối tác thương mại (chấp nhận điểm voucher)</h5>
+      <p class="muted">Các đối tác đã đăng ký tài khoản voucher và chấp nhận thanh toán bằng điểm.</p>
+      <div class="project-list">
+        <div class="project-card-vs">
+          <h6>CF25 Coffee</h6>
+          <p>Chuỗi cà phê phục vụ hạt rang xay, nhận thanh toán điểm voucher cho mọi hóa đơn.</p>
+          <div class="project-card-meta">
+            <span class="project-chip">Danh mục: Cafe</span>
+            <span class="project-chip">Khu vực: HCM</span>
+          </div>
+        </div>
+        <div class="project-card-vs">
+          <h6>Nhà hàng Phố Bò</h6>
+          <p>Nhượng quyền lẩu bò, tích lũy và chi tiêu điểm voucher cho thành viên.</p>
+          <div class="project-card-meta">
+            <span class="project-chip">Danh mục: F&B</span>
+            <span class="project-chip">Khu vực: Toàn quốc</span>
+          </div>
+        </div>
+        <div class="project-card-vs">
+          <h6>Áo Quần GreenLeaf</h6>
+          <p>Shop thời trang xanh, nhận thanh toán điểm voucher và tích thêm điểm cho hóa đơn trên 500k.</p>
+          <div class="project-card-meta">
+            <span class="project-chip">Danh mục: Thời trang</span>
+            <span class="project-chip">Khu vực: HN</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sản phẩm -->
+    <section id="product" class="card-flat page-section" style="margin-bottom:12px; display:none;">
+      <h5>Sản phẩm chấp nhận điểm voucher</h5>
+      <p class="muted">Mẫu hiển thị, logic đặt mua sẽ bổ sung sau.</p>
+      <div class="project-list">
+        <div class="project-card-vs">
+          <h6>Nước hoa Nomad 50ml</h6>
+          <p>Thanh toán 100% bằng điểm voucher, đổi trả trong 7 ngày.</p>
+          <div class="project-card-meta">
+            <span class="project-chip">Giá: 2,400,000 Vntd</span>
+            <span class="project-chip">Kho: Còn</span>
+          </div>
+        </div>
+        <div class="project-card-vs">
+          <h6>Laptop Ultrabook 14”</h6>
+          <p>Nhận thanh toán điểm voucher và hỗ trợ trả góp.</p>
+          <div class="project-card-meta">
+            <span class="project-chip">Giá: 18,500,000 Vntd</span>
+            <span class="project-chip">Hỗ trợ bảo hành 24 tháng</span>
+          </div>
+        </div>
+        <div class="project-card-vs">
+          <h6>Điện thoại 5G Pro</h6>
+          <p>Ưu đãi kèm gói data, thanh toán toàn bộ bằng điểm voucher.</p>
+          <div class="project-card-meta">
+            <span class="project-chip">Giá: 12,900,000 Vntd</span>
+            <span class="project-chip">Màu: Đen/Trắng</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dự án (đầu tư/staking) -->
+    <section id="projectPage" class="card-flat page-section" style="margin-bottom:12px; display:none;">
+      <div id="projectSection">
+        <div class="d-flex align-items-start justify-content-between flex-wrap mb-2" style="gap:12px;">
+          <div>
+            <div class="muted" style="font-weight:700;">Dự án / Gói Đầu Tư</div>
+            <div id="projectHeadline" style="color:#16a34a; font-size:32px; font-weight:800; line-height:1.1;">---</div>
+            <div id="projectSubline" class="muted" style="margin-top:6px;">Hiển thị trực tiếp dữ liệu dự án và 9 gói đầu tư hiện có.</div>
+          </div>
+        </div>
+        <div id="projectError" class="alert alert-danger error"></div>
+        <div id="projectSuccess" class="alert alert-success error"></div>
+        <div class="project-summary-grid">
+          <div class="project-summary-card">
+            <div class="muted" style="font-weight:700;">Ví Đầu Tư</div>
+            <div id="investWalletBalance" class="project-summary-value">0.00 Vntd</div>
+            <div class="muted" style="margin-top:4px;">Số dư đầu tư hiện tại của tài khoản.</div>
+          </div>
+          <div class="project-summary-card">
+            <div class="muted" style="font-weight:700;">Tổng Đã Đầu Tư</div>
+            <div id="projectInvestedTotal" class="project-summary-value">0.00 Vntd</div>
+            <div class="muted" style="margin-top:4px;"><span id="projectInvestCount">0</span> giao dịch đầu tư đã ghi nhận.</div>
+          </div>
+        </div>
+        <div id="projectList" class="project-list"></div>
+        <div style="margin-top:16px;">
+          <div class="d-flex align-items-center justify-content-between flex-wrap" style="gap:8px;">
+            <div>
+              <div style="font-size:18px; font-weight:800; color:#111827;">9 Gói Đầu Tư</div>
+              <div class="muted">Dữ liệu lấy trực tiếp từ bảng `InvestPackages` hiện tại.</div>
+            </div>
+          </div>
+          <div id="packageGrid" class="package-grid"></div>
+        </div>
+        <div style="margin-top:18px;">
+          <div style="font-size:18px; font-weight:800; color:#111827;">Lịch Sử Đầu Tư Của Bạn</div>
+          <div class="muted">Hiển thị các bản ghi từ `ProjectInvests` của tài khoản đang đăng nhập.</div>
+          <div id="projectInvestList" class="project-inline-history"></div>
+          <div id="projectInvestEmpty" class="project-history-empty" style="display:none;">Tài khoản này chưa có giao dịch đầu tư nào.</div>
+        </div>
+      </div>
     </section>
 
     <!-- Ví (chỉ khi đăng nhập) -->
-    <section id="walletSection" class="card-flat" style="display:none;">
+    <section id="walletSection" class="card-flat page-section" style="display:none; margin-bottom:12px;">
       <div class="d-flex align-items-start justify-content-between mb-2">
         <div>
           <div class="muted" style="font-weight:700;">Ví / Tất Cả</div>
@@ -173,9 +366,9 @@
           <h6>Ví Giao Dịch</h6>
           <div><span class="amt" id="consumptionAmt">0.00</span><span class="cur">Vntd</span></div>
           <div class="wallet-actions">
-            <button class="btn-wallet" data-requires-auth>Nhận</button>
-            <button class="btn-wallet" data-requires-auth>Chuyển</button>
-            <button class="btn-wallet" data-requires-auth>Lịch Sử</button>
+            <button class="btn-wallet" data-requires-auth id="btnConsumptionReceive">Nhận</button>
+            <button class="btn-wallet" data-requires-auth id="btnConsumptionTransfer">Chuyển</button>
+            <button class="btn-wallet" data-requires-auth id="btnConsumptionHistory">Lịch Sử</button>
           </div>
         </div>
         <div class="wallet-card">
@@ -185,39 +378,655 @@
             <button class="btn-wallet" data-requires-auth>X3</button>
             <button class="btn-wallet" data-requires-auth>Đổi</button>
             <button class="btn-wallet" data-requires-auth>Rút</button>
-            <button class="btn-wallet" data-requires-auth>Lịch Sử</button>
+            <button class="btn-wallet" data-requires-auth id="btnAffiliateHistory">Lịch Sử</button>
           </div>
         </div>
         <div class="wallet-card">
           <h6>Ví Tích Điểm</h6>
           <div><span class="amt" id="accumulateAmt">0.00</span><span class="cur">Vntd</span></div>
           <div class="wallet-actions">
-            <button class="btn-wallet" data-requires-auth>Rút 0.2%</button>
-            <button class="btn-wallet" data-requires-auth>Lịch Sử</button>
+            <button class="btn-wallet" data-requires-auth id="btnAccumulateWithdraw">Rút 0.2%</button>
+            <button class="btn-wallet" data-requires-auth id="btnAccumulateHistory">Lịch Sử</button>
           </div>
         </div>
         <div class="wallet-card">
           <h6>Ví Tiết Kiệm</h6>
           <div><span class="amt" id="savingAmt">0.00</span><span class="cur">Vntd</span></div>
           <div class="wallet-actions">
-            <button class="btn-wallet" data-requires-auth>Rút 0.2%</button>
-            <button class="btn-wallet" data-requires-auth>Lịch Sử</button>
+            <button class="btn-wallet" data-requires-auth id="btnSavingWithdraw">Rút 0.2%</button>
+            <button class="btn-wallet" data-requires-auth id="btnSavingHistory">Lịch Sử</button>
           </div>
         </div>
         <div class="wallet-card">
           <h6>Ví Kinh Doanh</h6>
           <div><span class="amt" id="businessAmt">0.00</span><span class="cur">Vntd</span></div>
           <div class="wallet-actions">
-            <button class="btn-wallet" data-requires-auth>Lịch Sử</button>
+            <button class="btn-wallet" data-requires-auth id="btnBusinessHistory">Lịch Sử</button>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="lockedNotice" class="card-flat" style="display:none;">
+    <!-- Hệ thống (Admin/Support) -->
+    <section id="adminSection" class="card-flat page-section" style="display:none; margin-bottom:12px;">
+      <div class="d-flex align-items-start justify-content-between flex-wrap mb-2" style="gap:12px;">
+        <div>
+          <div class="muted" style="font-weight:700;">Hệ thống</div>
+          <div style="color:#111827; font-size:22px; font-weight:800; line-height:1.1;">Quản trị & Quyền hạn</div>
+          <div class="muted" style="margin-top:4px;">Tổng hợp Users, Roles, Permissions, Functions và đối tác (Stores).</div>
+        </div>
+        <div class="text-right">
+          <div class="muted" style="font-weight:700;">Tài khoản hiện tại</div>
+          <div id="adminCurrentEmail" style="font-weight:700;">---</div>
+          <div id="adminCurrentRoles" class="muted" style="font-size:13px;">---</div>
+        </div>
+      </div>
+      <div class="nav nav-pills mb-3" id="adminTabs">
+        <button class="btn btn-outline-success btn-sm me-1 admin-tab active" data-admin-pane="adminPaneOverview">Tổng quan</button>
+        <button class="btn btn-outline-success btn-sm me-1 admin-tab" data-admin-pane="adminPaneUsers">Người dùng</button>
+        <button class="btn btn-outline-success btn-sm me-1 admin-tab" data-admin-pane="adminPaneRoles">Role & UserRole</button>
+        <button class="btn btn-outline-success btn-sm me-1 admin-tab" data-admin-pane="adminPanePermissions">Quyền (Permissions)</button>
+        <button class="btn btn-outline-success btn-sm me-1 admin-tab" data-admin-pane="adminPaneFunctions">Chức năng (Functions)</button>
+        <button class="btn btn-outline-success btn-sm me-1 admin-tab" data-admin-pane="adminPaneStores">Đối tác (Stores)</button>
+        <button class="btn btn-outline-success btn-sm me-1 admin-tab" data-admin-pane="adminPaneProjects">Dự án (Projects)</button>
+        <button class="btn btn-outline-success btn-sm me-1 admin-tab" data-admin-pane="adminPanePackages">Gói đầu tư (InvestPackages)</button>
+        <button class="btn btn-outline-success btn-sm me-1 admin-tab" data-admin-pane="adminPaneWalletTx">Giao dịch ví</button>
+        <button class="btn btn-outline-success btn-sm me-1 admin-tab" data-admin-pane="adminPaneInvestHistory">Lịch sử đầu tư</button>
+        <button class="btn btn-outline-success btn-sm me-1 admin-tab" data-admin-pane="adminPaneCatalog">Dữ liệu (Catalog)</button>
+        <button class="btn btn-outline-success btn-sm me-1 admin-tab" data-admin-pane="adminPaneReset">Đặt lại mật khẩu</button>
+      </div>
+      <div id="adminError" class="alert alert-danger error"></div>
+      <div id="adminSuccess" class="alert alert-success error"></div>
+
+      <div class="project-summary-grid admin-pane" id="adminPaneOverview" style="margin-bottom:12px;">
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Người dùng</div>
+          <div id="adminUserCount" class="project-summary-value">0</div>
+          <div class="muted">Tổng số user hiện có (đếm theo bảng Users).</div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Vai trò</div>
+          <div id="adminRoleCount" class="project-summary-value">0</div>
+          <div class="muted">Số role đang khai báo.</div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Chức năng</div>
+          <div id="adminFunctionCount" class="project-summary-value">0</div>
+          <div class="muted">Số mục trong bảng Functions.</div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Đối tác (Stores)</div>
+          <div id="adminStoreCount" class="project-summary-value">0</div>
+          <div class="muted">Top 50 store mới nhất.</div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Dự án</div>
+          <div id="adminProjectCount" class="project-summary-value">0</div>
+          <div class="muted">Số dự án trong bảng Projects.</div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Gói đầu tư</div>
+          <div id="adminPackageCount" class="project-summary-value">0</div>
+          <div class="muted">Số gói trong InvestPackages.</div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Tổng vốn dự án</div>
+          <div id="adminProjectBalance" class="project-summary-value">0</div>
+          <div class="muted">Tổng InvestBalance trong bảng Projects.</div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Tổng đã đầu tư</div>
+          <div id="adminInvestTotal" class="project-summary-value">0</div>
+          <div class="muted">Tổng Amount trong ProjectInvests.</div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Quyền (Permissions)</div>
+          <div id="adminPermissionCount" class="project-summary-value">0</div>
+          <div class="muted">Số permission trong bảng Permissions.</div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Role Claims</div>
+          <div id="adminRoleClaimCount" class="project-summary-value">0</div>
+          <div class="muted">Tổng số dòng RoleClaims.</div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Gán Role (UserRoles)</div>
+          <div id="adminUserRoleCount" class="project-summary-value">0</div>
+          <div class="muted">Tổng số gán role cho user.</div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Giao dịch ví</div>
+          <div id="adminWalletTxCount" class="project-summary-value">0</div>
+          <div class="muted">Tổng số bản ghi 5 bảng ví.</div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Lịch sử đầu tư</div>
+          <div id="adminInvestHistoryCount" class="project-summary-value">0</div>
+          <div class="muted">Số dòng trong ProjectInvests.</div>
+        </div>
+      </div>
+
+      <div class="project-list admin-pane" id="adminPaneUsers" style="margin-bottom:12px; display:none;">
+        <div class="project-card-vs">
+          <h6>Người dùng</h6>
+          <div class="row" style="gap:6px; margin-bottom:8px;">
+            <div class="col-md-5 col-sm-12 mb-2">
+              <input id="userSearch" class="form-control admin-input" placeholder="Tìm email / họ tên / username">
+            </div>
+            <div class="col-md-3 col-sm-12 mb-2 d-flex" style="gap:6px;">
+              <select id="userPageSize" class="form-control admin-input">
+                <option value="20">20 dòng</option>
+                <option value="50">50 dòng</option>
+                <option value="100">100 dòng</option>
+              </select>
+              <button class="btn btn-outline-success btn-sm w-100 admin-btn" id="btnUserReload">Tải</button>
+            </div>
+            <div class="col-md-4 col-sm-12 mb-2 d-flex" style="gap:6px; justify-content:flex-end;">
+              <button class="btn btn-success btn-sm admin-btn" id="btnUserCreate">+ Thêm user</button>
+              <button class="btn btn-outline-secondary btn-sm admin-btn" id="userPrev">◀</button>
+              <span id="userPageInfo" class="muted" style="min-width:110px; text-align:center;">Trang 1</span>
+              <button class="btn btn-outline-secondary btn-sm admin-btn" id="userNext">▶</button>
+            </div>
+          </div>
+          <div class="table-responsive admin-table-wrapper">
+            <table class="table table-sm">
+              <thead><tr><th>Email</th><th>Họ tên</th><th>Phone</th><th>Trạng thái</th><th>Xác thực</th><th></th></tr></thead>
+              <tbody id="adminUsersTable"></tbody>
+            </table>
+          </div>
+          <div class="card-flat" style="margin-top:10px;">
+            <h6 id="userFormTitle">Thêm/Sửa user</h6>
+            <div class="row">
+              <div class="col-md-4 mb-2"><input id="userEmail" class="form-control admin-input" placeholder="Email *"></div>
+              <div class="col-md-4 mb-2"><input id="userFullName" class="form-control admin-input" placeholder="Họ tên"></div>
+              <div class="col-md-4 mb-2"><input id="userPhone" class="form-control admin-input" placeholder="Số điện thoại"></div>
+              <div class="col-md-4 mb-2"><input id="userPassword" class="form-control admin-input" placeholder="Mật khẩu (để trống nếu không đổi)"></div>
+              <div class="col-md-4 mb-2">
+                <select id="userStatus" class="form-control admin-input">
+                  <option value="1">Hoạt động (1)</option>
+                  <option value="0">Khoá (0)</option>
+                </select>
+              </div>
+              <div class="col-md-4 mb-2">
+                <select id="userEmailConfirmed" class="form-control admin-input">
+                  <option value="1">Đã xác thực</option>
+                  <option value="0">Chưa xác thực</option>
+                </select>
+              </div>
+              <div class="col-md-12 mb-2 d-flex" style="gap:6px;">
+                <button class="btn btn-success admin-btn" id="btnUserSave">Lưu</button>
+                <button class="btn btn-outline-secondary admin-btn" id="btnUserReset">Hủy</button>
+              </div>
+              <div id="userFormInfo" class="muted"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-list project-list-vertical admin-pane" id="adminPaneRoles" style="margin-bottom:12px; display:none;">
+        <div class="project-card-vs">
+          <h6>Danh sách Role</h6>
+          <div class="row" style="gap:6px; margin-bottom:8px;">
+            <div class="col-md-6 col-sm-12 mb-2"><input id="roleNameInput" class="form-control admin-input" placeholder="Tên role mới / sửa"></div>
+            <div class="col-md-3 col-sm-12 mb-2 d-flex" style="gap:6px;">
+              <button class="btn btn-success btn-sm w-100 admin-btn" id="btnRoleSave">Lưu role</button>
+              <button class="btn btn-outline-secondary btn-sm w-100 admin-btn" id="btnRoleReset">Hủy</button>
+            </div>
+          </div>
+          <div class="table-responsive" style="max-height:240px; overflow:auto;">
+            <table class="table table-sm">
+              <thead><tr><th>ID</th><th>Tên</th><th>Normalized</th><th></th></tr></thead>
+              <tbody id="adminRoleList"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="project-card-vs">
+          <h6>Gán Role cho User (UserRoles)</h6>
+          <div class="row" style="margin-bottom:8px; gap:6px;">
+            <div class="col-md-5 col-sm-12 mb-2">
+              <label class="form-label small text-muted">Email user</label>
+              <input id="roleAssignEmail" class="form-control admin-input" placeholder="Nhập email để tìm" list="userEmailSuggestions">
+              <datalist id="userEmailSuggestions"></datalist>
+            </div>
+            <div class="col-md-4 col-sm-12 mb-2">
+              <label class="form-label small text-muted">Chọn role</label>
+              <select id="roleAssignSelect" class="form-control admin-input"></select>
+            </div>
+            <div class="col-md-3 col-sm-12 mb-2 d-flex" style="gap:6px; align-items:end;">
+              <button class="btn btn-success w-100 admin-btn" id="btnAssignRole">Gán role</button>
+              <button class="btn btn-outline-danger w-100 admin-btn" id="btnRevokeRole">Thu hồi</button>
+            </div>
+          </div>
+          <div class="d-flex align-items-center" style="gap:6px; margin-bottom:6px; flex-wrap:wrap;">
+            <select id="userRolePageSize" class="form-control admin-input" style="max-width:140px;">
+              <option value="20">20 dòng</option>
+              <option value="50">50 dòng</option>
+              <option value="100">100 dòng</option>
+            </select>
+            <button class="btn btn-outline-secondary btn-sm admin-btn" id="userRolePrev">◀</button>
+            <span id="userRolePageInfo" class="muted" style="min-width:120px; text-align:center;">Trang 1</span>
+            <button class="btn btn-outline-secondary btn-sm admin-btn" id="userRoleNext">▶</button>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead><tr><th>Email</th><th>Role</th></tr></thead>
+              <tbody id="adminUserRoles"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="project-card-vs">
+          <h6>Role Claims</h6>
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead><tr><th>Role</th><th>ClaimType</th><th>ClaimValue</th></tr></thead>
+              <tbody id="adminRoleClaims"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-list admin-pane" id="adminPanePermissions" style="margin-bottom:12px; display:none;">
+        <div class="project-card-vs">
+          <h6>Roles & quyền (Permissions)</h6>
+          <div class="row admin-form-row">
+            <div class="col-md-4 col-sm-12 mb-2">
+              <label class="form-label small text-muted">Chọn Role</label>
+              <select id="permRoleSelect" class="form-control admin-input"></select>
+            </div>
+            <div class="col-md-4 col-sm-12 mb-2">
+              <label class="form-label small text-muted">Function</label>
+              <input id="permFunctionId" class="form-control admin-input" placeholder="FunctionId (vd: CUA_HANG_MANAGEMENT)">
+            </div>
+            <div class="col-md-4 col-sm-12 mb-2">
+              <label class="form-label small text-muted">Feature</label>
+              <input id="permFeature" class="form-control admin-input" placeholder="index,detail,create,update,delete">
+            </div>
+            <div class="col-md-3 col-sm-12 mb-2 d-flex" style="gap:6px; align-items:end;">
+              <button class="btn btn-success btn-sm w-100 admin-btn" id="btnPermSave">Lưu</button>
+              <button class="btn btn-outline-danger btn-sm w-100 admin-btn" id="btnPermDelete">Xóa</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead><tr><th>Role</th><th>Function</th><th>Parent</th><th>Feature</th><th></th></tr></thead>
+              <tbody id="adminPermTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-list admin-pane" id="adminPaneFunctions" style="margin-bottom:12px; display:none;">
+        <div class="project-card-vs">
+          <h6>Functions (menu quản trị)</h6>
+          <div class="row" style="gap:6px; margin-bottom:8px;">
+            <div class="col-md-3 col-sm-12 mb-2"><input id="funcId" class="form-control admin-input" placeholder="Id *"></div>
+            <div class="col-md-3 col-sm-12 mb-2"><input id="funcName" class="form-control admin-input" placeholder="Tên *"></div>
+            <div class="col-md-3 col-sm-12 mb-2"><input id="funcUrl" class="form-control admin-input" placeholder="URL"></div>
+            <div class="col-md-3 col-sm-12 mb-2"><input id="funcParentId" class="form-control admin-input" placeholder="ParentId"></div>
+            <div class="col-md-3 col-sm-12 mb-2"><input id="funcSort" type="number" class="form-control admin-input" placeholder="Sort" value="0"></div>
+            <div class="col-md-3 col-sm-12 mb-2">
+              <select id="funcStatus" class="form-control admin-input">
+                <option value="1">Hoạt động</option>
+                <option value="0">Tắt</option>
+              </select>
+            </div>
+            <div class="col-md-3 col-sm-12 mb-2 d-flex" style="gap:6px; align-items:end;">
+              <button class="btn btn-success btn-sm w-100 admin-btn" id="btnFuncSave">Lưu</button>
+              <button class="btn btn-outline-danger btn-sm w-100 admin-btn" id="btnFuncDelete">Xóa</button>
+            </div>
+            <div class="col-md-3 col-sm-12 mb-2 d-flex" style="gap:6px; align-items:end;">
+              <select id="funcPageSize" class="form-control admin-input">
+                <option value="20">20 dòng</option>
+                <option value="50">50 dòng</option>
+                <option value="100">100 dòng</option>
+              </select>
+              <button class="btn btn-outline-secondary btn-sm admin-btn" id="funcPrev">◀</button>
+              <span id="funcPageInfo" class="muted" style="min-width:90px; text-align:center;">Trang 1</span>
+              <button class="btn btn-outline-secondary btn-sm admin-btn" id="funcNext">▶</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead><tr><th>ID</th><th>Tên</th><th>URL</th><th>Parent</th><th></th></tr></thead>
+              <tbody id="adminFunctionsTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-list project-list-vertical admin-pane" id="adminPaneStores" style="margin-bottom:12px; display:none;">
+        <div class="project-card-vs">
+          <h6>Đối tác / Cửa hàng (dữ liệu Stores)</h6>
+          <div class="row" style="margin-bottom:8px; gap:6px;">
+            <div class="col-sm-8">
+              <input id="storeSearch" class="form-control admin-input" placeholder="Tìm tên / email / phone / địa chỉ">
+            </div>
+            <div class="col-sm-4 d-flex" style="gap:6px;">
+              <button class="btn btn-outline-success btn-sm w-100 admin-btn" id="btnStoreReload">Tải lại</button>
+              <button class="btn btn-success btn-sm w-100 admin-btn" id="btnStoreCreate">+ Thêm cửa hàng</button>
+            </div>
+          </div>
+          <div class="table-responsive" style="max-height:340px; overflow:auto;">
+            <table class="table table-sm">
+              <thead><tr><th>ID</th><th>Tên</th><th>Email</th><th>Phone</th><th>Địa chỉ</th><th>Danh mục</th><th>Trạng thái</th><th>Bản đồ</th><th>Tạo</th><th></th></tr></thead>
+              <tbody id="adminStoresTable"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="project-card-vs">
+          <h6 id="storeFormTitle">Thêm / Sửa cửa hàng</h6>
+          <div class="row">
+            <div class="col-md-6 mb-2">
+              <label class="form-label">Tên *</label>
+              <input id="storeName" class="form-control admin-input" placeholder="Tên cửa hàng">
+            </div>
+            <div class="col-md-6 mb-2">
+              <label class="form-label">Email</label>
+              <input id="storeEmail" class="form-control admin-input" placeholder="Email cửa hàng">
+            </div>
+            <div class="col-md-6 mb-2">
+              <label class="form-label">Phone</label>
+              <input id="storePhone" class="form-control admin-input" placeholder="Số điện thoại">
+            </div>
+            <div class="col-md-6 mb-2">
+              <label class="form-label">Owner (email user, để trống = tài khoản hiện tại)</label>
+              <input id="storeOwnerEmail" class="form-control admin-input" placeholder="Email chủ sở hữu">
+            </div>
+            <div class="col-md-12 mb-2">
+              <label class="form-label">Địa chỉ *</label>
+              <input id="storeAddress" class="form-control admin-input" placeholder="Địa chỉ">
+            </div>
+            <div class="col-md-12 mb-2">
+              <label class="form-label">Mô tả *</label>
+              <textarea id="storeDescription" class="form-control admin-input" rows="2" placeholder="Mô tả ngắn"></textarea>
+            </div>
+            <div class="col-md-12 mb-2">
+              <label class="form-label">Google Map embed (dán iframe / HTML)</label>
+              <textarea id="storeMapEmbed" class="form-control admin-input" rows="2" placeholder="<iframe ...>"></textarea>
+            </div>
+            <div class="col-md-4 mb-2">
+              <label class="form-label">Danh mục</label>
+              <input id="storeCategoryId" class="form-control admin-input" type="number" min="1" value="1">
+            </div>
+            <div class="col-md-4 mb-2">
+              <label class="form-label">Trạng thái</label>
+              <select id="storeStatus" class="form-control admin-input">
+                <option value="1">Hoạt động (1)</option>
+                <option value="0">Tạm dừng (0)</option>
+              </select>
+            </div>
+            <div class="col-md-4 mb-2 d-flex align-items-end" style="gap:6px;">
+              <button class="btn btn-success w-100 admin-btn" id="btnStoreSave">Lưu</button>
+              <button class="btn btn-outline-secondary w-100 admin-btn" id="btnStoreReset">Hủy</button>
+            </div>
+            <div class="col-md-4 mb-2">
+              <label class="form-label">Latitude</label>
+              <input id="storeLat" class="form-control admin-input" placeholder="VD: 10.773">
+            </div>
+            <div class="col-md-4 mb-2">
+              <label class="form-label">Longitude</label>
+              <input id="storeLng" class="form-control admin-input" placeholder="VD: 106.700">
+            </div>
+            <div class="col-md-4 mb-2">
+              <label class="form-label">Website / URL</label>
+              <input id="storeUrl" class="form-control admin-input" placeholder="https://...">
+            </div>
+            <div class="col-md-6 mb-2">
+              <label class="form-label">Logo</label>
+              <input id="storeLogo" class="form-control admin-input" placeholder="Link logo">
+            </div>
+            <div class="col-md-6 mb-2">
+              <label class="form-label">Thumbnail</label>
+              <input id="storeThumb" class="form-control admin-input" placeholder="Link thumbnail">
+            </div>
+          </div>
+          <div id="storeFormInfo" class="muted"></div>
+        </div>
+
+        <div class="project-card-vs">
+          <h6>Chi tiết cửa hàng (đầy đủ cột)</h6>
+          <div class="row">
+            <div class="col-md-7">
+              <pre id="storeDetailJson" style="max-height:280px; overflow:auto; background:#f8fafc; padding:10px; border-radius:8px; border:1px solid var(--line);"></pre>
+            </div>
+            <div class="col-md-5">
+              <div class="muted">Xem Google Map (nếu có)</div>
+              <div id="storeMapPreview" style="width:100%; min-height:220px; border:1px solid var(--line); border-radius:8px; background:#fafafa; overflow:hidden;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-list admin-pane" id="adminPaneProjects" style="margin-bottom:12px; display:none;">
+        <div class="project-card-vs">
+          <h6>Dự án (Projects)</h6>
+          <div class="row" style="gap:6px; margin-bottom:8px;">
+            <div class="col-md-4 col-sm-12 mb-2"><input id="projName" class="form-control admin-input" placeholder="Tên dự án *"></div>
+            <div class="col-md-4 col-sm-12 mb-2"><input id="projInvest" class="form-control admin-input" placeholder="InvestBalance" value="0"></div>
+            <div class="col-md-4 col-sm-12 mb-2">
+              <select id="projStatus" class="form-control admin-input">
+                <option value="1">Hoạt động</option>
+                <option value="0">Tạm dừng</option>
+              </select>
+            </div>
+            <div class="col-md-12 mb-2">
+              <textarea id="projDesc" class="form-control admin-input" rows="2" placeholder="Mô tả"></textarea>
+            </div>
+            <div class="col-md-12 mb-2 d-flex" style="gap:6px;">
+              <button class="btn btn-success btn-sm admin-btn" id="btnProjSave">Lưu</button>
+              <button class="btn btn-outline-danger btn-sm admin-btn" id="btnProjDelete">Xóa</button>
+              <select id="projPageSize" class="form-control admin-input" style="max-width:120px;">
+                <option value="20">20 dòng</option>
+                <option value="50">50 dòng</option>
+                <option value="100">100 dòng</option>
+              </select>
+              <button class="btn btn-outline-secondary btn-sm admin-btn" id="projPrev">◀</button>
+              <span id="projPageInfo" class="muted" style="min-width:90px; text-align:center;">Trang 1</span>
+              <button class="btn btn-outline-secondary btn-sm admin-btn" id="projNext">▶</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead><tr><th>ID</th><th>Tên</th><th>Vốn</th><th>Trạng thái</th><th>Tạo</th><th></th></tr></thead>
+              <tbody id="adminProjectsTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-list admin-pane" id="adminPanePackages" style="margin-bottom:12px; display:none;">
+        <div class="project-card-vs">
+          <h6>Gói đầu tư (InvestPackages)</h6>
+          <div class="row" style="gap:6px; margin-bottom:8px;">
+            <div class="col-md-3 col-sm-12 mb-2"><input id="packName" class="form-control admin-input" placeholder="Tên gói *"></div>
+            <div class="col-md-3 col-sm-12 mb-2"><input id="packPrice" class="form-control admin-input" placeholder="Giá" value="0"></div>
+            <div class="col-md-3 col-sm-12 mb-2"><input id="packOrder" class="form-control admin-input" placeholder="Thứ tự" value="0"></div>
+            <div class="col-md-3 col-sm-12 mb-2">
+              <select id="packStatus" class="form-control admin-input">
+                <option value="1">Hoạt động</option>
+                <option value="0">Tắt</option>
+              </select>
+            </div>
+            <div class="col-md-12 mb-2 d-flex" style="gap:6px;">
+              <button class="btn btn-success btn-sm admin-btn" id="btnPackSave">Lưu</button>
+              <button class="btn btn-outline-danger btn-sm admin-btn" id="btnPackDelete">Xóa</button>
+              <select id="packPageSize" class="form-control admin-input" style="max-width:120px;">
+                <option value="20">20 dòng</option>
+                <option value="50">50 dòng</option>
+                <option value="100">100 dòng</option>
+              </select>
+              <button class="btn btn-outline-secondary btn-sm admin-btn" id="packPrev">◀</button>
+              <span id="packPageInfo" class="muted" style="min-width:90px; text-align:center;">Trang 1</span>
+              <button class="btn btn-outline-secondary btn-sm admin-btn" id="packNext">▶</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead><tr><th>ID</th><th>Tên</th><th>Giá</th><th>Thứ tự</th><th>Trạng thái</th><th></th></tr></thead>
+              <tbody id="adminPackagesTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-list admin-pane" id="adminPaneWalletTx" style="margin-bottom:12px; display:none;">
+        <div class="project-card-vs">
+          <h6>Giao dịch ví</h6>
+          <div class="d-flex align-items-center" style="gap:8px; margin-bottom:6px; flex-wrap:wrap;">
+            <select id="walletTypeSelect" class="form-control admin-input" style="max-width:180px;">
+              <option value="consumption">Ví Giao Dịch</option>
+              <option value="affiliate">Ví Liên Kết</option>
+              <option value="accumulate">Ví Tích Điểm</option>
+              <option value="saving">Ví Tiết Kiệm</option>
+              <option value="business">Ví Kinh Doanh</option>
+            </select>
+            <select id="walletPageSize" class="form-control admin-input" style="max-width:120px;">
+              <option value="20">20 dòng</option>
+              <option value="50">50 dòng</option>
+              <option value="100">100 dòng</option>
+            </select>
+            <div class="d-flex align-items-center" style="gap:6px;">
+              <button class="btn btn-outline-secondary btn-sm" id="walletPrev">◀</button>
+              <span id="walletPageInfo" class="muted" style="min-width:120px;">Trang 1</span>
+              <button class="btn btn-outline-secondary btn-sm" id="walletNext">▶</button>
+            </div>
+          </div>
+          <div class="table-responsive" style="max-height:420px; overflow:auto;">
+            <table class="table table-sm">
+              <thead><tr><th>Ví</th><th>ID</th><th>User</th><th>Type</th><th>Amount</th><th>From</th><th>To</th><th>Remark</th><th>Thời gian</th></tr></thead>
+              <tbody id="adminWalletTxTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-list admin-pane" id="adminPaneInvestHistory" style="margin-bottom:12px; display:none;">
+        <div class="project-card-vs">
+          <h6>Lịch sử đầu tư (ProjectInvests)</h6>
+          <div class="d-flex align-items-center" style="gap:8px; margin-bottom:6px; flex-wrap:wrap;">
+            <select id="investPageSize" class="form-control admin-input" style="max-width:120px;">
+              <option value="20">20 dòng</option>
+              <option value="50">50 dòng</option>
+              <option value="100">100 dòng</option>
+            </select>
+            <div class="d-flex align-items-center" style="gap:6px;">
+              <button class="btn btn-outline-secondary btn-sm" id="investPrev">◀</button>
+              <span id="investPageInfo" class="muted" style="min-width:120px;">Trang 1</span>
+              <button class="btn btn-outline-secondary btn-sm" id="investNext">▶</button>
+            </div>
+          </div>
+          <div class="table-responsive" style="max-height:420px; overflow:auto;">
+            <table class="table table-sm">
+              <thead><tr><th>ID</th><th>User</th><th>Project</th><th>Gói</th><th>Amount</th><th>Status</th><th>TX</th><th>Thời gian</th></tr></thead>
+              <tbody id="adminInvestTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-list admin-pane" id="adminPaneCatalog" style="margin-bottom:12px; display:none;">
+        <div class="project-card-vs">
+          <h6>Dữ liệu (Catalog) - Admin</h6>
+          <div class="row" style="gap:10px;">
+            <div class="col-md-4">
+              <div class="card-flat" style="max-height:420px; overflow:auto; padding:8px;">
+                <div class="muted" style="margin-bottom:6px;">Bảng trong cơ sở dữ liệu (nhấp để xem)</div>
+                <ul id="catalogTableList" class="list-unstyled" style="margin:0; padding:0;"></ul>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="d-flex align-items-center" style="gap:8px; margin-bottom:6px;">
+                <input id="catalogTableName" class="form-control" placeholder="schema.table (ví dụ: dbo.Users)" style="max-width:320px;">
+                <input id="catalogTop" type="number" class="form-control" value="200" min="1" max="1000" style="width:100px;">
+                <button class="btn btn-outline-success btn-sm" id="btnCatalogLoad">Xem</button>
+                <button class="btn btn-outline-primary btn-sm" id="btnCatalogAll">Tải tất cả bảng</button>
+              </div>
+              <div class="table-responsive" style="max-height:380px; overflow:auto;">
+                <table class="table table-sm">
+                  <thead id="catalogHead"></thead>
+                  <tbody id="catalogBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div id="catalogInfo" class="muted" style="margin-top:6px;"></div>
+          <div id="catalogAllContainer" style="margin-top:12px;"></div>
+        </div>
+      </div>
+
+      <div class="project-list admin-pane" id="adminPaneReset" style="margin-bottom:12px; display:none;">
+        <div class="project-card-vs" data-admin-only>
+          <h6>Đặt lại mật khẩu tài khoản</h6>
+          <p class="muted">Chỉ dành cho role Admin. Đặt lại PasswordHash trực tiếp trong bảng Users.</p>
+          <div class="row">
+            <div class="col-md-4 col-sm-12 mb-2">
+              <input id="adminResetEmail" class="form-control" placeholder="Email tài khoản">
+            </div>
+            <div class="col-md-4 col-sm-12 mb-2">
+              <input id="adminResetPassword" class="form-control" placeholder="Mật khẩu mới">
+            </div>
+            <div class="col-md-4 col-sm-12 mb-2">
+              <button class="btn btn-success" id="btnAdminReset">Đặt lại mật khẩu</button>
+            </div>
+          </div>
+          <div id="adminResetResult" class="muted" style="margin-top:6px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lockedNotice" class="card-flat page-section" style="display:none;">
       <h5>Yêu cầu đăng nhập</h5>
       <p class="muted">Bạn cần đăng nhập để xem ví và các chức năng khác.</p>
       <button class="btn btn-success" id="unlockBtn">Đăng nhập ngay</button>
+    </section>
+
+    <!-- Liên hệ -->
+    <section id="contact" class="card-flat page-section" style="margin-bottom:12px; display:none;">
+      <h5 style="font-weight:800;">Giới thiệu & Liên hệ</h5>
+      <p class="muted">Voucher Swap kết nối điểm thưởng giữa đối tác và người dùng. Liên hệ để hợp tác, trở thành đối tác chấp nhận điểm, hoặc nhận hỗ trợ kỹ thuật.</p>
+      <div class="project-summary-grid">
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Email hỗ trợ</div>
+          <div style="font-size:16px; font-weight:800; color:#111827;">support@voucherswap.net</div>
+          <div class="muted" style="margin-top:4px;">Thay đổi email tại đây khi lên online.</div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Hotline</div>
+          <div style="font-size:16px; font-weight:800; color:#111827;">1900 1234</div>
+          <div class="muted" style="margin-top:4px;">Giờ làm việc: 8:00 - 17:30 (T2 - T6).</div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Văn phòng</div>
+          <div style="font-size:16px; font-weight:800; color:#111827;">TP. Hồ Chí Minh</div>
+          <div class="muted" style="margin-top:4px;">Điền địa chỉ cụ thể khi triển khai thực tế.</div>
+        </div>
+      </div>
+      <div class="wallet-modal-actions" style="justify-content:flex-start; margin-top:8px;">
+        <button class="btn btn-success" type="button" disabled style="opacity:0.8; cursor:default;">Gửi yêu cầu hợp tác (sẽ bật sau)</button>
+      </div>
+    </section>
+
+    <!-- Ứng dụng -->
+    <section id="app" class="card-flat page-section" style="margin-bottom:12px; display:none;">
+      <h5 style="font-weight:800;">Ứng dụng</h5>
+      <p class="muted">Tải app trên CH Play / App Store (đang chuẩn bị). Cập nhật link chính thức tại đây sau khi phát hành.</p>
+      <div class="project-summary-grid">
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">Android</div>
+          <div class="muted">Link CH Play sẽ đặt tại đây.</div>
+          <div class="wallet-modal-actions" style="justify-content:flex-start; margin-top:8px;">
+            <button class="btn btn-secondary" disabled>CH Play (sắp ra mắt)</button>
+          </div>
+        </div>
+        <div class="project-summary-card">
+          <div class="muted" style="font-weight:700;">iOS</div>
+          <div class="muted">Link App Store sẽ đặt tại đây.</div>
+          <div class="wallet-modal-actions" style="justify-content:flex-start; margin-top:8px;">
+            <button class="btn btn-secondary" disabled>App Store (sắp ra mắt)</button>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 
@@ -227,6 +1036,7 @@
       <span class="close-auth" id="closeAuth">X</span>
       <div class="auth-title" id="authTitle">Đăng Nhập</div>
       <div class="auth-sub">Sử Dụng Thông Tin Đăng Nhập Của Bạn Để Truy Cập</div>
+      <div id="authInfo" class="alert alert-info error"></div>
       <div id="authError" class="alert alert-danger error"></div>
       <div class="auth-grid">
         <div>
@@ -238,6 +1048,9 @@
           </div>
           <div class="form-group mb-2">
             <input id="password" type="password" class="form-control form-control-lg" placeholder="Mật khẩu">
+          </div>
+          <div class="form-group mb-2" id="groupVerifyCode" style="display:none;">
+            <input id="verifyCode" type="text" inputmode="numeric" class="form-control form-control-lg" placeholder="Mã xác thực 6 số">
           </div>
           <div class="form-group mb-2" id="groupConfirm" style="display:none;">
             <input id="confirmPassword" type="password" class="form-control form-control-lg" placeholder="Xác nhận mật khẩu">
@@ -274,29 +1087,295 @@
     </div>
   </div>
 
+  <div id="receiveOverlay" class="wallet-modal-overlay">
+    <div class="wallet-modal-card">
+      <span class="wallet-close" id="closeReceiveOverlay">X</span>
+      <div class="wallet-modal-title">Địa Chỉ Nhận</div>
+      <div class="wallet-modal-sub">Dùng địa chỉ này để tài khoản khác chuyển Vntd vào ví giao dịch của bạn.</div>
+      <div id="receiveModalError" class="alert alert-danger wallet-modal-error"></div>
+      <div class="receive-qr-wrap">
+        <img id="receiveQrImage" class="receive-qr-image" alt="QR dia chi nhan">
+      </div>
+      <div class="wallet-field-label">Địa chỉ ví giao dịch</div>
+      <div id="receiveAddressBox" class="wallet-address-box">---</div>
+      <div class="wallet-modal-actions">
+        <button class="btn btn-success" id="copyReceiveAddress" type="button">Sao chép</button>
+      </div>
+      <div id="receiveModalSuccess" class="alert alert-success wallet-modal-success mt-3 mb-0"></div>
+      <div class="wallet-modal-note">Mỗi tài khoản dùng một địa chỉ nhận riêng. Hiện tại hệ thống dùng mã tài khoản làm địa chỉ ví nhận.</div>
+    </div>
+  </div>
+
+  <div id="transferOverlay" class="wallet-modal-overlay">
+    <div class="wallet-modal-card">
+      <span class="wallet-close" id="closeTransferOverlay">X</span>
+      <div class="wallet-modal-title">Chuyển Vntd</div>
+      <div class="wallet-modal-sub">Chuyển từ ví giao dịch sang địa chỉ ví nhận của tài khoản khác.</div>
+      <div id="transferModalError" class="alert alert-danger wallet-modal-error"></div>
+      <div id="transferModalSuccess" class="alert alert-success wallet-modal-success"></div>
+      <div class="form-group mb-2">
+        <label class="wallet-field-label" for="transferToAddress">Địa chỉ nhận</label>
+        <input id="transferToAddress" type="text" class="form-control form-control-lg" placeholder="Nhập địa chỉ ví nhận">
+        <div id="transferRecipientInfo" class="wallet-lookup-note"></div>
+      </div>
+      <div class="wallet-modal-actions" style="margin-top:0;">
+        <button class="btn btn-outline-success" id="btnStartQrScan" type="button">Quét QR bằng camera</button>
+        <button class="btn btn-outline-secondary" id="btnStopQrScan" type="button" style="display:none;">Dừng quét</button>
+      </div>
+      <div id="scannerPanel" class="scanner-panel">
+        <video id="scannerVideo" class="scanner-video" autoplay playsinline muted></video>
+        <div id="scannerStatus" class="scanner-status"></div>
+      </div>
+      <div class="form-group mb-2">
+        <label class="wallet-field-label" for="transferAmount">Số lượng Vntd</label>
+        <input id="transferAmount" type="text" inputmode="decimal" class="form-control form-control-lg" placeholder="Ví dụ: 1,000">
+      </div>
+      <div class="form-group mb-2">
+        <label class="wallet-field-label" for="transferRemark">Ghi chú</label>
+        <input id="transferRemark" type="text" class="form-control form-control-lg" placeholder="Nội dung chuyển (không bắt buộc)">
+      </div>
+      <div class="wallet-modal-actions">
+        <button class="btn btn-success" id="submitConsumptionTransfer" type="button">Xác nhận chuyển</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="historyOverlay" class="wallet-modal-overlay">
+    <div class="wallet-modal-card">
+      <span class="wallet-close" id="closeHistoryOverlay">X</span>
+      <div class="wallet-modal-title" id="historyModalTitle">Lịch Sử Ví Giao Dịch</div>
+      <div class="wallet-modal-sub" id="historyModalSub">Hiển thị các giao dịch mới nhất của ví đang chọn trên dữ liệu hiện tại của Voucher swap.</div>
+      <div id="historyModalError" class="alert alert-danger wallet-modal-error"></div>
+      <div id="historyList" class="history-list"></div>
+      <div id="historyEmpty" class="history-empty" style="display:none;">Chưa có giao dịch nào trong ví giao dịch.</div>
+    </div>
+  </div>
+
+  <div id="projectPackageOverlay" class="wallet-modal-overlay">
+    <div class="wallet-modal-card">
+      <span class="wallet-close" id="closeProjectPackageOverlay">X</span>
+      <div class="wallet-modal-title" id="projectPackageTitle">Gói Đầu Tư</div>
+      <div class="wallet-modal-sub" id="projectPackageSub">Chi tiết gói đầu tư hiện có trong dự án.</div>
+      <div id="projectPackageError" class="alert alert-danger wallet-modal-error"></div>
+      <div id="projectPackageSuccess" class="alert alert-success wallet-modal-success"></div>
+      <div class="project-package-figure">
+        <img id="projectPackageImage" class="project-package-image" alt="Anh goi dau tu">
+      </div>
+      <div class="project-summary-card">
+        <div class="muted" style="font-weight:700;">Giá gói</div>
+        <div id="projectPackagePrice" class="project-summary-value">0.00 Vntd</div>
+        <div id="projectPackageProject" class="muted" style="margin-top:6px;">---</div>
+        <div id="projectPackageOwned" class="package-owned" style="margin-top:10px;"></div>
+      </div>
+      <div class="wallet-modal-actions">
+        <button class="btn btn-success" id="activateProjectPackage" type="button">Kích hoạt gói</button>
+      </div>
+      <div style="margin-top:14px;">
+        <div style="font-size:16px; font-weight:800; color:#111827;">Lịch sử gần nhất theo gói này</div>
+        <div id="projectPackageHistory" class="project-inline-history"></div>
+        <div id="projectPackageHistoryEmpty" class="project-history-empty" style="display:none;">Bạn chưa có giao dịch nào với gói này.</div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://voucherswap.net/client-side/voucherswap/vendor/bootstrap/jquery-1.12.4.min.js"></script>
   <script src="https://voucherswap.net/client-side/voucherswap/vendor/bootstrap/popper.min.js"></script>
   <script src="https://voucherswap.net/client-side/voucherswap/vendor/bootstrap/bootstrap.min.js"></script>
   <script>
     const cfgKey = "vs-onepage-config";
     const localOrigin = (window.location.origin && window.location.origin !== "null") ? window.location.origin : "http://localhost:8080";
+    const preferLocalEndpoints = /localhost|127\.0\.0\.1/i.test(localOrigin);
     const defaults = { apiBase: `${localOrigin}/local-api`, identityBase: `${localOrigin}/local-identity` };
     const loadCfg = () => { try { return JSON.parse(localStorage.getItem(cfgKey) || "{}"); } catch { return {}; } };
     const saveCfg = (c) => localStorage.setItem(cfgKey, JSON.stringify(c));
     const setToken = (t) => { const c = loadCfg(); c.token = t; saveCfg(c); };
+    const clearToken = () => { const c = loadCfg(); delete c.token; saveCfg(c); };
     const getToken = () => loadCfg().token || "";
     const getApiBase = () => (loadCfg().apiBase || defaults.apiBase).replace(/\/+$/, "");
     const getIdentityBase = () => (loadCfg().identityBase || defaults.identityBase).replace(/\/+$/, "");
     const fmt = (n) => Number(n || 0).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    let currentUser = null;
+    let currentInvestOverview = { projects: [], packages: [], investments: [], summary: { investCount: 0, totalInvested: 0 } };
+    let selectedInvestPackageId = null;
+    let pendingVerificationEmail = "";
+    let pendingVerificationPassword = "";
+    let recipientLookupSeq = 0;
+    let scanStream = null;
+    let scanLoopHandle = null;
+    let currentRoleList = [];
+    let adminStores = [];
+    let editingStoreId = null;
+    let catalogTables = [];
+    let walletPage = 1;
+    let walletPageSize = 20;
+    let walletType = "consumption";
+    let walletTotal = 0;
+    let investPage = 1;
+    let investPageSize = 20;
+    let investTotal = 0;
+    let userSuggestTimer = null;
+    let usersPage = 1;
+    let usersPageSize = 20;
+    let usersTotal = 0;
+    let editingUserId = null;
+    let adminUserRolesData = [];
+    let userRolePage = 1;
+    let userRolePageSize = 20;
+    let userRoleTotal = 0;
+    let rolesPage = 1;
+    let rolesPageSize = 20;
+    let rolesTotal = 0;
+    let editingRoleId = null;
+    let functionsPage = 1;
+    let functionsPageSize = 20;
+    let functionsTotal = 0;
+    let editingFunctionId = null;
+    let projectsPage = 1;
+    let projectsPageSize = 20;
+    let projectsTotal = 0;
+    let editingProjectId = null;
+    let packagesPage = 1;
+    let packagesPageSize = 20;
+    let packagesTotal = 0;
+    let editingPackageId = null;
+    let currentPermissions = [];
+    const walletHistoryMeta = {
+      consumption: { title: "Lịch Sử Ví Giao Dịch", sub: "Hiển thị các giao dịch mới nhất của ví giao dịch." },
+      affiliate: { title: "Lịch Sử Ví Liên Kết", sub: "Hiển thị các giao dịch mới nhất của ví liên kết." },
+      accumulate: { title: "Lịch Sử Ví Tích Điểm", sub: "Hiển thị các giao dịch mới nhất của ví tích điểm." },
+      saving: { title: "Lịch Sử Ví Tiết Kiệm", sub: "Hiển thị các giao dịch mới nhất của ví tiết kiệm." },
+      business: { title: "Lịch Sử Ví Kinh Doanh", sub: "Hiển thị các giao dịch mới nhất của ví kinh doanh." }
+    };
 
-    const syncStatus = (email) => {
-      const e = email || loadCfg().lastEmail || "";
+    function buildQrImageUrl(text) {
+      return `https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=${encodeURIComponent(text || "")}`;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function formatTextBlock(value) {
+      return escapeHtml(value || "").replace(/\n/g, "<br>");
+    }
+
+    const syncStatus = (email, isAuthenticated = false) => {
+      const e = isAuthenticated ? String(email || "").trim() : "";
       $("#userBadge").text(e || "Khách");
       $("#topEmail").text(e || "Chưa đăng nhập");
-      $("#statusLine").text(e ? `Đã đăng nhập: ${e}` : "Chưa đăng nhập");
+      $("#statusLine").text(e ? `Đã đăng nhập: ${e}` : "Bạn chưa đăng nhập");
       $("#apiBase").val(loadCfg().apiBase || defaults.apiBase);
       $("#identityBase").val(loadCfg().identityBase || defaults.identityBase);
     };
+
+    function hasRole(name) {
+      const roles = currentUser?.roles || [];
+      const lookup = String(name || "").trim().toUpperCase();
+      return roles.some((r) => String(r.Name || r.name || "").trim().toUpperCase() === lookup);
+    }
+
+    function isAdminLike() {
+      return hasRole("ADMIN") || hasRole("SUPPORT");
+    }
+
+    function updateAdminNavVisibility() {
+      const showAdmin = isAdminLike();
+      const navItem = $(`.nav-link-vs[data-section='adminSection']`);
+      navItem.toggle(showAdmin);
+      $("[data-requires-admin]").toggle(showAdmin);
+      // Giữ nguyên tất cả tab; chỉ thêm tab Hệ thống khi có quyền
+      if (showAdmin && $(".nav-link-vs.active").data("section") === "home") {
+        setActiveNav("adminSection");
+        showSection("adminSection");
+      }
+
+      // Hide admin-only controls nếu không phải Admin
+      const adminOnly = $("[data-admin-only]");
+      adminOnly.toggle(hasRole("ADMIN"));
+    }
+
+    function setAuthUI(isAuthenticated, email = "") {
+      const showAuthButtons = !isAuthenticated;
+      $("#btnOpenAuth").toggle(showAuthButtons);
+      $("#ctaAuth").toggle(showAuthButtons);
+      $("#btnLogout").toggle(!showAuthButtons);
+      // Luôn hiển thị các tab; chặn truy cập bằng ensureAuth thay vì ẩn
+      syncStatus(email, isAuthenticated);
+      if (!isAuthenticated) {
+        $(".nav-link-vs").show();
+        setActiveNav("home");
+        showSection("home");
+      }
+      if (isAuthenticated && isAdminLike()) {
+        setActiveNav("adminSection");
+        showSection("adminSection");
+      }
+    }
+
+    const pageSections = ["home", "partner", "product", "projectPage", "walletSection", "adminSection", "contact", "app", "lockedNotice"];
+
+    function setActiveNav(sectionId) {
+      $(".nav-link-vs").removeClass("active");
+      $(`.nav-link-vs[data-section='${sectionId}']`).addClass("active");
+    }
+
+    function showSection(sectionId) {
+      pageSections.forEach((id) => {
+        const el = $(`#${id}`);
+        if (!el.length) return;
+        if (id === sectionId) {
+          el.show();
+        } else {
+          el.hide();
+        }
+      });
+    }
+
+    function showAdminPane(paneId) {
+      $(".admin-pane").hide();
+      $(`#${paneId}`).show();
+    }
+
+    function resetGuestState() {
+      currentUser = null;
+      currentInvestOverview = { projects: [], packages: [], investments: [], summary: { investCount: 0, totalInvested: 0 } };
+      $("#walletSection").hide();
+      $("#projectPage").hide();
+      $("#adminSection").hide();
+      $("#userEmail").text("---");
+      $("#projectHeadline").text("---");
+      $("#projectSubline").text("Hiển thị trực tiếp dữ liệu dự án và 9 gói đầu tư hiện có.");
+      setAuthUI(false, "");
+      $("#searchInput").val("");
+      setTimeout(() => $("#searchInput").val(""), 100);
+      setTimeout(() => $("#searchInput").attr("value", ""), 200);
+      showSection("home");
+      updateAdminNavVisibility();
+    }
+
+    function applyDefaultEndpoints(force = false) {
+      const cfg = loadCfg();
+      const nextCfg = { ...cfg };
+      if (force || !cfg.apiBase) nextCfg.apiBase = defaults.apiBase;
+      if (force || !cfg.identityBase) nextCfg.identityBase = defaults.identityBase;
+      saveCfg(nextCfg);
+      $("#apiBase").val(nextCfg.apiBase);
+      $("#identityBase").val(nextCfg.identityBase);
+      return nextCfg;
+    }
+
+    function toFriendlyError(error, context) {
+      const raw = error && error.message ? error.message : String(error || "Unknown error");
+      if (raw === "Failed to fetch" || /NetworkError/i.test(raw)) {
+        return `${context}: không kết nối được tới API local. Mở trang bằng http://localhost:8080 và kiểm tra API Base / Identity Base đang là ${defaults.apiBase} và ${defaults.identityBase}.`;
+      }
+      return raw;
+    }
 
     async function callToken(email, pwd) {
       const url = `${getIdentityBase()}/connect/token`;
@@ -312,8 +1391,8 @@
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: form.toString()
       });
-      if (!res.ok) throw new Error(`Đăng nhập thất bại (${res.status})`);
-      const j = await res.json();
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(j.error_description || j.message || `Đăng nhập thất bại (${res.status})`);
       if (!j.access_token) throw new Error("Không nhận được access_token");
       setToken(j.access_token);
       return j.access_token;
@@ -327,10 +1406,32 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
       });
-      if (!res.ok) throw new Error(`Đăng ký thất bại (${res.status})`);
-      const j = await res.json();
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(j.message || `Đăng ký thất bại (${res.status})`);
       if (!(j.isSuccess || j.success !== false)) throw new Error(j.message || "Đăng ký thất bại");
       return j;
+    }
+
+    async function callVerifyRegistration(email, code) {
+      const res = await fetch(`${getApiBase()}/users/VerifyRegistration`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, code })
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Xác thực thất bại (${res.status})`);
+      return j.result || j;
+    }
+
+    async function callResendVerification(email) {
+      const res = await fetch(`${getApiBase()}/users/ResendVerification`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Gửi lại mã thất bại (${res.status})`);
+      return j.result || j;
     }
 
     async function getUserInfo() {
@@ -342,6 +1443,728 @@
       return j.result || j;
     }
 
+    async function getAdminOverview() {
+      const token = getToken();
+      const res = await fetch(`${getApiBase()}/admin/overview`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không tải được dữ liệu hệ thống (${res.status})`);
+      return j.result || j;
+    }
+
+    async function resetAdminPassword(email, newPassword) {
+      const token = getToken();
+      const res = await fetch(`${getApiBase()}/admin/reset-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ email, newPassword })
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Đặt lại mật khẩu thất bại (${res.status})`);
+      return j;
+    }
+
+    async function adminStoreList(q = "") {
+      const token = getToken();
+      const url = new URL(`${getApiBase()}/admin/stores`);
+      if (q) url.searchParams.set("q", q);
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không tải được cửa hàng (${res.status})`);
+      return j.result || [];
+    }
+
+    async function adminStoreSave(payload, id = null) {
+      const token = getToken();
+      const url = id ? `${getApiBase()}/admin/stores/${id}` : `${getApiBase()}/admin/stores`;
+      const method = id ? "PUT" : "POST";
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        body: JSON.stringify(payload)
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Lưu cửa hàng thất bại (${res.status})`);
+      return j.result || j;
+    }
+
+    async function adminStoreDelete(id) {
+      const token = getToken();
+      const res = await fetch(`${getApiBase()}/admin/stores/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Xóa cửa hàng thất bại (${res.status})`);
+      return j;
+    }
+
+    async function adminUsersPaged(q = "") {
+      const url = new URL(`${getApiBase()}/admin/users`);
+      url.searchParams.set("page", usersPage);
+      url.searchParams.set("pageSize", usersPageSize);
+      if (q) url.searchParams.set("q", q);
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${getToken()}` } });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không tải user (${res.status})`);
+      return j.result || {};
+    }
+
+    async function adminUserSuggest(term) {
+      const url = new URL(`${getApiBase()}/admin/users`);
+      url.searchParams.set("page", 1);
+      url.searchParams.set("pageSize", 10);
+      if (term) url.searchParams.set("q", term);
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${getToken()}` } });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không gợi ý user (${res.status})`);
+      return (j.result && j.result.items) ? j.result.items : [];
+    }
+
+    async function adminUserSave(payload, id = null) {
+      const url = id ? `${getApiBase()}/admin/users/${id}` : `${getApiBase()}/admin/users`;
+      const method = id ? "PUT" : "POST";
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
+        body: JSON.stringify(payload)
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Lưu user thất bại (${res.status})`);
+      return j;
+    }
+
+    async function adminUserDelete(id) {
+      const res = await fetch(`${getApiBase()}/admin/users/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${getToken()}` }
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Xóa user thất bại (${res.status})`);
+      return j;
+    }
+
+    async function adminRolesPaged() {
+      // sử dụng danh sách role đã tải trong overview; nếu cần paging lớn có thể mở rộng sau
+      return currentRoleList || [];
+    }
+
+    async function adminRoleSave(name, id = null) {
+      const url = id ? `${getApiBase()}/admin/roles/${id}` : `${getApiBase()}/admin/roles`;
+      const method = id ? "PUT" : "POST";
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
+        body: JSON.stringify({ name })
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Lưu role thất bại (${res.status})`);
+      return j;
+    }
+
+    async function adminRoleDelete(id) {
+      const res = await fetch(`${getApiBase()}/admin/roles/${id}`, { method: "DELETE", headers: { Authorization: `Bearer ${getToken()}` } });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Xóa role thất bại (${res.status})`);
+      return j;
+    }
+
+    async function loadPermissions(roleId = "") {
+      try {
+        showError("#adminError", "");
+        const targetRole = roleId || $("#permRoleSelect").val() || "";
+        const data = await adminPermissions(targetRole);
+        const rows = (data || []).map((p) => `
+          <tr>
+            <td>${escapeHtml(p.RoleName || "")}</td>
+            <td>${escapeHtml(p.FunctionId || "")}</td>
+            <td>${escapeHtml(p.ParentName || p.ParentId || "")}</td>
+            <td>${escapeHtml(p.Feature || "")}</td>
+            <td><button class="btn btn-sm btn-outline-danger btnPermRowDelete" data-role="${escapeHtml(p.RoleId)}" data-func="${escapeHtml(p.FunctionId)}">X</button></td>
+          </tr>
+        `);
+        $("#adminPermTable").html(rows.join("") || `<tr><td colspan="5" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    }
+
+    async function adminPermissions(roleId = "") {
+      const url = new URL(`${getApiBase()}/admin/permissions`);
+      if (roleId) url.searchParams.set("roleId", roleId);
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${getToken()}` } });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không tải permissions (${res.status})`);
+      return j.result || [];
+    }
+
+    async function adminPermSave(roleId, functionId, feature) {
+      const res = await fetch(`${getApiBase()}/admin/permissions`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
+        body: JSON.stringify({ roleId, functionId, feature })
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Lưu permission thất bại (${res.status})`);
+      return j;
+    }
+
+    async function adminPermDelete(roleId, functionId) {
+      const url = new URL(`${getApiBase()}/admin/permissions`);
+      url.searchParams.set("roleId", roleId);
+      url.searchParams.set("functionId", functionId);
+      const res = await fetch(url, { method: "DELETE", headers: { Authorization: `Bearer ${getToken()}` } });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Xóa permission thất bại (${res.status})`);
+      return j;
+    }
+
+    async function adminFunctionsPaged() {
+      const url = new URL(`${getApiBase()}/admin/functions`);
+      url.searchParams.set("page", functionsPage);
+      url.searchParams.set("pageSize", functionsPageSize);
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${getToken()}` } });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không tải functions (${res.status})`);
+      return j.result || {};
+    }
+
+    async function adminFunctionSave(payload, id = null) {
+      const url = id ? `${getApiBase()}/admin/functions/${id}` : `${getApiBase()}/admin/functions`;
+      const method = id ? "PUT" : "POST";
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
+        body: JSON.stringify(payload)
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Lưu function thất bại (${res.status})`);
+      return j;
+    }
+
+    async function adminFunctionDelete(id) {
+      const res = await fetch(`${getApiBase()}/admin/functions/${id}`, { method: "DELETE", headers: { Authorization: `Bearer ${getToken()}` } });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Xóa function thất bại (${res.status})`);
+      return j;
+    }
+
+    async function adminProjectsPaged() {
+      const url = new URL(`${getApiBase()}/admin/projects`);
+      url.searchParams.set("page", projectsPage);
+      url.searchParams.set("pageSize", projectsPageSize);
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${getToken()}` } });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không tải projects (${res.status})`);
+      return j.result || {};
+    }
+
+    async function adminProjectSave(payload, id = null) {
+      const url = id ? `${getApiBase()}/admin/projects/${id}` : `${getApiBase()}/admin/projects`;
+      const method = id ? "PUT" : "POST";
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
+        body: JSON.stringify(payload)
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Lưu project thất bại (${res.status})`);
+      return j;
+    }
+
+    async function adminProjectDelete(id) {
+      const res = await fetch(`${getApiBase()}/admin/projects/${id}`, { method: "DELETE", headers: { Authorization: `Bearer ${getToken()}` } });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Xóa project thất bại (${res.status})`);
+      return j;
+    }
+
+    async function adminPackagesPaged() {
+      const url = new URL(`${getApiBase()}/admin/invest-packages`);
+      url.searchParams.set("page", packagesPage);
+      url.searchParams.set("pageSize", packagesPageSize);
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${getToken()}` } });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không tải gói đầu tư (${res.status})`);
+      return j.result || {};
+    }
+
+    async function adminPackageSave(payload, id = null) {
+      const url = id ? `${getApiBase()}/admin/invest-packages/${id}` : `${getApiBase()}/admin/invest-packages`;
+      const method = id ? "PUT" : "POST";
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
+        body: JSON.stringify(payload)
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Lưu gói thất bại (${res.status})`);
+      return j;
+    }
+
+    async function adminPackageDelete(id) {
+      const res = await fetch(`${getApiBase()}/admin/invest-packages/${id}`, { method: "DELETE", headers: { Authorization: `Bearer ${getToken()}` } });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Xóa gói thất bại (${res.status})`);
+      return j;
+    }
+    async function catalogListTables() {
+      const token = getToken();
+      const res = await fetch(`${getApiBase()}/admin/catalog/tables`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không tải được danh sách bảng (${res.status})`);
+      return j.result || [];
+    }
+
+    async function catalogLoadTable(name, top = 200) {
+      const token = getToken();
+      const url = new URL(`${getApiBase()}/admin/catalog/table`);
+      url.searchParams.set("name", name);
+      url.searchParams.set("top", top);
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không tải được bảng (${res.status})`);
+      return j.result || j;
+    }
+    async function catalogLoadAll(top = 50) {
+      const token = getToken();
+      const url = new URL(`${getApiBase()}/admin/catalog/all`);
+      url.searchParams.set("top", top);
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không tải toàn bộ bảng (${res.status})`);
+      return j.result || [];
+    }
+
+    async function getReceiveInfo() {
+      const token = getToken();
+      const res = await fetch(`${getApiBase()}/wallets/consumption/receive`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (!res.ok) throw new Error(`Không lấy được địa chỉ nhận (${res.status})`);
+      const j = await res.json();
+      return j.result || j;
+    }
+
+    async function transferConsumption(toAddress, amount, remark) {
+      const token = getToken();
+      const res = await fetch(`${getApiBase()}/wallets/consumption/transfer`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ toAddress, amount, remark })
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Chuyển điểm thất bại (${res.status})`);
+      return j.result || j;
+    }
+
+    async function withdrawAccumulate() {
+      const token = getToken();
+      const res = await fetch(`${getApiBase()}/wallets/accumulate/withdraw-0-2`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        }
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Rút 0.2% ví Tích Điểm thất bại (${res.status})`);
+      return j.result || j;
+    }
+
+    async function withdrawSaving() {
+      const token = getToken();
+      const res = await fetch(`${getApiBase()}/wallets/saving/withdraw-0-2`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        }
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Rút 0.2% ví Tiết Kiệm thất bại (${res.status})`);
+      return j.result || j;
+    }
+
+    async function lookupConsumptionAddress(address) {
+      const token = getToken();
+      const res = await fetch(`${getApiBase()}/wallets/consumption/lookup?address=${encodeURIComponent(address)}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không tra cứu được địa chỉ (${res.status})`);
+      return j.result || j;
+    }
+
+    async function getWalletHistory(walletType, limit = 30) {
+      const token = getToken();
+      const res = await fetch(`${getApiBase()}/wallets/${walletType}/history?limit=${limit}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không lấy được lịch sử (${res.status})`);
+      return j.result || [];
+    }
+
+    async function getInvestOverview() {
+      const token = getToken();
+      const res = await fetch(`${getApiBase()}/projects/invest/overview`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không lấy được dữ liệu dự án (${res.status})`);
+      return j.result || { projects: [], packages: [], investments: [], summary: { investCount: 0, totalInvested: 0 } };
+    }
+
+    async function activateInvestPackage(packageId, projectId) {
+      const token = getToken();
+      const res = await fetch(`${getApiBase()}/projects/invest/activate`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ packageId, projectId })
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không kích hoạt được gói đầu tư (${res.status})`);
+      return j.result || j;
+    }
+
+    function typeLabel(type) {
+      const map = {
+        3: "Chuyển đi",
+        4: "Nhận vào",
+        5: "Kích hoạt X3",
+        6: "Rút từ ví tiết kiệm",
+        7: "Rút từ ví tích điểm",
+        8: "Đổi từ ví liên kết",
+        9: "Giao dịch khác",
+        10: "Khởi tạo số dư",
+        12: "Điều chỉnh hệ thống",
+        14: "Khác"
+      };
+      return map[type] || `Loại ${type}`;
+    }
+
+    function fmtDate(value) {
+      if (!value) return "---";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return String(value);
+      return date.toLocaleString("vi-VN");
+    }
+
+    function normalizeAmountText(value) {
+      const raw = String(value || "").replace(/,/g, "").replace(/[^\d.]/g, "");
+      if (!raw) return { raw: "", display: "" };
+      const firstDot = raw.indexOf(".");
+      const hasDot = firstDot !== -1;
+      const integerSource = hasDot ? raw.slice(0, firstDot) : raw;
+      const decimalSource = hasDot ? raw.slice(firstDot + 1).replace(/\./g, "").slice(0, 2) : "";
+      const normalizedInteger = integerSource.replace(/^0+(?=\d)/, "") || "0";
+      const displayInteger = normalizedInteger.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      const keepTrailingDot = hasDot && raw.endsWith(".") && decimalSource.length === 0;
+      const display = hasDot
+        ? `${displayInteger}.${decimalSource}${keepTrailingDot ? "" : ""}`
+        : displayInteger;
+      const finalDisplay = keepTrailingDot ? `${displayInteger}.` : display;
+      const finalRaw = hasDot ? `${normalizedInteger}.${decimalSource}` : normalizedInteger;
+      return { raw: finalRaw, display: finalDisplay };
+    }
+
+    function parseAmountText(value) {
+      const normalized = String(value || "").replace(/,/g, "").trim();
+      if (!normalized) return null;
+      const amount = Number(normalized);
+      return Number.isFinite(amount) && amount > 0 ? amount : null;
+    }
+
+    function setRecipientInfo(text, tone = "muted") {
+      const el = $("#transferRecipientInfo");
+      el.text(text || "");
+      const color = tone === "error" ? "#b91c1c" : (tone === "success" ? "#166534" : "#6b7280");
+      el.css("color", color);
+    }
+
+    function setScannerStatus(text, tone = "muted") {
+      const el = $("#scannerStatus");
+      el.text(text || "");
+      const color = tone === "error" ? "#b91c1c" : (tone === "success" ? "#166534" : "#6b7280");
+      el.css("color", color);
+    }
+
+    async function stopQrScanner() {
+      if (scanLoopHandle) {
+        clearTimeout(scanLoopHandle);
+        scanLoopHandle = null;
+      }
+      if (scanStream) {
+        scanStream.getTracks().forEach((track) => track.stop());
+        scanStream = null;
+      }
+      const video = document.getElementById("scannerVideo");
+      if (video) video.srcObject = null;
+      $("#scannerPanel").hide();
+      $("#btnStopQrScan").hide();
+      $("#btnStartQrScan").show();
+      setScannerStatus("");
+    }
+
+    async function scanFrame() {
+      const video = document.getElementById("scannerVideo");
+      if (!video || !scanStream) return;
+
+      try {
+        if (!("BarcodeDetector" in window)) {
+          setScannerStatus("Trình duyệt này chưa hỗ trợ quét QR trực tiếp. Hãy dán địa chỉ nhận thủ công.", "error");
+          return;
+        }
+
+        const detector = new BarcodeDetector({ formats: ["qr_code"] });
+        const barcodes = await detector.detect(video);
+        if (barcodes && barcodes.length > 0) {
+          const raw = String(barcodes[0].rawValue || "").trim();
+          if (raw) {
+            $("#transferToAddress").val(raw);
+            $("#transferToAddress").trigger("input");
+            setScannerStatus("Đã quét được địa chỉ nhận", "success");
+            await stopQrScanner();
+            return;
+          }
+        }
+      } catch (error) {
+        setScannerStatus(`Không quét được QR: ${error.message}`, "error");
+      }
+
+      scanLoopHandle = setTimeout(() => {
+        scanFrame().catch(() => {});
+      }, 350);
+    }
+
+    async function startQrScanner() {
+      await stopQrScanner();
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        setScannerStatus("Thiết bị hoặc trình duyệt không hỗ trợ camera.", "error");
+        $("#scannerPanel").show();
+        return;
+      }
+
+      $("#scannerPanel").show();
+      $("#btnStartQrScan").hide();
+      $("#btnStopQrScan").show();
+      setScannerStatus("Đang mở camera...");
+
+      try {
+        scanStream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: { ideal: "environment" } },
+          audio: false
+        });
+        const video = document.getElementById("scannerVideo");
+        video.srcObject = scanStream;
+        await video.play();
+        setScannerStatus("Đưa QR vào giữa khung hình để quét");
+        await scanFrame();
+      } catch (error) {
+        setScannerStatus(`Không mở được camera: ${error.message}`, "error");
+        await stopQrScanner();
+      }
+    }
+
+    function renderConsumptionHistory(items) {
+      const list = $("#historyList");
+      list.empty();
+      $("#historyEmpty").toggle(!items.length);
+      items.forEach((item) => {
+        const html = `
+          <div class="history-item">
+            <div class="history-top">
+              <div class="history-type">${escapeHtml(typeLabel(item.type))}</div>
+              <div class="history-amount">${fmt(item.amount)} Vntd</div>
+            </div>
+            <div class="history-meta"><strong>Từ:</strong> ${escapeHtml(item.addressFrom || "---")}</div>
+            <div class="history-meta"><strong>Đến:</strong> ${escapeHtml(item.addressTo || "---")}</div>
+            <div class="history-meta"><strong>Thời gian:</strong> ${escapeHtml(fmtDate(item.dateCreated))}</div>
+            <div class="history-meta"><strong>Mã giao dịch:</strong> ${escapeHtml(item.transactionHash || "---")}</div>
+            <div class="history-meta"><strong>Ghi chú:</strong> ${escapeHtml(item.remark || "---")}</div>
+          </div>
+        `;
+        list.append(html);
+      });
+    }
+
+    function renderProjectInvestments(items, listSelector, emptySelector) {
+      const list = $(listSelector);
+      const empty = $(emptySelector);
+      list.empty();
+      empty.toggle(!items.length);
+      items.forEach((item) => {
+        const html = `
+          <div class="project-history-item">
+            <div class="history-top">
+              <div class="history-type">${escapeHtml(item.packageName || "Gói đầu tư")}</div>
+              <div class="history-amount">${fmt(item.amount)} Vntd</div>
+            </div>
+            <div class="history-meta"><strong>Dự án:</strong> ${escapeHtml(item.projectName || "---")}</div>
+            <div class="history-meta"><strong>Thời gian:</strong> ${escapeHtml(fmtDate(item.createdOn))}</div>
+            <div class="history-meta"><strong>Trạng thái:</strong> ${escapeHtml(String(item.status ?? "---"))}</div>
+            <div class="history-meta"><strong>Mã giao dịch:</strong> ${escapeHtml(item.transactionHash || "---")}</div>
+            <div class="history-meta"><strong>Ghi chú:</strong> ${escapeHtml(item.remark || "---")}</div>
+          </div>
+        `;
+        list.append(html);
+      });
+    }
+
+    function getActiveProjectForActivation() {
+      const projects = currentInvestOverview.projects || [];
+      return projects.length ? projects[0] : null;
+    }
+
+    async function triggerInvestActivation(packageId) {
+      const pkg = currentInvestOverview.packages.find((item) => String(item.id) === String(packageId));
+      const project = getActiveProjectForActivation();
+
+      showError("#projectError", "");
+      showSuccess("#projectSuccess", "");
+      showError("#projectPackageError", "");
+      showSuccess("#projectPackageSuccess", "");
+
+      if (!pkg) {
+        showError("#projectError", "Không tìm thấy gói đầu tư");
+        return;
+      }
+      if (!project) {
+        showError("#projectError", "Không có dự án đang hoạt động để kích hoạt");
+        return;
+      }
+
+      const confirmed = window.confirm(`Kích hoạt gói ${pkg.name} giá ${fmt(pkg.price)} Vntd cho dự án ${project.name}?`);
+      if (!confirmed) return;
+
+      try {
+        await activateInvestPackage(pkg.id, project.id);
+        const successText = `Đã kích hoạt gói ${pkg.name} vào dự án ${project.name}`;
+        showSuccess("#projectSuccess", successText);
+        showSuccess("#projectPackageSuccess", successText);
+        await loadWallet();
+        openProjectPackage(pkg.id);
+      } catch (e) {
+        showError("#projectError", e.message);
+        showError("#projectPackageError", e.message);
+      }
+    }
+
+    function openProjectPackage(packageId) {
+      const pkg = currentInvestOverview.packages.find((item) => String(item.id) === String(packageId));
+      if (!pkg) return;
+      const project = currentInvestOverview.projects[0] || null;
+      const relatedItems = currentInvestOverview.investments.filter((item) => Number(item.investPackageId) === Number(pkg.id)).slice(0, 8);
+      const activatedCount = currentInvestOverview.investments.filter((item) => Number(item.investPackageId) === Number(pkg.id)).length;
+
+      selectedInvestPackageId = String(pkg.id);
+      showError("#projectPackageError", "");
+      showSuccess("#projectPackageSuccess", "");
+      $("#projectPackageTitle").text(pkg.name || "Gói đầu tư");
+      $("#projectPackageSub").text("Chi tiết gói đầu tư hiện có trong tab Dự án.");
+      $("#projectPackageImage").attr("src", pkg.imageUrl || "").attr("alt", pkg.name || "Goi dau tu");
+      $("#projectPackagePrice").text(`${fmt(pkg.price)} Vntd`);
+      $("#projectPackageProject").html(project ? `Dự án áp dụng: <strong>${escapeHtml(project.name)}</strong>` : "Chưa xác định dự án");
+      $("#projectPackageOwned").text(activatedCount > 0 ? `Bạn đã kích hoạt gói này ${activatedCount} lần` : "Bạn chưa có giao dịch nào với gói này");
+      renderProjectInvestments(relatedItems, "#projectPackageHistory", "#projectPackageHistoryEmpty");
+      openWalletOverlay("#projectPackageOverlay");
+    }
+
+    function renderProjectOverview(data) {
+      currentInvestOverview = data || { projects: [], packages: [], investments: [], summary: { investCount: 0, totalInvested: 0 } };
+      const projects = currentInvestOverview.projects || [];
+      const packages = currentInvestOverview.packages || [];
+      const investments = currentInvestOverview.investments || [];
+      const summary = currentInvestOverview.summary || {};
+      const leadProject = projects[0] || null;
+
+      $("#projectHeadline").text(leadProject?.name || "Dự Án Đầu Tư");
+      $("#projectSubline").text(leadProject?.description || "Hiển thị trực tiếp dữ liệu dự án và 9 gói đầu tư hiện có.");
+      $("#investWalletBalance").text(`${fmt(currentUser?.investBalance || 0)} Vntd`);
+      $("#projectInvestedTotal").text(`${fmt(summary.totalInvested || 0)} Vntd`);
+      $("#projectInvestCount").text(summary.investCount || 0);
+
+      const projectList = $("#projectList");
+      projectList.empty();
+      projects.forEach((project) => {
+        projectList.append(`
+          <div class="project-card-vs">
+            <h6>${escapeHtml(project.name)}</h6>
+            <p>${formatTextBlock(project.description || "Dự án đang hoạt động trên dữ liệu hiện tại.")}</p>
+            <div class="project-card-meta">
+              <span class="project-chip">Danh mục: ${escapeHtml(project.catalogName || "Dự án")}</span>
+              <span class="project-chip">Tổng vốn: ${fmt(project.investBalance)} Vntd</span>
+              <span class="project-chip">ID: ${escapeHtml(project.id)}</span>
+            </div>
+          </div>
+        `);
+      });
+
+      const activatedByPackage = investments.reduce((acc, item) => {
+        const key = String(item.investPackageId || "");
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
+
+      const packageGrid = $("#packageGrid");
+      packageGrid.empty();
+      packages.forEach((pkg) => {
+        const ownedCount = activatedByPackage[String(pkg.id)] || 0;
+        packageGrid.append(`
+          <div class="package-card">
+            <div class="package-card-top">
+              <img class="package-icon" src="${escapeHtml(pkg.imageUrl || "")}" alt="${escapeHtml(pkg.name || "Goi dau tu")}">
+              <div>
+                <div class="package-name">${escapeHtml(pkg.name)}</div>
+                <div class="package-meta">Thứ tự hiển thị: ${escapeHtml(pkg.orderIndex || pkg.id)}</div>
+              </div>
+            </div>
+            <div class="package-price">${fmt(pkg.price)} Vntd</div>
+            <div class="package-meta">Gói này được lấy trực tiếp từ bảng InvestPackages hiện tại.</div>
+            <div class="package-owned">${ownedCount > 0 ? `Đã kích hoạt ${ownedCount} lần` : "Chưa có lịch sử kích hoạt"}</div>
+            <div class="wallet-modal-actions" style="justify-content:flex-start; margin-top:10px;">
+              <button class="btn btn-success btn-sm btnSelectPackage" type="button" data-package-id="${escapeHtml(pkg.id)}">Xem gói</button>
+              <button class="btn btn-outline-success btn-sm btnActivatePackage" type="button" data-package-id="${escapeHtml(pkg.id)}">Kích hoạt</button>
+            </div>
+          </div>
+        `);
+      });
+
+      renderProjectInvestments(investments.slice(0, 8), "#projectInvestList", "#projectInvestEmpty");
+      $("#projectSection").show();
+    }
+
+    async function openWalletHistory(walletType) {
+      if (!ensureAuth()) return;
+      const meta = walletHistoryMeta[walletType] || walletHistoryMeta.consumption;
+      $("#historyModalTitle").text(meta.title);
+      $("#historyModalSub").text(meta.sub);
+      $("#historyEmpty").text(`Chưa có giao dịch nào trong ${meta.title.toLowerCase()}.`);
+      showError("#historyModalError", "");
+      $("#historyList").empty();
+      $("#historyEmpty").hide();
+      openWalletOverlay("#historyOverlay");
+      try {
+        const items = await getWalletHistory(walletType, 50);
+        renderConsumptionHistory(items);
+      } catch (e) {
+        showError("#historyModalError", e.message);
+      }
+    }
+
     function renderWallet(u) {
       const cons = u.consumptionBalance ?? u.ConsumptionBalance ?? 0;
       const aff = u.affiliateBalance ?? u.AffiliateBalance ?? 0;
@@ -349,6 +2172,8 @@
       const sav = u.savingBalance ?? u.SavingBalance ?? 0;
       const biz = u.businessBalance ?? u.BusinessBalance ?? 0;
       const email = u.email || u.Email || loadCfg().lastEmail || "";
+      currentUser = u;
+      updateAdminNavVisibility();
       $("#consumptionAmt").text(fmt(cons));
       $("#affiliateAmt").text(fmt(aff));
       $("#accumulateAmt").text(fmt(acc));
@@ -356,32 +2181,653 @@
       $("#businessAmt").text(fmt(biz));
       $("#totalBalance").text(`${fmt(cons + aff + acc + sav + biz)} Vntd`);
       $("#userEmail").text(email);
-      syncStatus(email);
-      $("#walletSection").show();
+      setAuthUI(true, email);
+      if (isAdminLike()) {
+        $("#walletSection").hide();
+      } else {
+        $("#walletSection").show();
+      }
       $("#lockedNotice").hide();
     }
 
     function showError(box, msg) { if (msg) { $(box).text(msg).show(); } else { $(box).hide(); } }
+    function showSuccess(box, msg) { if (msg) { $(box).text(msg).show(); } else { $(box).hide(); } }
+    function showInfo(box, msg) { if (msg) { $(box).text(msg).show(); } else { $(box).hide(); } }
+    function openWalletOverlay(selector) { $(selector).fadeIn(120).css("display", "flex"); }
+    function closeWalletOverlay(selector) { $(selector).fadeOut(120); }
+
+    async function copyToClipboard(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+      const temp = $("<input>").val(text).appendTo("body").select();
+      document.execCommand("copy");
+      temp.remove();
+    }
 
     async function loadWallet() {
       showError("#walletError", "");
+      showError("#projectError", "");
       try {
         const u = await getUserInfo();
         renderWallet(u);
+        await loadProjects();
+        if (isAdminLike()) {
+          await loadAdminOverview();
+          showSection("adminSection");
+          setActiveNav("adminSection");
+        } else {
+          showSection("walletSection");
+          setActiveNav("walletSection");
+        }
       } catch (e) {
+        if (/\(401\)|Invalid token|Chưa có token/i.test(String(e.message || ""))) {
+          clearToken();
+        }
+        resetGuestState();
         showError("#walletError", e.message);
-        $("#walletSection").hide();
         $("#lockedNotice").show();
+        showSection("lockedNotice");
+        setActiveNav("home");
+      }
+    }
+
+    async function loadProjects() {
+      showError("#projectError", "");
+      try {
+        const data = await getInvestOverview();
+        renderProjectOverview(data);
+      } catch (e) {
+        showError("#projectError", e.message);
+        $("#projectSection").hide();
+      }
+    }
+
+    function renderAdminOverview(data) {
+      if (!data) return;
+      const users = data.users || [];
+      const permissions = data.permissions || [];
+      const functions = data.functions || [];
+      const stores = data.stores || [];
+      const projects = data.projects || [];
+      const packages = data.packages || [];
+      const roles = data.roles || [];
+      const roleClaims = data.roleClaims || [];
+      const userRoles = data.userRoles || [];
+      const current = data.currentUser || currentUser || {};
+      const counts = data.counts || {};
+      const walletTx = data.walletTx || {};
+      const investHistory = data.investHistory || [];
+
+      // fill role dropdown
+      currentRoleList = roles || [];
+      const prevRoleSel = $("#permRoleSelect").val();
+      const roleOpts = roles.map((r) => `<option value="${escapeHtml(r.Id)}">${escapeHtml(r.Name || "")}</option>`);
+      $("#roleAssignSelect").html(roleOpts.join(""));
+      $("#permRoleSelect").html(roleOpts.join(""));
+      if (prevRoleSel) {
+        $("#permRoleSelect").val(prevRoleSel);
+      } else if (roles.length) {
+        $("#permRoleSelect").val(roles[0].Id);
+      }
+
+      $("#adminCurrentEmail").text(current.email || current.userName || "---");
+      const roleText = (current.roles || []).map((r) => r.Name || r.name || "").join(", ") || "---";
+      $("#adminCurrentRoles").text(roleText);
+      $("#adminUserCount").text(counts.users ?? users.length);
+      $("#adminRoleCount").text(counts.roles ?? new Set(roles.map((r) => r.Id)).size);
+      $("#adminFunctionCount").text(counts.functions ?? functions.length);
+      $("#adminStoreCount").text(counts.stores ?? stores.length);
+      $("#adminProjectCount").text(counts.projects ?? projects.length);
+      $("#adminPackageCount").text(counts.packages ?? packages.length);
+      $("#adminProjectBalance").text(fmt(counts.projectsInvestBalance || 0));
+      $("#adminInvestTotal").text(fmt(counts.investHistoryAmount || 0));
+      $("#adminPermissionCount").text(counts.permissions ?? permissions.length);
+      $("#adminRoleClaimCount").text(counts.roleClaims ?? roleClaims.length);
+      $("#adminUserRoleCount").text(counts.userRoles ?? userRoles.length);
+      const walletTxTotal = (counts.consumption||0)+(counts.affiliate||0)+(counts.accumulate||0)+(counts.saving||0)+(counts.business||0);
+      $("#adminWalletTxCount").text(walletTxTotal);
+      $("#adminInvestHistoryCount").text(counts.investHistory || 0);
+
+      const userRows = users.map((u) => `
+        <tr>
+          <td>${escapeHtml(u.Email || "")}</td>
+          <td>${escapeHtml(u.UserName || "")}</td>
+          <td>${escapeHtml(u.Roles || "")}</td>
+          <td>${u.EmailConfirmed ? "✔︎" : "✖︎"}</td>
+        </tr>
+      `);
+      $("#adminUsersTable").html(userRows.join("") || `<tr><td colspan="4" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+
+      const permRows = permissions.map((p) => `
+        <tr>
+          <td>${escapeHtml(p.RoleName || "")}</td>
+          <td>${escapeHtml(p.FunctionName || "")}</td>
+          <td>${escapeHtml(p.ParentId || "")}</td>
+          <td>${escapeHtml(p.Feature || "")}</td>
+        </tr>
+      `);
+      $("#adminPermTable").html(permRows.join("") || `<tr><td colspan="4" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+
+      const roleRows = roles.map((r) => `
+        <tr>
+          <td>${escapeHtml(r.Id || "")}</td>
+          <td>${escapeHtml(r.Name || "")}</td>
+          <td>${escapeHtml(r.NormalizedName || "")}</td>
+        </tr>
+      `);
+      $("#adminRoleList").html(roleRows.join("") || `<tr><td colspan="3" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+
+      adminUserRolesData = userRoles;
+      userRoleTotal = userRoles.length;
+      userRolePage = 1;
+      renderUserRolesTable();
+
+      const roleClaimRows = roleClaims.map((rc) => `
+        <tr>
+          <td>${escapeHtml(rc.RoleName || "")}</td>
+          <td>${escapeHtml(rc.ClaimType || "")}</td>
+          <td>${escapeHtml(rc.ClaimValue || "")}</td>
+        </tr>
+      `);
+      $("#adminRoleClaims").html(roleClaimRows.join("") || `<tr><td colspan="3" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+
+      const fnRows = functions.map((f) => `
+        <tr>
+          <td>${escapeHtml(f.Id || "")}</td>
+          <td>${escapeHtml(f.Name || "")}</td>
+          <td>${escapeHtml(f.Url || "")}</td>
+          <td>${escapeHtml(f.ParentId || "")}</td>
+        </tr>
+      `);
+      $("#adminFunctionsTable").html(fnRows.join("") || `<tr><td colspan="5" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+
+      const storeRows = stores.map((s) => `
+        <tr>
+          <td>${escapeHtml(s.Name || "")}</td>
+          <td>${escapeHtml(s.Email || "")}</td>
+          <td>${escapeHtml(s.Phone || "")}</td>
+          <td>${escapeHtml(s.Address || "")}</td>
+          <td>${escapeHtml(s.Status ?? "")}</td>
+        </tr>
+      `);
+      $("#adminStoresTable").html(storeRows.join("") || `<tr><td colspan="5" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+
+      const projRows = projects.map((p) => `
+        <tr>
+          <td>${escapeHtml(p.Id)}</td>
+          <td>${escapeHtml(p.Name || "")}</td>
+          <td>${fmt(p.InvestBalance || p.investBalance || 0)} Vntd</td>
+          <td>${escapeHtml(p.Status)}</td>
+          <td>${escapeHtml(p.CreatedOn || "")}</td>
+        </tr>
+      `);
+      $("#adminProjectsTable").html(projRows.join("") || `<tr><td colspan="6" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+
+      const pkgRows = packages.map((p) => `
+        <tr>
+          <td>${escapeHtml(p.Id)}</td>
+          <td>${escapeHtml(p.Name || "")}</td>
+          <td>${fmt(p.Price || 0)} Vntd</td>
+          <td>${escapeHtml(p.OrderIndex)}</td>
+          <td>${escapeHtml(p.Status)}</td>
+        </tr>
+      `);
+      $("#adminPackagesTable").html(pkgRows.join("") || `<tr><td colspan="6" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+
+      // walletTx & investHistory now paged separately -> render handled elsewhere
+    }
+
+    function renderStoresTable(stores) {
+      const rows = stores.map((s) => {
+        const phone = s.Phone || s.PhoneNumber || "";
+        const mapEmbed = s.MapEmbed || s.MapEmbedHtml || s.MapIframe || "";
+        const created = s.CreatedOn || s.CreatedDate || "";
+        return `
+          <tr class="store-row" data-id="${s.Id}">
+            <td>${escapeHtml(s.Id)}</td>
+            <td>${escapeHtml(s.Name || "")}</td>
+            <td>${escapeHtml(s.Email || "")}</td>
+            <td>${escapeHtml(phone)}</td>
+            <td>${escapeHtml(s.Address || "")}</td>
+            <td>${escapeHtml(s.CategoryId ?? "")}</td>
+            <td>${escapeHtml(s.Status)}</td>
+            <td>${mapEmbed ? `<button class="btn btn-sm btn-outline-success btnStoreMap" data-id="${s.Id}">Xem</button>` : "-"}</td>
+            <td>${escapeHtml(created)}</td>
+            <td style="white-space:nowrap;">
+              <button class="btn btn-sm btn-outline-success btnStoreEdit" data-id="${s.Id}">Sửa</button>
+              ${hasRole("ADMIN") ? `<button class="btn btn-sm btn-outline-danger btnStoreDelete" data-id="${s.Id}" style="margin-left:4px;">Xóa</button>` : ""}
+            </td>
+          </tr>
+        `;
+      });
+      $("#adminStoresTable").html(rows.join("") || `<tr><td colspan="10" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+    }
+
+    function renderUserRolesTable() {
+      const start = (userRolePage - 1) * userRolePageSize;
+      const items = (adminUserRolesData || []).slice(start, start + userRolePageSize);
+      const rows = items.map((ur) => `
+        <tr>
+          <td>${escapeHtml(ur.Email || "")}</td>
+          <td>${escapeHtml(ur.RoleName || "")}</td>
+        </tr>
+      `);
+      $("#adminUserRoles").html(rows.join("") || `<tr><td colspan="2" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+      const totalPages = Math.max(1, Math.ceil((userRoleTotal || 0) / userRolePageSize));
+      $("#userRolePageInfo").text(`Trang ${userRolePage}/${totalPages} (${userRoleTotal || 0} dòng)`);
+    }
+
+    function resetStoreForm() {
+      editingStoreId = null;
+      $("#storeFormTitle").text("Thêm / Sửa cửa hàng");
+      $("#storeName, #storeEmail, #storePhone, #storeOwnerEmail, #storeAddress, #storeDescription").val("");
+      $("#storeCategoryId").val("1");
+      $("#storeStatus").val("1");
+      $("#storeMapEmbed, #storeLat, #storeLng, #storeUrl, #storeLogo, #storeThumb").val("");
+      $("#storeFormInfo").text("");
+    }
+
+    function fillStoreForm(s) {
+      editingStoreId = s.Id;
+      $("#storeFormTitle").text(`Sửa cửa hàng #${s.Id}`);
+      $("#storeName").val(s.Name || "");
+      $("#storeEmail").val(s.Email || "");
+      $("#storePhone").val(s.Phone || s.PhoneNumber || "");
+      $("#storeOwnerEmail").val(s.AppUserId || "");
+      $("#storeAddress").val(s.Address || "");
+      $("#storeDescription").val(s.Description || "");
+      $("#storeCategoryId").val(s.CategoryId || 1);
+      $("#storeStatus").val(s.Status ?? 1);
+      $("#storeMapEmbed").val(s.MapEmbed || s.MapEmbedHtml || s.MapIframe || "");
+      $("#storeLat").val(s.Latitude || s.Lat || "");
+      $("#storeLng").val(s.Longitude || s.Lng || "");
+      $("#storeUrl").val(s.Url || "");
+      $("#storeLogo").val(s.Logo || "");
+      $("#storeThumb").val(s.Thumbnail || s.Cover || "");
+      $("#storeFormInfo").text("");
+      updateStoreDetail(s);
+    }
+
+    function updateStoreDetail(store) {
+      if (!store) {
+        $("#storeDetailJson").text("Chọn một cửa hàng để xem chi tiết.");
+        $("#storeMapPreview").html("");
+        return;
+      }
+      $("#storeDetailJson").text(JSON.stringify(store, null, 2));
+      const mapEmbed = store.MapEmbed || store.MapEmbedHtml || store.MapIframe || "";
+      if (mapEmbed) {
+        $("#storeMapPreview").html(mapEmbed);
+      } else {
+        $("#storeMapPreview").html(`<div class="muted" style="padding:10px;">Chưa có mã nhúng Google Map.</div>`);
+      }
+    }
+
+    function renderCatalogTables(list) {
+      const items = list.map((t) => `
+        <li class="catalog-item" data-fullname="${escapeHtml(t.FullName)}" style="padding:6px 4px; cursor:pointer;">
+          <div style="font-weight:700;">${escapeHtml(t.FullName)}</div>
+          <div class="muted" style="font-size:12px;">${t.RowCount} dòng</div>
+        </li>
+      `);
+      $("#catalogTableList").html(items.join(""));
+    }
+
+    function renderCatalogData(data) {
+      if (!data || !data.rows) {
+        $("#catalogHead").html("");
+        $("#catalogBody").html(`<tr><td class="text-muted text-center">Không có dữ liệu</td></tr>`);
+        return;
+      }
+      const cols = data.columns || [];
+      const head = `<tr>${cols.map((c)=>`<th>${escapeHtml(c.COLUMN_NAME)}</th>`).join("")}</tr>`;
+      $("#catalogHead").html(head);
+      const rows = data.rows.map((r) => {
+        const cells = cols.map((c) => escapeHtml(r[c.COLUMN_NAME]));
+        return `<tr>${cells.map((c)=>`<td>${c}</td>`).join("")}</tr>`;
+      });
+      $("#catalogBody").html(rows.join("") || `<tr><td class="text-muted text-center">Không có dữ liệu</td></tr>`);
+      $("#catalogInfo").text(`Bảng: ${data.table} | Top: ${data.top} | Cột: ${cols.length} | Dòng hiển thị: ${data.rows.length}`);
+    }
+
+    function renderCatalogAll(list) {
+      if (!Array.isArray(list) || !list.length) {
+        $("#catalogAllContainer").html(`<div class="muted">Không có dữ liệu</div>`);
+        return;
+      }
+      const blocks = list.map((t, idx) => {
+        const cols = t.columns || [];
+        const rows = t.rows || [];
+        const head = `<tr>${cols.map((c)=>`<th>${escapeHtml(c.COLUMN_NAME)}</th>`).join("")}</tr>`;
+        const body = rows.map((r)=>`<tr>${cols.map((c)=>`<td>${escapeHtml(r[c.COLUMN_NAME])}</td>`).join("")}</tr>`).join("");
+        return `
+          <div class="card-flat" style="margin-bottom:10px;">
+            <div class="d-flex justify-content-between align-items-center">
+              <div style="font-weight:800;">${idx+1}. ${escapeHtml(t.fullName || t.table)}</div>
+              <div class="muted" style="font-size:12px;">${rows.length} dòng | ${cols.length} cột</div>
+            </div>
+            <div class="table-responsive" style="max-height:300px; overflow:auto; margin-top:6px;">
+              <table class="table table-sm">
+                <thead>${head}</thead>
+                <tbody>${body || `<tr><td class="text-center text-muted">Không có dữ liệu</td></tr>`}</tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      });
+      $("#catalogAllContainer").html(blocks.join(""));
+    }
+
+    function renderUsersTable(items = []) {
+      const rows = items.map((u) => `
+        <tr>
+          <td>${escapeHtml(u.Email || "")}</td>
+          <td>${escapeHtml(u.Fullname || "")}</td>
+          <td>${escapeHtml(u.PhoneNumber || "")}</td>
+          <td>${escapeHtml(u.Status)}</td>
+          <td>${u.EmailConfirmed ? "✔" : "✖"}</td>
+          <td style="white-space:nowrap;">
+            <button class="btn btn-sm btn-outline-success btnUserEdit"
+              data-id="${escapeHtml(u.Id)}"
+              data-email="${escapeHtml(u.Email || "")}"
+              data-fullname="${escapeHtml(u.Fullname || "")}"
+              data-phone="${escapeHtml(u.PhoneNumber || "")}"
+              data-status="${escapeHtml(u.Status ?? 1)}"
+              data-confirmed="${u.EmailConfirmed ? 1 : 0}"
+            >Sửa</button>
+            <button class="btn btn-sm btn-outline-danger btnUserDelete" data-id="${escapeHtml(u.Id)}" style="margin-left:4px;">Xóa</button>
+          </td>
+        </tr>
+      `);
+      $("#adminUsersTable").html(rows.join("") || `<tr><td colspan="6" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+    }
+
+    function renderRolesTable(list = []) {
+      const rows = list.map((r) => `
+        <tr>
+          <td>${escapeHtml(r.Id || "")}</td>
+          <td>${escapeHtml(r.Name || "")}</td>
+          <td>${escapeHtml(r.NormalizedName || "")}</td>
+          <td style="white-space:nowrap;">
+            <button class="btn btn-sm btn-outline-success btnRoleEdit" data-id="${escapeHtml(r.Id)}" data-name="${escapeHtml(r.Name || "")}">Sửa</button>
+            <button class="btn btn-sm btn-outline-danger btnRoleDelete" data-id="${escapeHtml(r.Id)}" style="margin-left:4px;">Xóa</button>
+          </td>
+        </tr>
+      `);
+      $("#adminRoleList").html(rows.join("") || `<tr><td colspan="4" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+    }
+
+    function renderFunctionsTable(items = []) {
+      const rows = items.map((f) => `
+        <tr>
+          <td>${escapeHtml(f.Id)}</td>
+          <td>${escapeHtml(f.Name || "")}</td>
+          <td>${escapeHtml(f.Url || "")}</td>
+          <td>${escapeHtml(f.ParentId || "")}</td>
+          <td style="white-space:nowrap;">
+            <button class="btn btn-sm btn-outline-success btnFuncEdit" data-id="${escapeHtml(f.Id)}" data-name="${escapeHtml(f.Name||'')}" data-url="${escapeHtml(f.Url||'')}" data-parent="${escapeHtml(f.ParentId||'')}" data-sort="${escapeHtml(f.SortOrder||0)}" data-status="${escapeHtml(f.Status||1)}">Sửa</button>
+            <button class="btn btn-sm btn-outline-danger btnFuncDelete" data-id="${escapeHtml(f.Id)}" style="margin-left:4px;">Xóa</button>
+          </td>
+        </tr>
+      `);
+      $("#adminFunctionsTable").html(rows.join("") || `<tr><td colspan="5" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+    }
+
+    function renderProjectsTable(items = []) {
+      const rows = items.map((p) => `
+        <tr>
+          <td>${escapeHtml(p.Id)}</td>
+          <td>${escapeHtml(p.Name || "")}</td>
+          <td>${fmt(p.InvestBalance || 0)} Vntd</td>
+          <td>${escapeHtml(p.Status)}</td>
+          <td>${escapeHtml(p.CreatedOn || "")}</td>
+          <td style="white-space:nowrap;">
+            <button class="btn btn-sm btn-outline-success btnProjEdit" data-id="${escapeHtml(p.Id)}" data-name="${escapeHtml(p.Name||'')}" data-desc="${escapeHtml(p.Description||'')}" data-invest="${escapeHtml(p.InvestBalance||0)}" data-status="${escapeHtml(p.Status||1)}">Sửa</button>
+            <button class="btn btn-sm btn-outline-danger btnProjDelete" data-id="${escapeHtml(p.Id)}" style="margin-left:4px;">Xóa</button>
+          </td>
+        </tr>
+      `);
+      $("#adminProjectsTable").html(rows.join("") || `<tr><td colspan="6" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+    }
+
+    function renderPackagesTable(items = []) {
+      const rows = items.map((p) => `
+        <tr>
+          <td>${escapeHtml(p.Id)}</td>
+          <td>${escapeHtml(p.Name || "")}</td>
+          <td>${fmt(p.Price || 0)} Vntd</td>
+          <td>${escapeHtml(p.OrderIndex)}</td>
+          <td>${escapeHtml(p.Status)}</td>
+          <td style="white-space:nowrap;">
+            <button class="btn btn-sm btn-outline-success btnPackEdit" data-id="${escapeHtml(p.Id)}" data-name="${escapeHtml(p.Name||'')}" data-price="${escapeHtml(p.Price||0)}" data-order="${escapeHtml(p.OrderIndex||0)}" data-status="${escapeHtml(p.Status||1)}">Sửa</button>
+            <button class="btn btn-sm btn-outline-danger btnPackDelete" data-id="${escapeHtml(p.Id)}" style="margin-left:4px;">Xóa</button>
+          </td>
+        </tr>
+      `);
+      $("#adminPackagesTable").html(rows.join("") || `<tr><td colspan="6" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+    }
+
+    async function loadAdminOverview() {
+      if (!isAdminLike()) return;
+      showError("#adminError", "");
+      showSuccess("#adminSuccess", "");
+      try {
+        const data = await getAdminOverview();
+        renderAdminOverview(data);
+        $("#adminSection").show();
+        showAdminPane("adminPaneOverview");
+        // preload catalog table list for admin
+        if (hasRole("ADMIN")) {
+          catalogTables = await catalogListTables();
+          renderCatalogTables(catalogTables);
+        }
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    }
+
+    async function loadAdminStores(q = "") {
+      if (!isAdminLike()) return;
+      showError("#adminError", "");
+      try {
+        adminStores = await adminStoreList(q);
+        renderStoresTable(adminStores);
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    }
+    function resetStoreForm() {
+      editingStoreId = null;
+      $("#storeFormTitle").text("Thêm / Sửa cửa hàng");
+      $("#storeName, #storeEmail, #storePhone, #storeOwnerEmail, #storeAddress, #storeDescription").val("");
+      $("#storeCategoryId").val("1");
+      $("#storeStatus").val("1");
+      $("#storeFormInfo").text("");
+    }
+
+    async function loadUsers() {
+      try {
+        const q = ($("#userSearch").val() || "").trim();
+        usersPageSize = Number($("#userPageSize").val() || 20);
+        const data = await adminUsersPaged(q);
+        usersTotal = data.total || 0;
+        usersPage = data.page || 1;
+        renderUsersTable(data.items || []);
+        const totalPages = Math.max(1, Math.ceil(usersTotal / usersPageSize));
+        $("#userPageInfo").text(`Trang ${usersPage}/${totalPages} (${usersTotal} dòng)`);
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    }
+    function resetUserForm() {
+      editingUserId = null;
+      $("#userFormTitle").text("Thêm/Sửa user");
+      $("#userEmail, #userFullName, #userPhone, #userPassword").val("");
+      $("#userStatus").val("1");
+      $("#userEmailConfirmed").val("1");
+      $("#userFormInfo").text("");
+    }
+
+    async function loadFunctionsPaged() {
+      try {
+        functionsPageSize = Number($("#funcPageSize").val() || 20);
+        const data = await adminFunctionsPaged();
+        functionsTotal = data.total || 0;
+        functionsPage = data.page || 1;
+        renderFunctionsTable(data.items || []);
+        const totalPages = Math.max(1, Math.ceil(functionsTotal / functionsPageSize));
+        $("#funcPageInfo").text(`Trang ${functionsPage}/${totalPages} (${functionsTotal} dòng)`);
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    }
+    function resetFunctionForm() {
+      editingFunctionId = null;
+      $("#funcId").prop("disabled", false).val("");
+      $("#funcName").val("");
+      $("#funcUrl").val("");
+      $("#funcParentId").val("");
+      $("#funcSort").val("0");
+      $("#funcStatus").val("1");
+    }
+
+    async function loadProjectsPaged() {
+      try {
+        projectsPageSize = Number($("#projPageSize").val() || 20);
+        const data = await adminProjectsPaged();
+        projectsTotal = data.total || 0;
+        projectsPage = data.page || 1;
+        renderProjectsTable(data.items || []);
+        const totalPages = Math.max(1, Math.ceil(projectsTotal / projectsPageSize));
+        $("#projPageInfo").text(`Trang ${projectsPage}/${totalPages} (${projectsTotal} dòng)`);
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    }
+    function resetProjectForm() {
+      editingProjectId = null;
+      $("#projName").val("");
+      $("#projDesc").val("");
+      $("#projInvest").val("0");
+      $("#projStatus").val("1");
+    }
+
+    async function loadPackagesPaged() {
+      try {
+        packagesPageSize = Number($("#packPageSize").val() || 20);
+        const data = await adminPackagesPaged();
+        packagesTotal = data.total || 0;
+        packagesPage = data.page || 1;
+        renderPackagesTable(data.items || []);
+        const totalPages = Math.max(1, Math.ceil(packagesTotal / packagesPageSize));
+        $("#packPageInfo").text(`Trang ${packagesPage}/${totalPages} (${packagesTotal} dòng)`);
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    }
+    function resetPackageForm() {
+      editingPackageId = null;
+      $("#packName").val("");
+      $("#packPrice").val("0");
+      $("#packOrder").val("0");
+      $("#packStatus").val("1");
+    }
+
+    async function loadWalletPaged() {
+      try {
+        const url = new URL(`${getApiBase()}/admin/wallet-tx`);
+        url.searchParams.set("wallet", walletType);
+        url.searchParams.set("page", walletPage);
+        url.searchParams.set("pageSize", walletPageSize);
+        const res = await fetch(url, { headers: { Authorization: `Bearer ${getToken()}` } });
+        const j = await res.json().catch(() => ({}));
+        if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không tải giao dịch ví (${res.status})`);
+        const { items, total, page, pageSize } = j.result || {};
+        walletTotal = total || 0;
+        walletPage = page || 1;
+        walletPageSize = pageSize || walletPageSize;
+        const rows = (items || []).map((t) => `
+          <tr>
+            <td>${escapeHtml(walletType)}</td>
+            <td>${escapeHtml(t.Id)}</td>
+            <td>${escapeHtml(t.AppUserId || "")}</td>
+            <td>${escapeHtml(t.Type || "")}</td>
+            <td>${fmt(t.Amount || 0)} Vntd</td>
+            <td>${escapeHtml(t.AddressFrom || "")}</td>
+            <td>${escapeHtml(t.AddressTo || "")}</td>
+            <td>${escapeHtml(t.Remark || "")}</td>
+            <td>${escapeHtml(t.DateCreated || "")}</td>
+          </tr>
+        `);
+        $("#adminWalletTxTable").html(rows.join("") || `<tr><td colspan="9" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+        const totalPages = Math.max(1, Math.ceil(walletTotal / walletPageSize));
+        $("#walletPageInfo").text(`Trang ${walletPage}/${totalPages} (${walletTotal} dòng)`);
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    }
+
+    async function loadInvestPaged() {
+      try {
+        const url = new URL(`${getApiBase()}/admin/invest-history`);
+        url.searchParams.set("page", investPage);
+        url.searchParams.set("pageSize", investPageSize);
+        const res = await fetch(url, { headers: { Authorization: `Bearer ${getToken()}` } });
+        const j = await res.json().catch(() => ({}));
+        if (!res.ok || j.isSuccess === false) throw new Error(j.message || `Không tải lịch sử đầu tư (${res.status})`);
+        const { items, total, page, pageSize } = j.result || {};
+        investTotal = total || 0;
+        investPage = page || 1;
+        investPageSize = pageSize || investPageSize;
+        const rows = (items || []).map((i) => `
+          <tr>
+            <td>${escapeHtml(i.Id)}</td>
+            <td>${escapeHtml(i.UserEmail || i.UserName || i.AppUserId || "")}</td>
+            <td>${escapeHtml(i.ProjectName || i.ProjectId || "")}</td>
+            <td>${escapeHtml(i.PackageName || i.InvestPackageId || "")}</td>
+            <td>${fmt(i.Amount || 0)} Vntd</td>
+            <td>${escapeHtml(i.Status)}</td>
+            <td>${escapeHtml(i.TransactionHash || "")}</td>
+            <td>${escapeHtml(i.CreatedOn || "")}</td>
+          </tr>
+        `);
+        $("#adminInvestTable").html(rows.join("") || `<tr><td colspan="8" class="text-center text-muted">Không có dữ liệu</td></tr>`);
+        const totalPages = Math.max(1, Math.ceil(investTotal / investPageSize));
+        $("#investPageInfo").text(`Trang ${investPage}/${totalPages} (${investTotal} dòng)`);
+      } catch (e) {
+        showError("#adminError", e.message);
       }
     }
 
     function showAuth(mode) {
-      const isLogin = mode !== "register";
-      $("#authTitle").text(isLogin ? "Đăng Nhập" : "Đăng Ký");
-      $("#btnSubmitAuth").text(isLogin ? "ĐĂNG NHẬP" : "ĐĂNG KÝ");
-      $("#groupFullName, #groupConfirm, #groupRef, #groupPhone").toggle(!isLogin);
-      $("#authFooterSwitch").html(isLogin ? 'Bạn Chưa Có Tài Khoản? <a href="#" id="switchToRegister">Đăng Ký</a>' : 'Bạn Đã Có Tài Khoản? <a href="#" id="switchToLogin">Đăng Nhập</a>');
-      $("#btnSubmitAuth").data("mode", isLogin ? "login" : "register");
+      const normalizedMode = mode || "login";
+      const isLogin = normalizedMode === "login";
+      const isRegister = normalizedMode === "register";
+      const isVerify = normalizedMode === "verify";
+      $("#authTitle").text(isLogin ? "Đăng Nhập" : (isRegister ? "Đăng Ký" : "Xác Thực Tài Khoản"));
+      $("#btnSubmitAuth").text(isLogin ? "ĐĂNG NHẬP" : (isRegister ? "ĐĂNG KÝ" : "XÁC THỰC"));
+      $("#groupFullName, #groupConfirm, #groupRef, #groupPhone").toggle(isRegister);
+      $("#groupVerifyCode").toggle(isVerify);
+      $("#password").closest(".form-group").toggle(!isVerify);
+      $("#advToggle, #advBox").toggle(!isVerify);
+      if (isRegister && /localhost|127\\.0\\.0\\.1/i.test(window.location.hostname)) {
+        showError("#authError", "Đăng ký chỉ cho phép khi online. Triển khai bản online hoặc bật ALLOW_LOCAL_REGISTER=true nếu muốn test offline.");
+      }
+      if (!isVerify) {
+        $("#advBox").hide();
+      }
+      showError("#authError", "");
+      showInfo("#authInfo", isVerify ? "Nhập mã xác thực đã được tạo khi đăng ký. Khi online, mã này sẽ được gửi qua email." : "");
+      $("#authFooterSwitch").html(
+        isLogin
+          ? 'Bạn Chưa Có Tài Khoản? <a href="#" id="switchToRegister">Đăng Ký</a>'
+          : isRegister
+            ? 'Bạn Đã Có Tài Khoản? <a href="#" id="switchToLogin">Đăng Nhập</a>'
+            : 'Chưa nhận được mã? <a href="#" id="resendVerifyCode">Gửi lại mã</a> • <a href="#" id="switchToLogin">Quay lại đăng nhập</a>'
+      );
+      $("#btnSubmitAuth").data("mode", normalizedMode);
       $("#authOverlay").fadeIn(120);
       attachSwitchLinks();
       // hiện giá trị URL đã lưu
@@ -394,6 +2840,27 @@
     function attachSwitchLinks(){
       $("#switchToRegister").on("click", (e)=>{ e.preventDefault(); showAuth("register"); });
       $("#switchToLogin").on("click", (e)=>{ e.preventDefault(); showAuth("login"); });
+      $("#resendVerifyCode").on("click", async (e)=>{
+        e.preventDefault();
+        const email = ($("#email").val().trim() || pendingVerificationEmail || "").toLowerCase();
+        if (!email) {
+          showError("#authError", "Nhập email trước khi gửi lại mã");
+          return;
+        }
+        showError("#authError", "");
+        try {
+          const result = await callResendVerification(email);
+          let message = "Đã tạo lại mã xác thực.";
+          if (result.debugCode) {
+            message += ` Mã dev: ${result.debugCode}`;
+          }
+          showInfo("#authInfo", message);
+          showAuth("verify");
+          $("#email").val(email);
+        } catch (error) {
+          showError("#authError", error.message);
+        }
+      });
     }
 
     function ensureAuth() {
@@ -403,8 +2870,37 @@
       return false;
     }
 
+    async function consumeVerificationParams() {
+      const url = new URL(window.location.href);
+      const email = String(url.searchParams.get("verifyEmail") || "").trim().toLowerCase();
+      const code = String(url.searchParams.get("verifyCode") || "").trim();
+      if (!email || !code) return;
+
+      url.searchParams.delete("verifyEmail");
+      url.searchParams.delete("verifyCode");
+      window.history.replaceState({}, document.title, `${url.pathname}${url.search}${url.hash}`);
+
+      try {
+        await callVerifyRegistration(email, code);
+        showAuth("login");
+        $("#email").val(email);
+        showInfo("#authInfo", "Xác thực tài khoản thành công. Bạn có thể đăng nhập.");
+      } catch (error) {
+        showAuth("verify");
+        $("#email").val(email);
+        $("#verifyCode").val(code);
+        showError("#authError", error.message);
+      }
+    }
+
     // Event bindings
     $("#btnOpenAuth, #ctaAuth, #unlockBtn").on("click", ()=>showAuth("login"));
+    $("#btnLogout").on("click", async ()=>{
+      clearToken();
+      resetGuestState();
+      setAuthUI(false, "");
+      $("#lockedNotice").show();
+    });
     $("#advToggle").on("click", ()=>{$("#advBox").slideToggle(120);});
     $("#closeAuth").on("click", closeAuth);
 
@@ -414,21 +2910,729 @@
 
     $(document).on("click", "[data-section]", function(){
       const sec = $(this).data("section");
-      if($(this).attr("data-requires-auth")!==undefined && !ensureAuth()) return;
-      $(".nav-link-vs").removeClass("active");
-      $(this).addClass("active");
-      if(sec === "contact") $('html,body').animate({scrollTop: $('#contact').offset().top-20}, 200);
-      if(sec === "home") $('html,body').animate({scrollTop: $('#home').offset().top-20}, 200);
-      if(sec === "partner" || sec === "product" || sec === "project" || sec === "app") {
-        $('html,body').animate({scrollTop: $('#walletSection').offset().top-10}, 200);
+      const needsAuth = $(this).attr("data-requires-auth") !== undefined;
+      const needsAdmin = $(this).attr("data-requires-admin") !== undefined;
+      if (needsAuth && !ensureAuth()) return;
+      if (needsAdmin && !isAdminLike()) {
+        showError("#adminError", "Bạn không có quyền truy cập Hệ thống");
+        return;
       }
+      setActiveNav(sec);
+      if (sec === "walletSection" && !ensureAuth()) return;
+      showSection(sec);
+      if (sec === "adminSection") {
+        loadAdminOverview();
+      }
+      if (sec === "home") $('html,body').animate({scrollTop: 0}, 150);
+    });
+
+    $(document).on("click", ".admin-tab", function(){
+      $(".admin-tab").removeClass("active");
+      $(this).addClass("active");
+      const pane = $(this).data("admin-pane");
+      showAdminPane(pane);
+      if (pane === "adminPaneStores") loadAdminStores($("#storeSearch").val() || "");
+      if (pane === "adminPaneWalletTx") loadWalletPaged();
+      if (pane === "adminPaneInvestHistory") loadInvestPaged();
+      if (pane === "adminPaneCatalog" && hasRole("ADMIN") && !catalogTables.length) {
+        catalogListTables().then((list)=>{ catalogTables=list; renderCatalogTables(list); }).catch((e)=>showError("#adminError", e.message));
+      }
+      if (pane === "adminPaneUsers") { usersPage=1; loadUsers(); }
+      if (pane === "adminPanePermissions") { loadPermissions(); }
+      if (pane === "adminPaneFunctions") { functionsPage=1; loadFunctionsPaged(); }
+      if (pane === "adminPaneProjects") { projectsPage=1; loadProjectsPaged(); }
+      if (pane === "adminPanePackages") { packagesPage=1; loadPackagesPaged(); }
+    });
+
+    $("#btnAdminReset").on("click", async ()=>{
+      if (!hasRole("ADMIN")) {
+        showError("#adminError", "Chỉ Admin mới được phép đặt lại mật khẩu");
+        return;
+      }
+      const email = ($("#adminResetEmail").val() || "").trim();
+      const pwd = ($("#adminResetPassword").val() || "").trim();
+      if (!email || !pwd) {
+        showError("#adminError", "Nhập email và mật khẩu mới");
+        return;
+      }
+      showError("#adminError", "");
+      $("#adminResetResult").text("Đang xử lý...");
+      try {
+        await resetAdminPassword(email, pwd);
+        $("#adminResetResult").text(`Đã đặt lại mật khẩu cho ${email}`);
+      } catch (e) {
+        showError("#adminError", e.message);
+        $("#adminResetResult").text("");
+      }
+    });
+
+    // Users CRUD
+    $("#btnUserReload").on("click", () => { usersPage = 1; loadUsers(); });
+    $("#userSearch").on("keyup", (e) => { if (e.key === "Enter") { usersPage = 1; loadUsers(); } });
+    $("#userPageSize").on("change", () => { usersPageSize = Number($("#userPageSize").val() || 20); usersPage = 1; loadUsers(); });
+    $("#userPrev").on("click", () => { if (usersPage > 1) { usersPage -= 1; loadUsers(); } });
+    $("#userNext").on("click", () => {
+      const totalPages = Math.max(1, Math.ceil(usersTotal / usersPageSize));
+      if (usersPage < totalPages) { usersPage += 1; loadUsers(); }
+    });
+    $("#btnUserCreate, #btnUserReset").on("click", () => resetUserForm());
+    $("#btnUserSave").on("click", async ()=>{
+      try {
+        const email = ($("#userEmail").val() || "").trim().toLowerCase();
+        const fullName = ($("#userFullName").val() || "").trim();
+        const phone = ($("#userPhone").val() || "").trim();
+        const password = ($("#userPassword").val() || "").trim();
+        const status = Number($("#userStatus").val() || 1);
+        const emailConfirmed = $("#userEmailConfirmed").val() === "1";
+        if (!email) { showError("#adminError", "Nhập email user"); return; }
+        if (!editingUserId && !password) { showError("#adminError", "Nhập mật khẩu cho user mới"); return; }
+        const payload = { email, fullName, phone, status, emailConfirmed };
+        if (password) payload.password = password;
+        showError("#adminError", "");
+        await adminUserSave(payload, editingUserId);
+        showSuccess("#adminSuccess", editingUserId ? "Đã cập nhật user" : "Đã tạo user");
+        resetUserForm();
+        usersPage = 1;
+        await loadUsers();
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+    $(document).on("click", ".btnUserEdit", function(){
+      editingUserId = $(this).data("id");
+      $("#userFormTitle").text(`Sửa user #${editingUserId}`);
+      $("#userEmail").val($(this).data("email") || "");
+      $("#userFullName").val($(this).data("fullname") || "");
+      $("#userPhone").val($(this).data("phone") || "");
+      $("#userStatus").val(String($(this).data("status") ?? "1"));
+      $("#userEmailConfirmed").val(String($(this).data("confirmed") ?? "1"));
+      $("#userPassword").val("");
+      $("#userEmail").focus();
+    });
+    $(document).on("click", ".btnUserDelete", async function(){
+      const id = $(this).data("id");
+      if (!id) return;
+      const ok = window.confirm("Xóa user này?");
+      if (!ok) return;
+      try {
+        await adminUserDelete(id);
+        await loadUsers();
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+
+    // Roles & UserRoles
+    const resetRoleForm = () => { editingRoleId = null; $("#roleNameInput").val(""); $("#roleNameInput").focus(); };
+    $("#btnRoleSave").on("click", async ()=>{
+      const name = ($("#roleNameInput").val() || "").trim();
+      if (!name) { showError("#adminError", "Nhập tên role"); return; }
+      try {
+        showError("#adminError", "");
+        await adminRoleSave(name, editingRoleId);
+        resetRoleForm();
+        await loadAdminOverview();
+        await loadPermissions($("#permRoleSelect").val() || "");
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+    $("#btnRoleReset").on("click", ()=>resetRoleForm());
+    $(document).on("click", ".btnRoleEdit", function(){
+      editingRoleId = $(this).data("id");
+      $("#roleNameInput").val($(this).data("name") || "");
+      $("#roleNameInput").focus();
+    });
+    $(document).on("click", ".btnRoleDelete", async function(){
+      const id = $(this).data("id");
+      const name = ($(this).data("name") || "").toString().toUpperCase();
+      if (name === "ADMIN") { showError("#adminError", "Không thể xóa role ADMIN"); return; }
+      if (!id) return;
+      const ok = window.confirm(`Xóa role ${name || id}?`);
+      if (!ok) return;
+      try {
+        await adminRoleDelete(id);
+        await loadAdminOverview();
+        await loadPermissions($("#permRoleSelect").val() || "");
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+
+    // Permissions
+    $("#permRoleSelect").on("change", ()=>{ loadPermissions($("#permRoleSelect").val() || ""); });
+    $("#btnPermSave").on("click", async ()=>{
+      const roleId = $("#permRoleSelect").val();
+      const functionId = ($("#permFunctionId").val() || "").trim();
+      const feature = ($("#permFeature").val() || "").trim() || "index";
+      if (!roleId || !functionId) { showError("#adminError", "Chọn Role và Function"); return; }
+      try {
+        showError("#adminError", "");
+        await adminPermSave(roleId, functionId, feature);
+        await loadPermissions(roleId);
+        showSuccess("#adminSuccess", "Đã lưu quyền");
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+    $("#btnPermDelete").on("click", async ()=>{
+      const roleId = $("#permRoleSelect").val();
+      const functionId = ($("#permFunctionId").val() || "").trim();
+      if (!roleId || !functionId) { showError("#adminError", "Chọn Role và Function để xóa"); return; }
+      try {
+        await adminPermDelete(roleId, functionId);
+        await loadPermissions(roleId);
+        showSuccess("#adminSuccess", "Đã xóa quyền");
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+    $(document).on("click", ".btnPermRowDelete", async function(){
+      const roleId = $(this).data("role");
+      const funcId = $(this).data("func");
+      try {
+        await adminPermDelete(roleId, funcId);
+        await loadPermissions(roleId || $("#permRoleSelect").val() || "");
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+
+    // Functions
+    $("#funcPageSize").on("change", ()=>{ functionsPageSize = Number($("#funcPageSize").val() || 20); functionsPage = 1; loadFunctionsPaged(); });
+    $("#funcPrev").on("click", ()=>{ if (functionsPage > 1) { functionsPage -= 1; loadFunctionsPaged(); } });
+    $("#funcNext").on("click", ()=>{ const totalPages = Math.max(1, Math.ceil(functionsTotal / functionsPageSize)); if (functionsPage < totalPages) { functionsPage += 1; loadFunctionsPaged(); } });
+    $("#btnFuncSave").on("click", async ()=>{
+      const id = ($("#funcId").val() || "").trim();
+      const name = ($("#funcName").val() || "").trim();
+      if (!id && !editingFunctionId) { showError("#adminError", "Nhập Id function"); return; }
+      if (!name) { showError("#adminError", "Nhập tên function"); return; }
+      const payload = {
+        id: id || editingFunctionId,
+        name,
+        url: ($("#funcUrl").val() || "").trim(),
+        parentId: ($("#funcParentId").val() || "").trim() || null,
+        sortOrder: Number($("#funcSort").val() || 0),
+        status: Number($("#funcStatus").val() || 1)
+      };
+      try {
+        await adminFunctionSave(payload, editingFunctionId || payload.id);
+        showSuccess("#adminSuccess", "Đã lưu function");
+        resetFunctionForm();
+        functionsPage = 1;
+        await loadFunctionsPaged();
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+    $("#btnFuncDelete").on("click", async ()=>{
+      const id = editingFunctionId || ($("#funcId").val() || "").trim();
+      if (!id) { showError("#adminError", "Chọn function để xóa"); return; }
+      if (!window.confirm(`Xóa function ${id}?`)) return;
+      try {
+        await adminFunctionDelete(id);
+        resetFunctionForm();
+        await loadFunctionsPaged();
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+    $(document).on("click", ".btnFuncEdit", function(){
+      editingFunctionId = $(this).data("id");
+      $("#funcId").val($(this).data("id") || "").prop("disabled", true);
+      $("#funcName").val($(this).data("name") || "");
+      $("#funcUrl").val($(this).data("url") || "");
+      $("#funcParentId").val($(this).data("parent") || "");
+      $("#funcSort").val($(this).data("sort") || 0);
+      $("#funcStatus").val(String($(this).data("status") ?? "1"));
+    });
+    $(document).on("click", ".btnFuncDelete", async function(){
+      const id = $(this).data("id");
+      if (!id) return;
+      if (!window.confirm(`Xóa function ${id}?`)) return;
+      try {
+        await adminFunctionDelete(id);
+        await loadFunctionsPaged();
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+
+    // Projects
+    $("#projPageSize").on("change", ()=>{ projectsPageSize = Number($("#projPageSize").val() || 20); projectsPage = 1; loadProjectsPaged(); });
+    $("#projPrev").on("click", ()=>{ if (projectsPage > 1) { projectsPage -= 1; loadProjectsPaged(); } });
+    $("#projNext").on("click", ()=>{ const totalPages = Math.max(1, Math.ceil(projectsTotal / projectsPageSize)); if (projectsPage < totalPages) { projectsPage += 1; loadProjectsPaged(); } });
+    $("#btnProjSave").on("click", async ()=>{
+      const name = ($("#projName").val() || "").trim();
+      if (!name) { showError("#adminError", "Nhập tên dự án"); return; }
+      const payload = {
+        name,
+        investBalance: Number($("#projInvest").val() || 0),
+        description: ($("#projDesc").val() || "").trim(),
+        status: Number($("#projStatus").val() || 1)
+      };
+      try {
+        await adminProjectSave(payload, editingProjectId);
+        showSuccess("#adminSuccess", editingProjectId ? "Đã cập nhật dự án" : "Đã thêm dự án");
+        resetProjectForm();
+        projectsPage = 1;
+        await loadProjectsPaged();
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+    $("#btnProjDelete").on("click", async ()=>{
+      const id = editingProjectId;
+      if (!id) { showError("#adminError", "Chọn dự án cần xóa (bấm Sửa trước)"); return; }
+      if (!window.confirm(`Xóa dự án #${id}?`)) return;
+      try {
+        await adminProjectDelete(id);
+        resetProjectForm();
+        await loadProjectsPaged();
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+    $(document).on("click", ".btnProjEdit", function(){
+      editingProjectId = $(this).data("id");
+      $("#projName").val($(this).data("name") || "");
+      $("#projDesc").val($(this).data("desc") || "");
+      $("#projInvest").val($(this).data("invest") || 0);
+      $("#projStatus").val(String($(this).data("status") ?? "1"));
+      $("#projName").focus();
+    });
+    $(document).on("click", ".btnProjDelete", async function(){
+      const id = $(this).data("id");
+      if (!id) return;
+      if (!window.confirm(`Xóa dự án #${id}?`)) return;
+      try {
+        await adminProjectDelete(id);
+        await loadProjectsPaged();
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+
+    // Packages
+    $("#packPageSize").on("change", ()=>{ packagesPageSize = Number($("#packPageSize").val() || 20); packagesPage = 1; loadPackagesPaged(); });
+    $("#packPrev").on("click", ()=>{ if (packagesPage > 1) { packagesPage -= 1; loadPackagesPaged(); } });
+    $("#packNext").on("click", ()=>{ const totalPages = Math.max(1, Math.ceil(packagesTotal / packagesPageSize)); if (packagesPage < totalPages) { packagesPage += 1; loadPackagesPaged(); } });
+    $("#btnPackSave").on("click", async ()=>{
+      const name = ($("#packName").val() || "").trim();
+      if (!name) { showError("#adminError", "Nhập tên gói"); return; }
+      const payload = {
+        name,
+        price: Number($("#packPrice").val() || 0),
+        orderIndex: Number($("#packOrder").val() || 0),
+        status: Number($("#packStatus").val() || 1)
+      };
+      try {
+        await adminPackageSave(payload, editingPackageId);
+        showSuccess("#adminSuccess", editingPackageId ? "Đã cập nhật gói" : "Đã thêm gói");
+        resetPackageForm();
+        packagesPage = 1;
+        await loadPackagesPaged();
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+    $("#btnPackDelete").on("click", async ()=>{
+      const id = editingPackageId;
+      if (!id) { showError("#adminError", "Chọn gói cần xóa (bấm Sửa trước)"); return; }
+      if (!window.confirm(`Xóa gói #${id}?`)) return;
+      try {
+        await adminPackageDelete(id);
+        resetPackageForm();
+        await loadPackagesPaged();
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+    $(document).on("click", ".btnPackEdit", function(){
+      editingPackageId = $(this).data("id");
+      $("#packName").val($(this).data("name") || "");
+      $("#packPrice").val($(this).data("price") || 0);
+      $("#packOrder").val($(this).data("order") || 0);
+      $("#packStatus").val(String($(this).data("status") ?? "1"));
+      $("#packName").focus();
+    });
+    $(document).on("click", ".btnPackDelete", async function(){
+      const id = $(this).data("id");
+      if (!id) return;
+      if (!window.confirm(`Xóa gói #${id}?`)) return;
+      try {
+        await adminPackageDelete(id);
+        await loadPackagesPaged();
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+
+    $("#btnStoreReload").on("click", () => loadAdminStores($("#storeSearch").val() || ""));
+    $("#storeSearch").on("keyup", (e) => {
+      if (e.key === "Enter") loadAdminStores($("#storeSearch").val() || "");
+    });
+    $("#btnStoreCreate").on("click", () => { resetStoreForm(); });
+    $("#btnStoreReset").on("click", () => { resetStoreForm(); });
+    $("#btnStoreSave").on("click", async () => {
+      try {
+        const payload = {
+          name: $("#storeName").val(),
+          email: $("#storeEmail").val(),
+          phone: $("#storePhone").val(),
+          ownerEmail: $("#storeOwnerEmail").val(),
+          address: $("#storeAddress").val(),
+          description: $("#storeDescription").val(),
+          categoryId: Number($("#storeCategoryId").val() || 1),
+          status: Number($("#storeStatus").val() || 1),
+          mapEmbed: $("#storeMapEmbed").val(),
+          latitude: $("#storeLat").val(),
+          longitude: $("#storeLng").val(),
+          url: $("#storeUrl").val(),
+          logo: $("#storeLogo").val(),
+          thumbnail: $("#storeThumb").val()
+        };
+        showError("#adminError", "");
+        $("#storeFormInfo").text("Đang lưu...");
+        await adminStoreSave(payload, editingStoreId);
+        $("#storeFormInfo").text("Đã lưu.");
+        await loadAdminStores($("#storeSearch").val() || "");
+        resetStoreForm();
+      } catch (e) {
+        showError("#adminError", e.message);
+        $("#storeFormInfo").text("");
+      }
+    });
+
+    $(document).on("click", ".btnStoreEdit", function(){
+      const id = Number($(this).data("id"));
+      const s = adminStores.find((x) => Number(x.Id) === id);
+      if (s) fillStoreForm(s);
+    });
+    $(document).on("click", ".store-row", function(e){
+      const id = Number($(this).data("id"));
+      const s = adminStores.find((x) => Number(x.Id) === id);
+      if (s) updateStoreDetail(s);
+    });
+    $(document).on("click", ".btnStoreMap", function(e){
+      e.stopPropagation();
+      const id = Number($(this).data("id"));
+      const s = adminStores.find((x) => Number(x.Id) === id);
+      if (s) updateStoreDetail(s);
+      $('html,body').animate({ scrollTop: $("#storeMapPreview").offset().top - 80 }, 150);
+    });
+
+    $(document).on("click", ".btnStoreDelete", async function(){
+      const id = Number($(this).data("id"));
+      if (!hasRole("ADMIN")) return;
+      const ok = window.confirm(`Xóa cửa hàng #${id}?`);
+      if (!ok) return;
+      try {
+        await adminStoreDelete(id);
+        await loadAdminStores($("#storeSearch").val() || "");
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+
+    $("#btnCatalogLoad").on("click", async ()=>{
+      if (!hasRole("ADMIN")) return;
+      const name = ($("#catalogTableName").val() || "").trim();
+      const top = Number($("#catalogTop").val() || 200);
+      if (!name) {
+        showError("#adminError", "Chọn bảng từ danh sách hoặc nhập tên bảng");
+        return;
+      }
+      try {
+        showError("#adminError", "");
+        $("#catalogInfo").text("Đang tải...");
+        const data = await catalogLoadTable(name, top);
+        renderCatalogData(data);
+      } catch (e) {
+        showError("#adminError", e.message);
+        $("#catalogInfo").text("");
+      }
+    });
+
+    $(document).on("click", ".catalog-item", async function(){
+      const fullname = $(this).data("fullname");
+      $("#catalogTableName").val(fullname);
+      $("#btnCatalogLoad").trigger("click");
+    });
+    $("#btnCatalogAll").on("click", async ()=>{
+      if (!hasRole("ADMIN")) return;
+      try {
+        $("#catalogInfo").text("Đang tải tất cả bảng (top 50)...");
+        const data = await catalogLoadAll(50);
+        renderCatalogAll(data);
+        $("#catalogInfo").text(`Đã tải ${data.length} bảng.`);
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+
+    $("#walletTypeSelect").on("change", ()=>{ walletType = $("#walletTypeSelect").val(); walletPage=1; loadWalletPaged(); });
+    $("#walletPageSize").on("change", ()=>{ walletPageSize = Number($("#walletPageSize").val()); walletPage=1; loadWalletPaged(); });
+    $("#walletPrev").on("click", ()=>{ if (walletPage>1){ walletPage--; loadWalletPaged(); }});
+    $("#walletNext").on("click", ()=>{
+      const totalPages = Math.max(1, Math.ceil(walletTotal / walletPageSize));
+      if (walletPage < totalPages){ walletPage++; loadWalletPaged(); }
+    });
+
+    $("#investPageSize").on("change", ()=>{ investPageSize = Number($("#investPageSize").val()); investPage=1; loadInvestPaged(); });
+    $("#investPrev").on("click", ()=>{ if (investPage>1){ investPage--; loadInvestPaged(); }});
+    $("#investNext").on("click", ()=>{
+      const totalPages = Math.max(1, Math.ceil(investTotal / investPageSize));
+      if (investPage < totalPages){ investPage++; loadInvestPaged(); }
+    });
+
+    $("#btnAssignRole").on("click", async ()=>{
+      try {
+        const email = ($("#roleAssignEmail").val() || "").trim();
+        const roleId = $("#roleAssignSelect").val();
+        if (!email || !roleId) {
+          showError("#adminError", "Nhập email và chọn role");
+          return;
+        }
+        showError("#adminError", "");
+        await fetch(`${getApiBase()}/admin/user-roles`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
+          body: JSON.stringify({ email, roleId })
+        }).then((r)=>r.json()).then((j)=>{ if(j.isSuccess===false) throw new Error(j.message||"Gán role thất bại"); });
+        await loadAdminOverview();
+        showSuccess("#adminSuccess", `Đã gán role cho ${email}`);
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+
+    $("#roleAssignEmail").on("input", function(){
+      const term = ($(this).val() || "").trim();
+      if (userSuggestTimer) clearTimeout(userSuggestTimer);
+      if (term.length < 2) return;
+      userSuggestTimer = setTimeout(async ()=>{
+        try {
+          const list = await adminUserSuggest(term);
+          const opts = (list || []).map((u)=>`<option value=\"${escapeHtml(u.Email || u.UserName || '')}\">${escapeHtml(u.Fullname || u.Email || '')}</option>`);
+          $("#userEmailSuggestions").html(opts.join(""));
+        } catch (e) {
+          // ignore suggestions errors
+        }
+      }, 220);
+    });
+
+    $("#userRolePageSize").on("change", ()=>{
+      userRolePageSize = Number($("#userRolePageSize").val() || 20);
+      userRolePage = 1;
+      renderUserRolesTable();
+    });
+    $("#userRolePrev").on("click", ()=>{
+      if (userRolePage > 1) { userRolePage -= 1; renderUserRolesTable(); }
+    });
+    $("#userRoleNext").on("click", ()=>{
+      const totalPages = Math.max(1, Math.ceil((userRoleTotal || 0) / userRolePageSize));
+      if (userRolePage < totalPages) { userRolePage += 1; renderUserRolesTable(); }
+    });
+
+    $("#btnRevokeRole").on("click", async ()=>{
+      try {
+        const email = ($("#roleAssignEmail").val() || "").trim();
+        const roleId = $("#roleAssignSelect").val();
+        if (!email || !roleId) {
+          showError("#adminError", "Nhập email và chọn role");
+          return;
+        }
+        showError("#adminError", "");
+        const url = new URL(`${getApiBase()}/admin/user-roles`);
+        url.searchParams.set("email", email);
+        url.searchParams.set("roleId", roleId);
+        await fetch(url, {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${getToken()}` }
+        }).then((r)=>r.json()).then((j)=>{ if(j.isSuccess===false) throw new Error(j.message||"Thu hồi role thất bại"); });
+        await loadAdminOverview();
+        showSuccess("#adminSuccess", `Đã thu hồi role của ${email}`);
+      } catch (e) {
+        showError("#adminError", e.message);
+      }
+    });
+
+    $("#btnConsumptionReceive").on("click", async ()=>{
+      if (!ensureAuth()) return;
+      showError("#receiveModalError", "");
+      showSuccess("#receiveModalSuccess", "");
+      $("#receiveAddressBox").text("Đang tải...");
+      $("#receiveQrImage").attr("src", "");
+      openWalletOverlay("#receiveOverlay");
+      try {
+        const info = await getReceiveInfo();
+        const address = info.address || currentUser?.receiveAddress || currentUser?.id || "---";
+        $("#receiveAddressBox").text(address);
+        $("#receiveQrImage").attr("src", buildQrImageUrl(address));
+      } catch (e) {
+        showError("#receiveModalError", e.message);
+        const address = currentUser?.receiveAddress || currentUser?.id || "---";
+        $("#receiveAddressBox").text(address);
+        $("#receiveQrImage").attr("src", buildQrImageUrl(address));
+      }
+    });
+
+    $("#copyReceiveAddress").on("click", async ()=>{
+      showError("#receiveModalError", "");
+      showSuccess("#receiveModalSuccess", "");
+      const address = ($("#receiveAddressBox").text() || "").trim();
+      if (!address || address === "---" || address === "Đang tải...") {
+        showError("#receiveModalError", "Chưa có địa chỉ để sao chép");
+        return;
+      }
+      try {
+        await copyToClipboard(address);
+        showSuccess("#receiveModalSuccess", "Đã sao chép địa chỉ");
+      } catch (e) {
+        showError("#receiveModalError", "Không sao chép được địa chỉ");
+      }
+    });
+
+    $("#btnConsumptionTransfer").on("click", ()=>{
+      if (!ensureAuth()) return;
+      showError("#transferModalError", "");
+      showSuccess("#transferModalSuccess", "");
+      $("#transferToAddress").val("");
+      $("#transferAmount").val("");
+      $("#transferRemark").val("");
+      setRecipientInfo("");
+      stopQrScanner();
+      openWalletOverlay("#transferOverlay");
+    });
+
+    $("#transferToAddress").on("input", async ()=>{
+      const address = $("#transferToAddress").val().trim().toLowerCase();
+      recipientLookupSeq += 1;
+      const seq = recipientLookupSeq;
+
+      if (!address) {
+        setRecipientInfo("");
+        return;
+      }
+      if (!/^[0-9a-f-]{36}$/i.test(address)) {
+        setRecipientInfo("Địa chỉ nhận chưa đúng định dạng", "error");
+        return;
+      }
+
+      setRecipientInfo("Đang kiểm tra địa chỉ nhận...");
+      try {
+        const info = await lookupConsumptionAddress(address);
+        if (seq !== recipientLookupSeq) return;
+        const email = info.email || info.userName || address;
+        setRecipientInfo(`Tài khoản nhận: ${email}`, "success");
+      } catch (e) {
+        if (seq !== recipientLookupSeq) return;
+        setRecipientInfo(e.message, "error");
+      }
+    });
+
+    $("#transferAmount").on("input", ()=>{
+      const current = $("#transferAmount").val();
+      const normalized = normalizeAmountText(current);
+      $("#transferAmount").val(normalized.display);
+    });
+
+    $("#btnStartQrScan").on("click", ()=>{
+      startQrScanner().catch((error) => {
+        setScannerStatus(`Không mở được camera: ${error.message}`, "error");
+      });
+    });
+
+    $("#btnStopQrScan").on("click", ()=>{
+      stopQrScanner();
+    });
+
+    $("#btnConsumptionHistory").on("click", ()=>openWalletHistory("consumption"));
+    $("#btnAffiliateHistory").on("click", ()=>openWalletHistory("affiliate"));
+    $("#btnAccumulateHistory").on("click", ()=>openWalletHistory("accumulate"));
+    $("#btnSavingHistory").on("click", ()=>openWalletHistory("saving"));
+    $("#btnBusinessHistory").on("click", ()=>openWalletHistory("business"));
+    $(document).on("click", ".btnSelectPackage", function(){
+      openProjectPackage($(this).data("package-id"));
+    });
+    $(document).on("click", ".btnActivatePackage", function(){
+      triggerInvestActivation($(this).data("package-id"));
+    });
+    $("#btnAccumulateWithdraw").on("click", async ()=>{
+      if (!ensureAuth()) return;
+      showError("#walletError", "");
+      try {
+        await withdrawAccumulate();
+        showSuccess("#walletError", "Đã rút 0.2% từ ví Tích Điểm về ví Giao Dịch");
+        await loadWallet();
+      } catch (e) {
+        showError("#walletError", e.message);
+      }
+    });
+    $("#btnSavingWithdraw").on("click", async ()=>{
+      if (!ensureAuth()) return;
+      showError("#walletError", "");
+      try {
+        await withdrawSaving();
+        showSuccess("#walletError", "Đã rút 0.2% từ ví Tiết Kiệm về ví Giao Dịch");
+        await loadWallet();
+      } catch (e) {
+        showError("#walletError", e.message);
+      }
+    });
+    $("#activateProjectPackage").on("click", ()=>{
+      if (!selectedInvestPackageId) {
+        showError("#projectPackageError", "Chưa chọn gói đầu tư");
+        return;
+      }
+      triggerInvestActivation(selectedInvestPackageId);
+    });
+
+    $("#submitConsumptionTransfer").on("click", async ()=>{
+      showError("#transferModalError", "");
+      showSuccess("#transferModalSuccess", "");
+      const toAddress = $("#transferToAddress").val().trim();
+      const amount = parseAmountText($("#transferAmount").val());
+      const remark = $("#transferRemark").val().trim();
+      if (!toAddress || !amount) {
+        showError("#transferModalError", "Nhập địa chỉ nhận và số lượng cần chuyển");
+        return;
+      }
+      try {
+        const result = await transferConsumption(toAddress, amount, remark);
+        showSuccess("#transferModalSuccess", `Đã chuyển ${fmt(result.amount)} Vntd thành công`);
+        if (result.recipient && result.recipient.email) {
+          setRecipientInfo(`Tài khoản nhận: ${result.recipient.email}`, "success");
+        }
+        await loadWallet();
+        $("#transferAmount").val("");
+        $("#transferRemark").val("");
+      } catch (e) {
+        showError("#transferModalError", e.message);
+      }
+    });
+
+    $("#closeReceiveOverlay").on("click", ()=>closeWalletOverlay("#receiveOverlay"));
+    $("#closeTransferOverlay").on("click", ()=>{
+      stopQrScanner();
+      closeWalletOverlay("#transferOverlay");
+    });
+    $("#closeHistoryOverlay").on("click", ()=>closeWalletOverlay("#historyOverlay"));
+    $("#closeProjectPackageOverlay").on("click", ()=>{
+      selectedInvestPackageId = null;
+      closeWalletOverlay("#projectPackageOverlay");
     });
 
     $("#btnSubmitAuth").on("click", async ()=>{
       showError("#authError", "");
+      if (($("#btnSubmitAuth").data("mode") || "login") !== "verify") {
+        showInfo("#authInfo", "");
+      }
       const mode = $("#btnSubmitAuth").data("mode") || "login";
-      const email = $("#email").val().trim();
+      const email = $("#email").val().trim().toLowerCase();
       const pwd = $("#password").val().trim();
+      const verifyCode = $("#verifyCode").val().trim();
       const apiBase = $("#apiBase").val().trim();
       const identityBase = $("#identityBase").val().trim();
       const cfg = loadCfg();
@@ -436,30 +3640,82 @@
       cfg.apiBase = apiBase || defaults.apiBase;
       cfg.identityBase = identityBase || defaults.identityBase;
       saveCfg(cfg);
-      if(!email || !pwd) { showError("#authError", "Nhập email và mật khẩu"); return; }
+      if(!email) { showError("#authError", "Nhập email"); return; }
+      if(mode !== "verify" && !pwd) { showError("#authError", "Nhập email và mật khẩu"); return; }
+      if(mode === "verify" && !verifyCode) { showError("#authError", "Nhập mã xác thực"); return; }
       if(mode === "register") {
         const confirm = $("#confirmPassword").val().trim();
         if(confirm && confirm !== pwd) { showError("#authError", "Mật khẩu xác nhận không khớp"); return; }
       }
       try {
         if(mode === "register") {
-          await callRegister(email, pwd, $("#fullName").val().trim(), $("#phone").val().trim(), $("#referenceEmail").val().trim());
+          const registerResult = await callRegister(email, pwd, $("#fullName").val().trim(), $("#phone").val().trim(), $("#referenceEmail").val().trim());
+          const registerInfo = registerResult.result || registerResult;
+          if (registerInfo.requiresVerification) {
+            pendingVerificationEmail = email;
+            pendingVerificationPassword = pwd;
+            showAuth("verify");
+            $("#email").val(email);
+            let message = "Đăng ký thành công. Nhập mã xác thực để kích hoạt tài khoản.";
+            if (registerInfo.debugCode) {
+              message += ` Mã dev: ${registerInfo.debugCode}`;
+            }
+            showInfo("#authInfo", message);
+            return;
+          }
+        }
+        if (mode === "verify") {
+          await callVerifyRegistration(email, verifyCode);
+          if (pendingVerificationPassword && pendingVerificationEmail === email) {
+            await callToken(email, pendingVerificationPassword);
+            pendingVerificationEmail = "";
+            pendingVerificationPassword = "";
+            await loadWallet();
+            closeAuth();
+            return;
+          }
+          showInfo("#authInfo", "Xác thực thành công. Bạn có thể đăng nhập.");
+          showAuth("login");
+          $("#email").val(email);
+          return;
         }
         await callToken(email, pwd);
         await loadWallet();
         closeAuth();
-      } catch (e) { showError("#authError", e.message); }
+      } catch (e) {
+        const context = mode === "register"
+          ? "Đăng ký thất bại"
+          : (mode === "verify" ? "Xác thực thất bại" : "Đăng nhập thất bại");
+        if (mode === "login" && /chưa xác thực email/i.test(String(e.message || ""))) {
+          pendingVerificationEmail = email;
+          pendingVerificationPassword = pwd;
+          showAuth("verify");
+          $("#email").val(email);
+          showInfo("#authInfo", "Tài khoản này chưa xác thực. Nhập mã xác thực để tiếp tục.");
+          return;
+        }
+        showError("#authError", toFriendlyError(e, context));
+      }
     });
 
     // Khởi động
     (async () => {
-      syncStatus();
+      applyDefaultEndpoints(preferLocalEndpoints);
+      resetGuestState();
       $("#authOverlay").hide(); // đảm bảo không hiện overlay khi mới mở
-      $("#walletSection").hide();
+      $("#receiveOverlay").hide();
+      $("#transferOverlay").hide();
+      $("#historyOverlay").hide();
+      $("#projectPackageOverlay").hide();
       $("#lockedNotice").hide();
+      await consumeVerificationParams();
       if (getToken()) {
         await loadWallet();
+      } else {
+        showSection("home");
+        setActiveNav("home");
       }
+      setAuthUI(Boolean(getToken()), loadCfg().lastEmail || "");
     })();
   </script>
 </body>
